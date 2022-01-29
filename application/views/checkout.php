@@ -171,12 +171,6 @@
                                                 </datalist>
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>Postcode *</label>
-                                                <input type="text" class="form-control form-control-md text-dark" name="postcodedrop">
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
 

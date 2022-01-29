@@ -8723,7 +8723,7 @@ body .product-popup {
 .product {
     position: relative;
     font-family: Poppins, sans-serif;
-    font-size: 1rem;
+    font-size: 1.3rem;
     color: #020101;
     transition: .3s
 }
@@ -9582,7 +9582,7 @@ body .product-popup {
 
 @media (max-width: 479px) {
     .product:not(.product-list) {
-        font-size: .8rem
+        font-size: 1.2rem
     }
 
     .product:not(.product-list) .btn-product-icon {

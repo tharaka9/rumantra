@@ -328,38 +328,7 @@
 <script src="<?php echo base_url() ?>assets/js/main.js"></script>
 
 
-    <!-- Script -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- jQuery UI -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script type='text/javascript'>
-    $(document).ready(function(){
 
-     // Initialize 
-     $( "#listproduct" ).autocomplete({
-        source: function( request, response ) {
-          // Fetch data
-          $.ajax({
-            url: "<?=base_url()?>Welcome/productList",
-            type: 'post',
-            dataType: "json",
-            data: {
-              search: request.term
-            },
-            success: function( data ) {
-              response( data );
-            }
-          });
-        },
-        select: function (event, ui) {
-          // Set selection
-          $('#listproduct').val(ui.item.label); // display the selected text
-          return false;
-        }
-      });
-
-    });
-    </script>
 
 
 
@@ -416,3 +385,37 @@ function removecart(){
     });
 }
 </script>
+
+    <!-- Script -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- jQuery UI -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    
+    <script type='text/javascript'>
+    $(document).ready(function(){
+
+     // Initialize 
+     $( "#listproduct" ).autocomplete({
+        source: function( request, response ) {
+          // Fetch data
+          $.ajax({
+            url: "<?=base_url()?>Welcome/productList",
+            type: 'post',
+            dataType: "json",
+            data: {
+              search: request.term
+            },
+            success: function( data ) {
+              response( data );
+            }
+          });
+        },
+        select: function (event, ui) {
+          // Set selection
+          $('#listproduct').val(ui.item.label); // display the selected text
+          return false;
+        }
+      });
+
+    });
+    </script>

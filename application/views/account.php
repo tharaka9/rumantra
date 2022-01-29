@@ -346,7 +346,7 @@ background-color: #dfdfdf75;
 										<!-- <p class="d-none" id="hideurl"><?php //echo base_url().'Loginregister/Registerwithcode/'.$profileinfo->profileinfo[0]->refcode; ?></p> -->
 
 									</div>
-									<div class="col-6 text-right">
+									<div class="row">
 										<p class="d-none" id="hideurl"><?php echo base_url().'Loginregister/Register'; ?></p>
 										<span class="btn btn-primary btn-sm rounded-0" onclick="copyfunction('#hideurl')"><i class="icon-share"></i>&nbsp;Share your friends</span>
 									</div>
@@ -385,7 +385,7 @@ background-color: #dfdfdf75;
 															</div>
 															<div class="col-lg-6 mb-20 pb-3">
 																<label class="text-dark font-weight-bold">City <span>*</span></label>
-																<select class="form-control form-control-sm text-dark" style="width:100%;" name="regcity" id="regcity" required>
+																<select class="form-control form-control-sm text-dark selectpicker" style="width:100%;" name="regcity" id="regcity" required>
 																	<option value="">Select</option>
 																	<?php foreach($citylist->result() as $rowcitylist){ ?>
 																	<option value="<?php echo $rowcitylist->city ?>" <?php if($this->session->userdata('loggedin')==1){if($rowcitylist->city==$customerprofile->row(0)->city){echo 'selected';}} ?>><?php echo $rowcitylist->city ?></option>
@@ -394,7 +394,7 @@ background-color: #dfdfdf75;
 															</div>
 															<div class="col-lg-6 mb-20 pb-3">
 																<label for="country">country <span>*</span></label><br>
-																<select class="form-control form-control-sm text-dark" style="border: 1px solid #ededed;outline:0px !important;box-shadow: none !important;" name="regcountry" id="regcountry" required>
+																<select class="form-control form-control-sm text-dark selectpicker" style="border: 1px solid #ededed;outline:0px !important;box-shadow: none !important;" name="regcountry" id="regcountry" required>
 																	<option value="">Select</option>
 																	<?php foreach($countrylist->result() as $rowcountrylist){ ?>
 																	<option value="<?php echo $rowcountrylist->idtbl_country ?>" <?php if($customerprofile->row(0)->tbl_country_idtbl_country==$rowcountrylist->idtbl_country){echo 'selected';} ?>><?php echo $rowcountrylist->country ?></option>
@@ -403,7 +403,7 @@ background-color: #dfdfdf75;
 															</div>
 															<div class="col-lg-6 mb-20 pb-3">
 																<label class="text-dark font-weight-bold">Date of birth <span>*</span></label>
-																<input type="date" class="form-control form-control-sm text-dark" name="dob" id="dob" value="<?php echo $customerprofile->row(0)->dob ?>" required>
+																<input type="date" class="form-control form-control-sm text-dark selectpicker" name="dob" id="dob" value="<?php echo $customerprofile->row(0)->dob ?>" required>
 															</div>
 															<div class="col-lg-6 mb-20 pb-3">
 																<label class="text-dark font-weight-bold">NIC <span>*</span></label>
@@ -412,7 +412,7 @@ background-color: #dfdfdf75;
 															<div class="col-lg-6 mb-20 pb-3">
 																<label class="text-dark font-weight-bold">Bank & Code</label>
 																<div class="row">
-																	<select name="regbank" id="regbank" class="col-9 form-control form-control-sm" style="width:75%;" required>
+																	<select name="regbank" id="regbank" class="col-9 form-control form-control-sm selectpicker" style="width:75%;" required>
 																		<option value="">Select</option>
 																		<?php foreach($banklist->result() as $rowbanklist){ ?>
 																		<option value="<?php echo $rowbanklist->code ?>" <?php if($this->session->userdata('loggedin')==1 && $customerprofilebank->num_rows()>0){if($rowbanklist->code==$customerprofilebank->row(0)->bankcode){echo 'selected';}} ?>><?php echo $rowbanklist->bank ?></option>
@@ -424,7 +424,7 @@ background-color: #dfdfdf75;
 															<div class="col-lg-6 mb-20 pb-3">
 																<label class="text-dark font-weight-bold">Branch & Code</label>
 																<div class="row">
-																	<select name="regbranch" id="regbranch" class="col-9 form-control form-control-sm" style="width:75%;" required>
+																	<select name="regbranch" id="regbranch" class="col-9 form-control form-control-sm selectpicker" style="width:75%;" required>
 																		<option value="">Select</option>
 																	</select>
 																	<input type="text" minlength="3" maxlength="3" name="regbranchcode" id="regbranchcode" class="col-3 bg-grey form-control form-control-sm" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" value="<?php if($customerprofilebank->num_rows()>0){echo $customerprofilebank->row(0)->branchcode;} ?>" placeholder="Code" required readonly>
@@ -544,12 +544,16 @@ background-color: #dfdfdf75;
     </div>
 
 	<?php include "include/footerscript.php"; ?>
+	<script src="/js/Bootstrap/Select/bootstrap-select.js"></script>
 
+<script type="text/javascript">
+    $('.selectpicker').selectpicker({});
+</script>
 	<script>
-		$(document).ready(function(){
-			$("#regcity").select2();
-			$("#regbank").select2();
-			$("#regbranch").select2();
+		// $(document).ready(function(){
+		// 	$("#regcity").select2();
+		// 	$("#regbank").select2();
+		// 	$("#regbranch").select2();
 
 			$('.btnpopupview').click(function (e){
 			   let id = $(this).data('id');
@@ -633,7 +637,7 @@ background-color: #dfdfdf75;
                         let items = ''+
                             '<div class="row">'+
                             '<div class="col-md-12">'+
-                                '<table class="table shop-table account-orders-table">'+
+                                '<table class="table w-auto text-xsmall">'+
                                     '<thead>'+
                                         '<tr>'+
                                             '<th> Product </th>'+
@@ -660,7 +664,7 @@ background-color: #dfdfdf75;
 
                         items += '' +
                             '<div class="row">' +
-                            '<div class="col-md-12 text-right modal-body">' +
+                            '<div class="col-md-12 mt-3 text-right modal-body">' +
                             'Ship Cost : <strong> '+ parseFloat(json.order.shipcost).toFixed(2) +'</strong> <br>'+
                             'Total : <strong> '+ parseFloat(json.order.total).toFixed(2) +'</strong> <br>'+
                             'Discount : <strong> '+ parseFloat(json.order.discount).toFixed(2) +'</strong> <br>'+
@@ -718,7 +722,7 @@ background-color: #dfdfdf75;
 					}
 				}
 			});
-		});
+		// });
 
 		function copyfunction(element) {
 			var $temp = $("<input>");

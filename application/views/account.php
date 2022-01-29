@@ -17,6 +17,38 @@
         .modal-body{
             font-size: medium;
         }
+		.collapsible {
+background-color: #dfdfdf75;
+  color: black;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+
+.collapsible:after {
+	content: '\002B';
+  color: black;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: '\2212';
+}
+
+.content {
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  background-color: #f1f1f1;
+}
     </style>
 
 </head>
@@ -66,6 +98,9 @@
                             <li class="nav-item">
                                 <a href="#view-commission" class="nav-link">View Commission</a>
                             </li>
+							<li class="nav-item">
+								<a href="#member" class="nav-link">Your Members</a>
+							</li>
 							<li class="link-item">
 								<a href="<?php echo base_url().'Loginregister/Logout' ?>">Logout</a>
 							</li>
@@ -144,6 +179,18 @@
                                             </div>
                                         </a>
                                     </div>
+									<div class="col-lg-4 col-md-6 col-sm-4 col-xs-6 mb-4">
+										<a href="#member" class="link-to-tab">
+											<div class="icon-box text-center">
+												<span class="icon-box-icon icon-account">
+													<i class="w-icon-user"></i>
+												</span>
+												<div class="icon-box-content">
+													<p class="text-uppercase mb-0">Your Members</p>
+												</div>
+											</div>
+										</a>
+									</div>
 									<div class="col-lg-4 col-md-6 col-sm-4 col-xs-6 mb-4">
 										<a href="#">
 											<div class="icon-box text-center">
@@ -429,6 +476,50 @@
                                     </div>
                                 </div>
                             </div>
+
+							<div class="tab-pane" id="member">
+								<div class="icon-box icon-box-side icon-box-light">
+									<span class="icon-box-icon icon-map-marker">
+									<i class="fa fa-user"></i>
+
+									</span>
+									<div class="icon-box-content">
+										<h4 class="icon-box-title mb-0 ls-normal">Your Members</h4>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-lg-4 col-md-4 col-sm-4 mt-5">
+										<button class="collapsible">Level 02 - (0)</button>
+										<div class="content">
+  										<p>No Preview members</p>
+										</div>
+									</div>
+									<div class="col-lg-4 col-md-4 col-sm-4 mt-5">
+										<button class="collapsible">Level 03 - (0)</button>
+										<div class="content">
+  										<p>No Preview members</p>
+										</div>
+									</div>
+									<div class="col-lg-4 col-md-4 col-sm-4 mt-5">
+										<button class="collapsible">Level 04 - (0)</button>
+										<div class="content">
+  										<p>No Preview members</p>
+										</div>
+									</div>
+									<div class="col-lg-4 col-md-4 col-sm-4 mt-5">
+										<button class="collapsible">Level 05 - (0)</button>
+										<div class="content">
+  										<p>No Preview members</p>
+										</div>
+									</div>
+									<div class="col-lg-4 col-md-4 col-sm-4 mt-5">
+										<button class="collapsible">Level 06 - (0)</button>
+										<div class="content">
+  										<p>No Preview members</p>
+										</div>
+									</div>
+								</div>
+							</div>
 
 						</div>
 					</div>
@@ -766,6 +857,23 @@
 
 
 	</script>
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    } 
+  });
+}
+</script>
+
 </body>
 
 </html>

@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 
-	<title>My Account - Richway International</title>
+	<title>My Account - Rumantra - By ERav Technology</title>
 
 	<meta name="keywords" content="HTML5 Template" />
 	<meta name="description" content="Wolmart eCommmerce Marketplace HTML Template">
@@ -633,7 +633,7 @@ background-color: #dfdfdf75;
                         let items = ''+
                             '<div class="row">'+
                             '<div class="col-md-12">'+
-                                '<table class="shop-table account-orders-table">'+
+                                '<table class="table shop-table account-orders-table">'+
                                     '<thead>'+
                                         '<tr>'+
                                             '<th> Product </th>'+

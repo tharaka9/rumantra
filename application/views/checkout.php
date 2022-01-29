@@ -218,7 +218,7 @@
                                                 </tr>
                                                 <tr class="cart-subtotal bb-no">
                                                     <td>
-                                                        <b>Shipping Cost</b>
+                                                        <b>Shipping</b>
                                                     </td>
                                                     <td>
                                                         <b>Rs 250.00</b>

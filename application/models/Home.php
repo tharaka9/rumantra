@@ -246,23 +246,25 @@ class Home extends CI_Model{
         return $productarray;
     }
 
+    function getProduct($postData){
 
-    // function fetch_data($query)
-    // {
-    //  $this->db->like('student_name', $query);
-    //  $query = $this->db->get('tbl_student');
-    //  if($query->num_rows() > 0)
-    //  {
-    //   foreach($query->result_array() as $row)
-    //   {
-    //    $output[] = array(
-    //     'name'  => $row["student_name"],
-    //     'image'  => $row["image"]
-    //    );
-    //   }
-    //   echo json_encode($output);
-    //  }
-    // }
+        $response = array();
+   
+        if(isset($postData['search']) ){
+          // Select record
+          $this->db->select('*');
+          $this->db->where("productname like '%".$postData['search']."%' ");
+   
+          $records = $this->db->get('tbl_product')->result();
+   
+          foreach($records as $row ){
+             $response[] = array("value"=>$row->idtbl_product,"label"=>$row->productname);
+          }
+   
+        }
+   
+        return $response;
+     }
 
     
 }

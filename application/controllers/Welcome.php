@@ -40,10 +40,15 @@ class Welcome extends CI_Controller {
 		//meka thiynwa
 	}
 
-	// function fetch()
-	// {
-	//  $this->load->model('Home');
-	//  echo $this->autocomplete_model->fetch_data($this->uri->segment(3));
-	// }
+	public function productList(){
+		$this->load->model('Home');
+		// POST data
+		$postData = $this->input->post();
+	
+		// Get data
+		$data = $this->Home->getProduct($postData);
+	
+		echo json_encode($data);
+	  }
 
 }

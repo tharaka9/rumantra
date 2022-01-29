@@ -61,15 +61,12 @@ $replaceword=["", "", "", "", "`", ""];
 
                         </select>
                     </div>
-                    <input type="text" class="form-control" name="search" id="search" placeholder="Search in..."
+                    <input type="text" class="form-control" name="search" id="listproduct" placeholder="Search in..."
                         required />
                     <button class="btn btn-search" type="submit"><i class="w-icon-search"></i>
                     </button>
                 </form>
             </div>
-
-
-
 
             <div class="header-right ml-4">
                 <div class="header-call d-xs-show d-lg-flex align-items-center">

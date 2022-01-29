@@ -486,6 +486,10 @@
 	<!-- End of Page-wrapper-->
 
 	<?php include "include/footerscript.php"; ?>
+
+
+
+
 <script>
     $(document).ready(function(){
         $('.addtocart').click(function(e){

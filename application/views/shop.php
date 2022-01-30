@@ -24,7 +24,7 @@
                 <div class="container">
                     <ul class="breadcrumb bb-no">
                         <li><a href="<?php echo base_url('/'); ?>">Home</a></li>
-                        <li><a href="shop-banner-sidebar.html">Shop</a></li>
+                        <li><a href="#">Shop</a></li>
                        
                     </ul>
                 </div>
@@ -34,12 +34,9 @@
             <!-- Start of Page Content -->
             <div class="page-content mb-10">
                 <div class="shop-default-banner shop-boxed-banner banner d-flex align-items-center mb-6"
-                    style="background-image: url(assets/images/shop/banner2.jpg); background-color: #FFC74E;">
+                    style="background-image: url(assets/images/shop/banner2.jpg); background-color: #B8588D;">
                     <div class="container banner-content">
-                        <h4 class="banner-subtitle font-weight-bold">Accessories Collection</h4>
-                        <h3 class="banner-title text-white text-uppercase font-weight-bolder ls-10">Smart Watches</h3>
-                        <a href="shop-banner-sidebar.html" class="btn btn-dark btn-rounded btn-icon-right">Discover
-                            Now<i class="w-icon-long-arrow-right"></i></a>
+                        <h3 class="banner-title text-white text-uppercase font-weight-bolder ls-10 text-center"><?php echo $categoryname->product_category; ?></h3>
                     </div>
                 </div>
                 <!-- End of Shop Banner -->
@@ -90,7 +87,7 @@
                                 <div class="product-wrap">
                                     <div class="product text-center">
                                         <figure class="product-media">
-                                            <a href="<?php echo base_url().'Product/Productview/'.$row->idtbl_product.'/'.str_replace(' ', '', $row->productname); ?>">
+                                            <a href="<?php echo base_url().'Product/Productview/'.$row->idtbl_product.'/'.preg_replace('/[\-\(\)\@\.\;\" "]+/', '', $row->productname); ?>">
                                                 <img src="<?php echo base_url($row->listimagepath);?>" alt="Product" width="300"
                                                     height="338" />
                                             </a>
@@ -108,14 +105,14 @@
                                                 <a href="shop-banner-sidebar.html"></a>
                                             </div>
                                             <h3 class="product-name">
-                                                <a href="<?php echo base_url().'Product/Productview/'.$row->idtbl_product.'/'.str_replace(' ', '', $row->productname); ?>"><?php echo $row->productname; ?></a>
+                                                <a href="<?php echo base_url().'Product/Productview/'.$row->idtbl_product.'/'.preg_replace('/[\-\(\)\@\.\;\" "]+/', '', $row->productname); ?>"><?php echo $row->productname; ?></a>
                                             </h3>
                                             <div class="ratings-container">
                                                 <div class="ratings-full">
                                                     <span class="ratings" style="width: 100%;"></span>
                                                     <span class="tooltiptext tooltip-top"></span>
                                                 </div>
-                                                <a href="<?php echo base_url().'Product/Productview/'.$row->idtbl_product.'/'.str_replace(' ', '', $row->productname); ?>" class="rating-reviews">(<?php echo $row->avgrate; ?> reviews)</a>
+                                                <a href="<?php echo base_url().'Product/Productview/'.$row->idtbl_product.'/'.preg_replace('/[\-\(\)\@\.\;\" "]+/', '', $row->productname); ?>" class="rating-reviews">(<?php echo $row->avgrate; ?> reviews)</a>
                                             </div>
                                             <div class="product-pa-wrapper">
                                                 <div class="product-price">

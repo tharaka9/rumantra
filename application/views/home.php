@@ -15,6 +15,17 @@
 
 </head>
 
+<style>
+    #owl-demo .item img{
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+
+    </style>
+
+
 <body >
 	
 		<?php include "include/menu1.php"; ?>
@@ -23,96 +34,22 @@
         <main class="main">
             <div class="page-content">
                 <section class="intro-section">
-                    <div class="intro-slider owl-carousel owl-theme row cols-xl-1 cols-1 animation-slider gutter-no"
+                <div class="intro-slider owl-carousel owl-theme row cols-xl-1 cols-1 animation-slider gutter-no"
                         data-owl-options="{
-                            'nav': false,
-                            'dots': true,
-                            'loop': false,
-                            'items': 1,
-                            'autoPlay': false,
-                            'dotsContainer': '.custom-dots'
-                        }">
-                        <div class="banner banner-fixed intro-slide intro-slide1"
-                            style="background-image: url(<?php echo base_url() ?>images/slides/slide-1.jpg); background-color: #EEEDEB;">
-                            <!-- <div class="container">
-                                <div class="banner-content d-inline-block y-50">
-                                    <div class="slide-animate" data-animation-options="{
-                                        'name': 'fadeInUpShorter', 'duration': '1s'
-                                    }">
-                                        <h5 class="banner-subtitle text-uppercase font-weight-bold">
-                                            Performance &amp; Lifestyle
-                                        </h5>
-                                        <h3 class="banner-title ls-25 mb-6">
-                                            <span class="text-primary">Introducing</span>
-                                            Fashion lifestyle collection
-                                        </h3>
-                                        <a href="shop-banner-sidebar.html"
-                                            class="btn btn-dark btn-outline btn-rounded btn-icon-right">
-                                            Shop Now<i class="w-icon-long-arrow-right"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div> -->
-                        </div>
-                        <!-- End of Intro Slide 1 -->
-                        <div class="banner banner-fixed intro-slide intro-slide2"
-                            style="background-image: url(<?php echo base_url() ?>images/slides/slide-2.jpg); background-color: #A9A9A9;">
-                            <!-- <div class="container text-right">
-                                <div class="banner-content y-50 d-inline-block">
-                                    <div class="slide-animate" data-animation-options="{
-                                        'name': 'zoomIn', 'duration': '1s'
-                                    }">
-                                        <h5 class="banner-subtitle text-uppercase font-weight-bold ls-25 mb-0">
-                                            Up To <strong class="text-primary text-capitalize">30% Off</strong>
-                                        </h5>
-                                        <h3 class="banner-title text-white text-uppercase ls-25">Calisthenics</h3>
-                                        <div class="banner-price-info text-white">Start at $125.00</div>
-                                        <a href="shop-banner-sidebar.html"
-                                            class="btn btn-white btn-outline btn-rounded btn-icon-right">
-                                            Shop Now<i class="w-icon-long-arrow-right"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div> -->
-                        </div>
-                        <!-- End of Intro Slide 2 -->
-                        <div class="banner banner-fixed intro-slide intro-slide3"
-                            style="background-image: url(<?php echo base_url() ?>images/slides/slide-3.jpg); background-color: #F3F3F3;">
-                            <!-- <div class="container">
-                                <div class="banner-content y-50 d-inline-block">
-                                    <div class="slide-animate" data-animation-options="{
-                                        'name': 'fadeInDownShorter', 'duration': '1s'
-                                    }">
-                                        <h5 class="banner-subtitle text-uppercase text-primary font-weight-bold mb-1">
-                                            From Online Store
-                                        </h5>
-                                        <h3 class="banner-title text-uppercase ls-25">Sprimgchic</h3>
-                                        <h4 class="ls-25 mb-0">Recommend</h4>
-                                        <p class="ls-25">Free shipping on all orders over <span
-                                                class="text-dark">$99.00</span></p>
-                                        <a href="shop-banner-sidebar.html"
-                                            class="btn btn-dark btn-rounded btn-outline btn-icon-right">
-                                            Shop Now<i class="w-icon-long-arrow-right"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div> -->
-                        </div>
-                    </div>
-                    <div class="custom-dots owl-img-dots appear-animate">
-                        <a href="#" class="active appear-animate">
-                            <img src="images/slides/dot-1.png" alt="Slide Thumb" width="70"
-                                height="70">
-                        </a>
-                        <a href="#" class="appear-animate">
-                            <img src="images/slides/dot-2.png" alt="Slide Thumb" width="70"
-                                height="70">
-                        </a>
-                        <a href="#" class="appear-animate">
-                            <img src="images/slides/dot-3.png" alt="Slide Thumb" width="70"
-                                height="70">
-                        </a>
-                    </div>
+                        'nav': false,
+                        'dots': false,
+                        'loop': true,
+                        'autoplay': true,
+                        'autoplayTimeout': 5000
+                    }">
+     
+     <div class="item"><img src="<?php echo base_url() ?>images/slides/slide-1.jpg"></div>
+     <div class="item"><img src="<?php echo base_url() ?>images/slides/slide-2.jpg"></div>
+     <div class="item"><img src="<?php echo base_url() ?>images/slides/slide-3.jpg"></div>
+    
+   </div>
+
+
                 </section>
 
                 <div class="container">
@@ -488,6 +425,31 @@
 	<?php include "include/footerscript.php"; ?>
 
 
+<script>
+    
+
+    $(document).ready(function() {
+     
+     $("#owl-demo").owlCarousel({
+    
+         navigation : true, // Show next and prev buttons
+         slideSpeed : 100,
+         paginationSpeed : 100,
+         singleItem:true
+    
+         // "singleItem:true" is a shortcut for:
+         // items : 1, 
+         // itemsDesktop : false,
+         // itemsDesktopSmall : false,
+         // itemsTablet: false,
+         // itemsMobile : false
+    
+     });
+    
+   });
+
+
+    </script>
 
 
 <script>

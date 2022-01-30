@@ -637,7 +637,7 @@ background-color: #dfdfdf75;
                         let items = ''+
                             '<div class="row">'+
                             '<div class="col-md-12">'+
-                                '<table class="table w-auto text-xsmall">'+
+                                '<table class="table">'+
                                     '<thead>'+
                                         '<tr>'+
                                             '<th> Product </th>'+

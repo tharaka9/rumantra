@@ -964,13 +964,13 @@
                 </div>
 
                 <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
-                <div class="pswp__ui pswp__ui--hidden">
+                <!-- <div class="pswp__ui pswp__ui--hidden">
 
-                    <div class="pswp__top-bar">
+                    <div class="pswp__top-bar"> -->
 
                         <!--  Controls are self-explanatory. Order can be changed. -->
 
-                        <div class="pswp__counter"></div>
+                        <!-- <div class="pswp__counter"></div>
 
                         <button class="pswp__button pswp__button--close" aria-label="Close (Esc)"></button>
                         <button class="pswp__button pswp__button--zoom" aria-label="Zoom in/out"></button>
@@ -990,7 +990,7 @@
                     <div class="pswp__caption">
                         <div class="pswp__caption__center"></div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
         <!-- End of PhotoSwipe -->

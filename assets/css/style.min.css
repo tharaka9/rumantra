@@ -9122,7 +9122,7 @@ body .product-popup {
     margin-bottom: .7rem;
     font-size: 1.3rem;
     font-weight: 500;
-    white-space: nowrap;
+    white-space:pre-wrap;
     overflow: hidden;
     text-overflow: ellipsis
 }

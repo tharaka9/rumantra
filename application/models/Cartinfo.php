@@ -26,6 +26,7 @@ class Cartinfo extends CI_Model{
             $city=$this->input->post('town');
             $email=$this->input->post('email');
             $phone=$this->input->post('phone');
+            $phone2=$this->input->post('phone2');
             
             $firstnamedrop=$this->input->post('firstnamedrop');
             $lastnamedrop=$this->input->post('lastnamedrop');
@@ -43,7 +44,7 @@ class Cartinfo extends CI_Model{
             if($firstnamedrop=='' && $lastnamedrop=='' && $streetaddress1drop=='' && $citydrop==''){
                 $deliveryname=$firstname.' '.$lastname;
                 $deliverymobile=$phone;
-                $deliverymobile2='';
+                $deliverymobile2=$phone2;
                 $deliveryaddressone=$streetaddress1.' '.$city;
                 $deliverycity=$city;
                 $otherdeliverystatus=0;                
@@ -51,7 +52,7 @@ class Cartinfo extends CI_Model{
             else{
                 $deliveryname=$firstnamedrop.' '.$lastnamedrop;
                 $deliverymobile=$phone;
-                $deliverymobile2='';
+                $deliverymobile2=$phone2;
                 $deliveryaddressone=$streetaddress1drop.' '.$citydrop;
                 $deliverycity=$citydrop;
                 $otherdeliverystatus=1;

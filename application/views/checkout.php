@@ -161,15 +161,31 @@
                                     </div>
                                     <div class="row gutter-sm">
                                         <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>Town / City *</label>
-                                                <input type="text" class="form-control form-control-md text-dark" list="citylistopt" name="citydrop">
-                                                <datalist id="citylistopt">
-                                                    <?php foreach($citylist->result() as $rowcitylist){ ?>
-                                                    <option value="<?php echo $rowcitylist->city; ?>">
-                                                    <?php } ?>
-                                                </datalist>
-                                            </div>
+                                        <div class="form-group">
+                                            <label>Town / City *</label>
+                                            <input type="text" class="form-control form-control-md text-dark" list="citylist" name="citydrop" required>
+                                            <datalist id="citylist">
+                                                <?php foreach($citylist->result() as $rowcitylist){ ?>
+                                                <option value="<?php echo $rowcitylist->city; ?>">
+                                                <?php } ?>
+                                            </datalist>
+                                        </div>
+                                        </div>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="row gutter-sm">
+                                        <div class="col-xs-6">
+                                        <div class="form-group">
+                                            <label>Phone *</label>
+                                            <input type="text" class="form-control form-control-md text-dark"  name="phone" required>
+                                        </div>
+                                        </div>
+                                        <div class="col-xs-6">
+                                        <div class="form-group">
+                                            <label>Other Phone *</label>
+                                            <input type="text" class="form-control form-control-md text-dark"  name="phone2" required>
+                                        </div>
                                         </div>
                                     </div>
                                 </div>
@@ -260,7 +276,7 @@
                                                         <b>Total</b>
                                                     </th>
                                                     <td>
-                                                        <b>Rs <?php echo $this->cart->format_number($this->cart->total()) ?></b>
+                                                        <b>Rs <?php echo $this->cart->format_number($this->cart->total() + 250) ?></b>
                                                     </td>
                                                 </tr>
                                             </tfoot>

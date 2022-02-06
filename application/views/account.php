@@ -14,41 +14,882 @@
 	<?php include "include/headerscript.php"; ?>
 
     <style>
-        .modal-body{
-            font-size: medium;
-        }
-		.collapsible {
-background-color: #dfdfdf75;
-  color: black;
-  cursor: pointer;
-  padding: 18px;
-  width: 100%;
-  border: none;
-  text-align: left;
-  outline: none;
-  font-size: 15px;
-}
 
 
-.collapsible:after {
-	content: '\002B';
-  color: black;
-  font-weight: bold;
-  float: right;
-  margin-left: 5px;
-}
+.card>.list-group:first-child .list-group-item:first-child {
+			border-top-left-radius: 0.35rem;
+			border-top-right-radius: 0.35rem;
+		}
 
-.active:after {
-  content: '\2212';
-}
+		.card>.list-group:last-child .list-group-item:last-child {
+			border-bottom-right-radius: 0.35rem;
+			border-bottom-left-radius: 0.35rem;
+		}
 
-.content {
-  padding: 0 18px;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out;
-  background-color: #f1f1f1;
-}
+		.card-header+.list-group .list-group-item:first-child {
+			border-top: 0;
+		}
+
+		.list-group {
+			display: -webkit-box;
+			display: flex;
+			-webkit-box-orient: vertical;
+			-webkit-box-direction: normal;
+			flex-direction: column;
+			padding-left: 0;
+			margin-bottom: 0;
+		}
+
+		.list-group-item-action {
+			width: 100%;
+			color: #485260;
+			text-align: inherit;
+		}
+
+		.list-group-item-action:hover,
+		.list-group-item-action:focus {
+			z-index: 1;
+			color: #485260;
+			text-decoration: none;
+			background-color: #eff3f9;
+		}
+
+		.list-group-item-action:active {
+			color: #687281;
+			background-color: #e3e6ec;
+		}
+
+		.list-group-item {
+			position: relative;
+			display: block;
+			padding: 0.75rem 1.25rem;
+			background-color: #fff;
+			border: 1px solid rgba(0, 0, 0, 0.125);
+		}
+
+		.list-group-item:first-child {
+			border-top-left-radius: 0.35rem;
+			border-top-right-radius: 0.35rem;
+		}
+
+		.list-group-item:last-child {
+			border-bottom-right-radius: 0.35rem;
+			border-bottom-left-radius: 0.35rem;
+		}
+
+		.list-group-item.disabled,
+		.list-group-item:disabled {
+			color: #687281;
+			pointer-events: none;
+			background-color: #fff;
+		}
+
+		.list-group-item.active {
+			z-index: 2;
+			color: #fff;
+			background-color: #0061f2;
+			border-color: #0061f2;
+		}
+
+		.list-group-item+.list-group-item {
+			border-top-width: 0;
+		}
+
+		.list-group-item+.list-group-item.active {
+			margin-top: -1px;
+			border-top-width: 1px;
+		}
+
+		.list-group-horizontal {
+			-webkit-box-orient: horizontal;
+			-webkit-box-direction: normal;
+			flex-direction: row;
+		}
+
+		.list-group-horizontal .list-group-item:first-child {
+			border-bottom-left-radius: 0.35rem;
+			border-top-right-radius: 0;
+		}
+
+		.list-group-horizontal .list-group-item:last-child {
+			border-top-right-radius: 0.35rem;
+			border-bottom-left-radius: 0;
+		}
+
+		.list-group-horizontal .list-group-item.active {
+			margin-top: 0;
+		}
+
+		.list-group-horizontal .list-group-item+.list-group-item {
+			border-top-width: 1px;
+			border-left-width: 0;
+		}
+
+		.list-group-horizontal .list-group-item+.list-group-item.active {
+			margin-left: -1px;
+			border-left-width: 1px;
+		}
+
+		@media (min-width: 576px) {
+			.list-group-horizontal-sm {
+				-webkit-box-orient: horizontal;
+				-webkit-box-direction: normal;
+				flex-direction: row;
+			}
+
+			.list-group-horizontal-sm .list-group-item:first-child {
+				border-bottom-left-radius: 0.35rem;
+				border-top-right-radius: 0;
+			}
+
+			.list-group-horizontal-sm .list-group-item:last-child {
+				border-top-right-radius: 0.35rem;
+				border-bottom-left-radius: 0;
+			}
+
+			.list-group-horizontal-sm .list-group-item.active {
+				margin-top: 0;
+			}
+
+			.list-group-horizontal-sm .list-group-item+.list-group-item {
+				border-top-width: 1px;
+				border-left-width: 0;
+			}
+
+			.list-group-horizontal-sm .list-group-item+.list-group-item.active {
+				margin-left: -1px;
+				border-left-width: 1px;
+			}
+		}
+
+		@media (min-width: 768px) {
+			.list-group-horizontal-md {
+				-webkit-box-orient: horizontal;
+				-webkit-box-direction: normal;
+				flex-direction: row;
+			}
+
+			.list-group-horizontal-md .list-group-item:first-child {
+				border-bottom-left-radius: 0.35rem;
+				border-top-right-radius: 0;
+			}
+
+			.list-group-horizontal-md .list-group-item:last-child {
+				border-top-right-radius: 0.35rem;
+				border-bottom-left-radius: 0;
+			}
+
+			.list-group-horizontal-md .list-group-item.active {
+				margin-top: 0;
+			}
+
+			.list-group-horizontal-md .list-group-item+.list-group-item {
+				border-top-width: 1px;
+				border-left-width: 0;
+			}
+
+			.list-group-horizontal-md .list-group-item+.list-group-item.active {
+				margin-left: -1px;
+				border-left-width: 1px;
+			}
+		}
+
+		@media (min-width: 992px) {
+			.list-group-horizontal-lg {
+				-webkit-box-orient: horizontal;
+				-webkit-box-direction: normal;
+				flex-direction: row;
+			}
+
+			.list-group-horizontal-lg .list-group-item:first-child {
+				border-bottom-left-radius: 0.35rem;
+				border-top-right-radius: 0;
+			}
+
+			.list-group-horizontal-lg .list-group-item:last-child {
+				border-top-right-radius: 0.35rem;
+				border-bottom-left-radius: 0;
+			}
+
+			.list-group-horizontal-lg .list-group-item.active {
+				margin-top: 0;
+			}
+
+			.list-group-horizontal-lg .list-group-item+.list-group-item {
+				border-top-width: 1px;
+				border-left-width: 0;
+			}
+
+			.list-group-horizontal-lg .list-group-item+.list-group-item.active {
+				margin-left: -1px;
+				border-left-width: 1px;
+			}
+		}
+
+		@media (min-width: 1200px) {
+			.list-group-horizontal-xl {
+				-webkit-box-orient: horizontal;
+				-webkit-box-direction: normal;
+				flex-direction: row;
+			}
+
+			.list-group-horizontal-xl .list-group-item:first-child {
+				border-bottom-left-radius: 0.35rem;
+				border-top-right-radius: 0;
+			}
+
+			.list-group-horizontal-xl .list-group-item:last-child {
+				border-top-right-radius: 0.35rem;
+				border-bottom-left-radius: 0;
+			}
+
+			.list-group-horizontal-xl .list-group-item.active {
+				margin-top: 0;
+			}
+
+			.list-group-horizontal-xl .list-group-item+.list-group-item {
+				border-top-width: 1px;
+				border-left-width: 0;
+			}
+
+			.list-group-horizontal-xl .list-group-item+.list-group-item.active {
+				margin-left: -1px;
+				border-left-width: 1px;
+			}
+		}
+
+		.list-group-flush .list-group-item {
+			border-right-width: 0;
+			border-left-width: 0;
+			border-radius: 0;
+		}
+
+		.list-group-flush .list-group-item:first-child {
+			border-top-width: 0;
+		}
+
+		.list-group-flush:last-child .list-group-item:last-child {
+			border-bottom-width: 0;
+		}
+
+		.list-group-item-primary {
+			color: #00327e;
+			background-color: #b8d3fb;
+		}
+
+		.list-group-item-primary.list-group-item-action:hover,
+		.list-group-item-primary.list-group-item-action:focus {
+			color: #00327e;
+			background-color: #a0c4fa;
+		}
+
+		.list-group-item-primary.list-group-item-action.active {
+			color: #fff;
+			background-color: #00327e;
+			border-color: #00327e;
+		}
+
+		.list-group-item-secondary {
+			color: #370067;
+			background-color: #d5b8ef;
+		}
+
+		.list-group-item-secondary.list-group-item-action:hover,
+		.list-group-item-secondary.list-group-item-action:focus {
+			color: #370067;
+			background-color: #c9a3ea;
+		}
+
+		.list-group-item-secondary.list-group-item-action.active {
+			color: #fff;
+			background-color: #370067;
+			border-color: #370067;
+		}
+
+		.list-group-item-success {
+			color: #005937;
+			background-color: #b8e8d5;
+		}
+
+		.list-group-item-success.list-group-item-action:hover,
+		.list-group-item-success.list-group-item-action:focus {
+			color: #005937;
+			background-color: #a5e2ca;
+		}
+
+		.list-group-item-success.list-group-item-action.active {
+			color: #fff;
+			background-color: #005937;
+			border-color: #005937;
+		}
+
+		.list-group-item-info {
+			color: #006c6f;
+			background-color: #b8f2f3;
+		}
+
+		.list-group-item-info.list-group-item-action:hover,
+		.list-group-item-info.list-group-item-action:focus {
+			color: #006c6f;
+			background-color: #a2eeef;
+		}
+
+		.list-group-item-info.list-group-item-action.active {
+			color: #fff;
+			background-color: #006c6f;
+			border-color: #006c6f;
+		}
+
+		.list-group-item-warning {
+			color: #7f5400;
+			background-color: #fce5b8;
+		}
+
+		.list-group-item-warning.list-group-item-action:hover,
+		.list-group-item-warning.list-group-item-action:focus {
+			color: #7f5400;
+			background-color: #fbdca0;
+		}
+
+		.list-group-item-warning.list-group-item-action.active {
+			color: #fff;
+			background-color: #7f5400;
+			border-color: #7f5400;
+		}
+
+		.list-group-item-danger {
+			color: #790b00;
+			background-color: #f9bdb8;
+		}
+
+		.list-group-item-danger.list-group-item-action:hover,
+		.list-group-item-danger.list-group-item-action:focus {
+			color: #790b00;
+			background-color: #f7a7a0;
+		}
+
+		.list-group-item-danger.list-group-item-action.active {
+			color: #fff;
+			background-color: #790b00;
+			border-color: #790b00;
+		}
+
+		.list-group-item-light {
+			color: #7c7e81;
+			background-color: #fbfcfd;
+		}
+
+		.list-group-item-light.list-group-item-action:hover,
+		.list-group-item-light.list-group-item-action:focus {
+			color: #7c7e81;
+			background-color: #eaeff5;
+		}
+
+		.list-group-item-light.list-group-item-action.active {
+			color: #fff;
+			background-color: #7c7e81;
+			border-color: #7c7e81;
+		}
+
+		.list-group-item-dark {
+			color: #101722;
+			background-color: #c0c4ca;
+		}
+
+		.list-group-item-dark.list-group-item-action:hover,
+		.list-group-item-dark.list-group-item-action:focus {
+			color: #101722;
+			background-color: #b2b7be;
+		}
+
+		.list-group-item-dark.list-group-item-action.active {
+			color: #fff;
+			background-color: #101722;
+			border-color: #101722;
+		}
+
+		.list-group-item-black {
+			color: black;
+			background-color: #b8b8b8;
+		}
+
+		.list-group-item-black.list-group-item-action:hover,
+		.list-group-item-black.list-group-item-action:focus {
+			color: black;
+			background-color: #ababab;
+		}
+
+		.list-group-item-black.list-group-item-action.active {
+			color: #fff;
+			background-color: black;
+			border-color: black;
+		}
+
+		.list-group-item-white {
+			color: #858585;
+			background-color: white;
+		}
+
+		.list-group-item-white.list-group-item-action:hover,
+		.list-group-item-white.list-group-item-action:focus {
+			color: #858585;
+			background-color: #f2f2f2;
+		}
+
+		.list-group-item-white.list-group-item-action.active {
+			color: #fff;
+			background-color: #858585;
+			border-color: #858585;
+		}
+
+		.list-group-item-red {
+			color: #790b00;
+			background-color: #f9bdb8;
+		}
+
+		.list-group-item-red.list-group-item-action:hover,
+		.list-group-item-red.list-group-item-action:focus {
+			color: #790b00;
+			background-color: #f7a7a0;
+		}
+
+		.list-group-item-red.list-group-item-action.active {
+			color: #fff;
+			background-color: #790b00;
+			border-color: #790b00;
+		}
+
+		.list-group-item-orange {
+			color: #803400;
+			background-color: #fdd4b8;
+		}
+
+		.list-group-item-orange.list-group-item-action:hover,
+		.list-group-item-orange.list-group-item-action:focus {
+			color: #803400;
+			background-color: #fcc59f;
+		}
+
+		.list-group-item-orange.list-group-item-action.active {
+			color: #fff;
+			background-color: #803400;
+			border-color: #803400;
+		}
+
+		.list-group-item-yellow {
+			color: #7f5400;
+			background-color: #fce5b8;
+		}
+
+		.list-group-item-yellow.list-group-item-action:hover,
+		.list-group-item-yellow.list-group-item-action:focus {
+			color: #7f5400;
+			background-color: #fbdca0;
+		}
+
+		.list-group-item-yellow.list-group-item-action.active {
+			color: #fff;
+			background-color: #7f5400;
+			border-color: #7f5400;
+		}
+
+		.list-group-item-green {
+			color: #005937;
+			background-color: #b8e8d5;
+		}
+
+		.list-group-item-green.list-group-item-action:hover,
+		.list-group-item-green.list-group-item-action:focus {
+			color: #005937;
+			background-color: #a5e2ca;
+		}
+
+		.list-group-item-green.list-group-item-action.active {
+			color: #fff;
+			background-color: #005937;
+			border-color: #005937;
+		}
+
+		.list-group-item-teal {
+			color: #00614d;
+			background-color: #b8ece1;
+		}
+
+		.list-group-item-teal.list-group-item-action:hover,
+		.list-group-item-teal.list-group-item-action:focus {
+			color: #00614d;
+			background-color: #a4e7d9;
+		}
+
+		.list-group-item-teal.list-group-item-action.active {
+			color: #fff;
+			background-color: #00614d;
+			border-color: #00614d;
+		}
+
+		.list-group-item-cyan {
+			color: #006c6f;
+			background-color: #b8f2f3;
+		}
+
+		.list-group-item-cyan.list-group-item-action:hover,
+		.list-group-item-cyan.list-group-item-action:focus {
+			color: #006c6f;
+			background-color: #a2eeef;
+		}
+
+		.list-group-item-cyan.list-group-item-action.active {
+			color: #fff;
+			background-color: #006c6f;
+			border-color: #006c6f;
+		}
+
+		.list-group-item-blue {
+			color: #00327e;
+			background-color: #b8d3fb;
+		}
+
+		.list-group-item-blue.list-group-item-action:hover,
+		.list-group-item-blue.list-group-item-action:focus {
+			color: #00327e;
+			background-color: #a0c4fa;
+		}
+
+		.list-group-item-blue.list-group-item-action.active {
+			color: #fff;
+			background-color: #00327e;
+			border-color: #00327e;
+		}
+
+		.list-group-item-indigo {
+			color: #2e0079;
+			background-color: #d0b8f9;
+		}
+
+		.list-group-item-indigo.list-group-item-action:hover,
+		.list-group-item-indigo.list-group-item-action:focus {
+			color: #2e0079;
+			background-color: #c0a0f7;
+		}
+
+		.list-group-item-indigo.list-group-item-action.active {
+			color: #fff;
+			background-color: #2e0079;
+			border-color: #2e0079;
+		}
+
+		.list-group-item-purple {
+			color: #370067;
+			background-color: #d5b8ef;
+		}
+
+		.list-group-item-purple.list-group-item-action:hover,
+		.list-group-item-purple.list-group-item-action:focus {
+			color: #370067;
+			background-color: #c9a3ea;
+		}
+
+		.list-group-item-purple.list-group-item-action.active {
+			color: #fff;
+			background-color: #370067;
+			border-color: #370067;
+		}
+
+		.list-group-item-pink {
+			color: #76002e;
+			background-color: #f7b8d1;
+		}
+
+		.list-group-item-pink.list-group-item-action:hover,
+		.list-group-item-pink.list-group-item-action:focus {
+			color: #76002e;
+			background-color: #f4a1c2;
+		}
+
+		.list-group-item-pink.list-group-item-action.active {
+			color: #fff;
+			background-color: #76002e;
+			border-color: #76002e;
+		}
+
+		.list-group-item-red-soft {
+			color: #7c6767;
+			background-color: #faefef;
+		}
+
+		.list-group-item-red-soft.list-group-item-action:hover,
+		.list-group-item-red-soft.list-group-item-action:focus {
+			color: #7c6767;
+			background-color: #f4dcdc;
+		}
+
+		.list-group-item-red-soft.list-group-item-action.active {
+			color: #fff;
+			background-color: #7c6767;
+			border-color: #7c6767;
+		}
+
+		.list-group-item-orange-soft {
+			color: #7d6f67;
+			background-color: #fbf4ef;
+		}
+
+		.list-group-item-orange-soft.list-group-item-action:hover,
+		.list-group-item-orange-soft.list-group-item-action:focus {
+			color: #7d6f67;
+			background-color: #f6e6db;
+		}
+
+		.list-group-item-orange-soft.list-group-item-action.active {
+			color: #fff;
+			background-color: #7d6f67;
+			border-color: #7d6f67;
+		}
+
+		.list-group-item-yellow-soft {
+			color: #7d7667;
+			background-color: #fbf7ef;
+		}
+
+		.list-group-item-yellow-soft.list-group-item-action:hover,
+		.list-group-item-yellow-soft.list-group-item-action:focus {
+			color: #7d7667;
+			background-color: #f6eddb;
+		}
+
+		.list-group-item-yellow-soft.list-group-item-action.active {
+			color: #fff;
+			background-color: #7d7667;
+			border-color: #7d7667;
+		}
+
+		.list-group-item-green-soft {
+			color: #637772;
+			background-color: #edf8f5;
+		}
+
+		.list-group-item-green-soft.list-group-item-action:hover,
+		.list-group-item-green-soft.list-group-item-action:focus {
+			color: #637772;
+			background-color: #dbf1eb;
+		}
+
+		.list-group-item-green-soft.list-group-item-action.active {
+			color: #fff;
+			background-color: #637772;
+			border-color: #637772;
+		}
+
+		.list-group-item-teal-soft {
+			color: #637977;
+			background-color: #edf9f8;
+		}
+
+		.list-group-item-teal-soft.list-group-item-action:hover,
+		.list-group-item-teal-soft.list-group-item-action:focus {
+			color: #637977;
+			background-color: #daf3f1;
+		}
+
+		.list-group-item-teal-soft.list-group-item-action.active {
+			color: #fff;
+			background-color: #637977;
+			border-color: #637977;
+		}
+
+		.list-group-item-cyan-soft {
+			color: #637b7e;
+			background-color: #edfafb;
+		}
+
+		.list-group-item-cyan-soft.list-group-item-action:hover,
+		.list-group-item-cyan-soft.list-group-item-action:focus {
+			color: #637b7e;
+			background-color: #d8f4f6;
+		}
+
+		.list-group-item-cyan-soft.list-group-item-action.active {
+			color: #fff;
+			background-color: #637b7e;
+			border-color: #637b7e;
+		}
+
+		.list-group-item-blue-soft {
+			color: #636f81;
+			background-color: #edf4fd;
+		}
+
+		.list-group-item-blue-soft.list-group-item-action:hover,
+		.list-group-item-blue-soft.list-group-item-action:focus {
+			color: #636f81;
+			background-color: #d6e6fa;
+		}
+
+		.list-group-item-blue-soft.list-group-item-action.active {
+			color: #fff;
+			background-color: #636f81;
+			border-color: #636f81;
+		}
+
+		.list-group-item-indigo-soft {
+			color: #6d6580;
+			background-color: #f2eefc;
+		}
+
+		.list-group-item-indigo-soft.list-group-item-action:hover,
+		.list-group-item-indigo-soft.list-group-item-action:focus {
+			color: #6d6580;
+			background-color: #e1d8f8;
+		}
+
+		.list-group-item-indigo-soft.list-group-item-action.active {
+			color: #fff;
+			background-color: #6d6580;
+			border-color: #6d6580;
+		}
+
+		.list-group-item-purple-soft {
+			color: #6e657c;
+			background-color: #f3eefb;
+		}
+
+		.list-group-item-purple-soft.list-group-item-action:hover,
+		.list-group-item-purple-soft.list-group-item-action:focus {
+			color: #6e657c;
+			background-color: #e4d9f6;
+		}
+
+		.list-group-item-purple-soft.list-group-item-action.active {
+			color: #fff;
+			background-color: #6e657c;
+			border-color: #6e657c;
+		}
+
+		.list-group-item-pink-soft {
+			color: #7b6571;
+			background-color: #faeef4;
+		}
+
+		.list-group-item-pink-soft.list-group-item-action:hover,
+		.list-group-item-pink-soft.list-group-item-action:focus {
+			color: #7b6571;
+			background-color: #f4dae7;
+		}
+
+		.list-group-item-pink-soft.list-group-item-action.active {
+			color: #fff;
+			background-color: #7b6571;
+			border-color: #7b6571;
+		}
+
+		.list-group-item-primary-soft {
+			color: #636f81;
+			background-color: #edf4fd;
+		}
+
+		.list-group-item-primary-soft.list-group-item-action:hover,
+		.list-group-item-primary-soft.list-group-item-action:focus {
+			color: #636f81;
+			background-color: #d6e6fa;
+		}
+
+		.list-group-item-primary-soft.list-group-item-action.active {
+			color: #fff;
+			background-color: #636f81;
+			border-color: #636f81;
+		}
+
+		.list-group-item-secondary-soft {
+			color: #6e657c;
+			background-color: #f3eefb;
+		}
+
+		.list-group-item-secondary-soft.list-group-item-action:hover,
+		.list-group-item-secondary-soft.list-group-item-action:focus {
+			color: #6e657c;
+			background-color: #e4d9f6;
+		}
+
+		.list-group-item-secondary-soft.list-group-item-action.active {
+			color: #fff;
+			background-color: #6e657c;
+			border-color: #6e657c;
+		}
+
+		.list-group-item-success-soft {
+			color: #637772;
+			background-color: #edf8f5;
+		}
+
+		.list-group-item-success-soft.list-group-item-action:hover,
+		.list-group-item-success-soft.list-group-item-action:focus {
+			color: #637772;
+			background-color: #dbf1eb;
+		}
+
+		.list-group-item-success-soft.list-group-item-action.active {
+			color: #fff;
+			background-color: #637772;
+			border-color: #637772;
+		}
+
+		.list-group-item-info-soft {
+			color: #637b7e;
+			background-color: #edfafb;
+		}
+
+		.list-group-item-info-soft.list-group-item-action:hover,
+		.list-group-item-info-soft.list-group-item-action:focus {
+			color: #637b7e;
+			background-color: #d8f4f6;
+		}
+
+		.list-group-item-info-soft.list-group-item-action.active {
+			color: #fff;
+			background-color: #637b7e;
+			border-color: #637b7e;
+		}
+
+		.list-group-item-warning-soft {
+			color: #7d7667;
+			background-color: #fbf7ef;
+		}
+
+		.list-group-item-warning-soft.list-group-item-action:hover,
+		.list-group-item-warning-soft.list-group-item-action:focus {
+			color: #7d7667;
+			background-color: #f6eddb;
+		}
+
+		.list-group-item-warning-soft.list-group-item-action.active {
+			color: #fff;
+			background-color: #7d7667;
+			border-color: #7d7667;
+		}
+
+		.list-group-item-danger-soft {
+			color: #7c6767;
+			background-color: #faefef;
+		}
+
+		.list-group-item-danger-soft.list-group-item-action:hover,
+		.list-group-item-danger-soft.list-group-item-action:focus {
+			color: #7c6767;
+			background-color: #f4dcdc;
+		}
+
+		.list-group-item-danger-soft.list-group-item-action.active {
+			color: #fff;
+			background-color: #7c6767;
+			border-color: #7c6767;
+		}
+
+		.p-0 {
+			padding: 0 !important;
+		}
+		.m-0 {
+			margin: 0 !important;
+		}
     </style>
 
 </head>
@@ -217,7 +1058,7 @@ background-color: #dfdfdf75;
 									</div>
 								</div>
 
-								<table class="shop-table account-orders-table mb-6">
+								<table class="shop-table account-orders-table mb-6" id="ordertable">
 									<thead>
 										<tr>
 											<th class="order-id">Order</th>
@@ -225,6 +1066,7 @@ background-color: #dfdfdf75;
 											<th class="order-status">Status</th>
 											<th class="order-total">Total</th>
 											<th class="order-actions">Actions</th>
+                                                <th>Cancel</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -239,6 +1081,7 @@ background-color: #dfdfdf75;
 											<td class="order-action">
                                                 <button type="button" class="btn btn-outline btn-default btn-block btn-sm btn-rounded btn-quickview btnpopupview" data-id="<?php echo $rowcustomerorder->idtbl_order; ?>">View</button>
 											</td>
+											<td class="order-action"><?php if($rowcustomerorder->status==1){if($rowcustomerorder->acceptstatus==0){ ?><button class="btn btn-outline btn-default btn-block btn-sm btn-rounded btncancel" id="<?php echo $rowcustomerorder->idtbl_order ?>"><i class="icon-close"></i> Cancel</button><?php }else{echo '<span class="text-success"><i class="icon-check"></i> Accepted</span>';}} ?></td>
 										</tr>
 										<?php } ?>
 									</tbody>
@@ -476,7 +1319,6 @@ background-color: #dfdfdf75;
                                     </div>
                                 </div>
                             </div>
-
 							<div class="tab-pane" id="member">
 								<div class="icon-box icon-box-side icon-box-light">
 									<span class="icon-box-icon icon-map-marker">
@@ -487,35 +1329,107 @@ background-color: #dfdfdf75;
 										<h4 class="icon-box-title mb-0 ls-normal">Your Members</h4>
 									</div>
 								</div>
+								<div class="row mt-3">
+                                    <div class="col-sm-12 col-md-4 col-lg-4 pb-2">
+										<div class="accordion accordion-bg accordion-gutter-md accordion-border">
+											<div class="card">
+												<div class="card-header clickacco" id="heading2">
+													<a href="#collapse1-1" class="expand">Level 02 - (<span id="memcount2"></span>)</a>
+												</div>
+												<div id="collapse1-1" class="card-body p-0 collapsed">
+													<ul class="list-group list-group-flush m-0" id="memlist2">
+														<li class="list-group-item px-2 py-1 text-center"><img src="<?php echo base_url() ?>images/spinner.gif" class="img-fluid"></li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-12 col-md-4 col-lg-4 pb-2">
+										<div class="accordion accordion-bg accordion-gutter-md accordion-border">
+											<div class="card">
+												<div class="card-header clickacco" id="heading3">
+													<a href="#collapse1-1" class="expand">Level 03 - (<span id="memcount3"></span>)</a>
+												</div>
+												<div id="collapse1-1" class="card-body p-0 collapsed">
+													<ul class="list-group list-group-flush m-0" id="memlist3">
+														<li class="list-group-item px-2 py-1 text-center"><img src="<?php echo base_url() ?>images/spinner.gif" class="img-fluid"></li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-12 col-md-4 col-lg-4 pb-2">
+										<div class="accordion accordion-bg accordion-gutter-md accordion-border">
+											<div class="card">
+												<div class="card-header clickacco" id="heading4">
+													<a href="#collapse1-1" class="expand">Level 04 - (<span id="memcount4"></span>)</a>
+												</div>
+												<div id="collapse1-1" class="card-body p-0 collapsed">
+													<ul class="list-group list-group-flush m-0" id="memlist4">
+														<li class="list-group-item px-2 py-1 text-center"><img src="<?php echo base_url() ?>images/spinner.gif" class="img-fluid"></li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
 								<div class="row">
-									<div class="col-lg-4 col-md-4 col-sm-4 mt-5">
-										<button class="collapsible">Level 02 - (0)</button>
-										<div class="content">
-  										<p>No Preview members</p>
+                                    <div class="col-sm-12 col-md-4 col-lg-4 pb-2">
+										<div class="accordion accordion-bg accordion-gutter-md accordion-border">
+											<div class="card">
+												<div class="card-header clickacco" id="heading5">
+													<a href="#collapse1-1" class="expand">Level 05 - (<span id="memcount5"></span>)</a>
+												</div>
+												<div id="collapse1-1" class="card-body p-0 collapsed">
+													<ul class="list-group list-group-flush m-0" id="memlist5">
+														<li class="list-group-item px-2 py-1 text-center"><img src="<?php echo base_url() ?>images/spinner.gif" class="img-fluid"></li>
+													</ul>
+												</div>
+											</div>
 										</div>
 									</div>
-									<div class="col-lg-4 col-md-4 col-sm-4 mt-5">
-										<button class="collapsible">Level 03 - (0)</button>
-										<div class="content">
-  										<p>No Preview members</p>
+									<div class="col-sm-12 col-md-4 col-lg-4 pb-2">
+										<div class="accordion accordion-bg accordion-gutter-md accordion-border">
+											<div class="card">
+												<div class="card-header clickacco" id="heading6">
+													<a href="#collapse1-1" class="expand">Level 06 - (<span id="memcount6"></span>)</a>
+												</div>
+												<div id="collapse1-1" class="card-body p-0 collapsed">
+													<ul class="list-group list-group-flush m-0" id="memlist6">
+														<li class="list-group-item px-2 py-1 text-center"><img src="<?php echo base_url() ?>images/spinner.gif" class="img-fluid"></li>
+													</ul>
+												</div>
+											</div>
 										</div>
 									</div>
-									<div class="col-lg-4 col-md-4 col-sm-4 mt-5">
-										<button class="collapsible">Level 04 - (0)</button>
-										<div class="content">
-  										<p>No Preview members</p>
+									<div class="col-sm-12 col-md-4 col-lg-4 pb-2">
+										<div class="accordion accordion-bg accordion-gutter-md accordion-border">
+											<div class="card">
+												<div class="card-header clickacco" id="heading7">
+													<a href="#collapse1-1" class="expand">Level 07 - (<span id="memcount7"></span>)</a>
+												</div>
+												<div id="collapse1-1" class="card-body p-0 collapsed">
+													<ul class="list-group list-group-flush m-0" id="memlist7">
+														<li class="list-group-item px-2 py-1 text-center"><img src="<?php echo base_url() ?>images/spinner.gif" class="img-fluid"></li>
+													</ul>
+												</div>
+											</div>
 										</div>
 									</div>
-									<div class="col-lg-4 col-md-4 col-sm-4 mt-5">
-										<button class="collapsible">Level 05 - (0)</button>
-										<div class="content">
-  										<p>No Preview members</p>
-										</div>
-									</div>
-									<div class="col-lg-4 col-md-4 col-sm-4 mt-5">
-										<button class="collapsible">Level 06 - (0)</button>
-										<div class="content">
-  										<p>No Preview members</p>
+								</div>
+								<div class="row">
+                                    <div class="col-sm-12 col-md-4 col-lg-4 pb-2">
+										<div class="accordion accordion-bg accordion-gutter-md accordion-border">
+											<div class="card">
+												<div class="card-header clickacco" id="heading8">
+													<a href="#collapse1-1" class="expand">Level 08 - (<span id="memcount8"></span>)</a>
+												</div>
+												<div id="collapse1-1" class="card-body p-0 collapsed">
+													<ul class="list-group list-group-flush m-0" id="memlist8">
+														<li class="list-group-item px-2 py-1 text-center"><img src="<?php echo base_url() ?>images/spinner.gif" class="img-fluid"></li>
+													</ul>
+												</div>
+											</div>
 										</div>
 									</div>
 								</div>
@@ -550,10 +1464,25 @@ background-color: #dfdfdf75;
     $('.selectpicker').selectpicker({});
 </script>
 	<script>
-		// $(document).ready(function(){
-		// 	$("#regcity").select2();
-		// 	$("#regbank").select2();
-		// 	$("#regbranch").select2();
+        $('#ordertable tbody').on('click', '.btncancel', function() {
+            var r = confirm("Are you sure, You want to cancel this order ? ");
+            if (r == true) {
+                var orderID = $(this).attr('id');
+                var email = '<?php echo $customerprofile->row(0)->email; ?>';
+
+                $.ajax({
+                    url: "<?php echo base_url('Loginregister/Ordercancel');?>",
+                    method: "POST",
+                    data: {
+                        orderID:orderID,
+                        email:email
+                    },
+                    success: function(data) { 
+                        location.reload();
+                    }
+                });
+            }
+        });
 
 			$('.btnpopupview').click(function (e){
 			   let id = $(this).data('id');
@@ -662,13 +1591,24 @@ background-color: #dfdfdf75;
                             '<div>'+
                             '</div>'
 
-                        items += '' +
+							items += '' +
                             '<div class="row">' +
-                            '<div class="col-md-12 mt-3 text-right modal-body">' +
-                            'Ship Cost : <strong> '+ parseFloat(json.order.shipcost).toFixed(2) +'</strong> <br>'+
-                            'Total : <strong> '+ parseFloat(json.order.total).toFixed(2) +'</strong> <br>'+
-                            'Discount : <strong> '+ parseFloat(json.order.discount).toFixed(2) +'</strong> <br>'+
-                            'Net Total : <strong> '+ parseFloat(json.order.nettotal).toFixed(2)  +'</strong> <br>'+
+                            '<div class="col-md-12 text-right modal-body">' +
+                            'Sub Total : <strong> '+ parseFloat(json.order.total).toFixed(2) +'</strong> <br>';
+							if(json.order.dropdiscountstatus==1){
+								items +='Discount : <strong> (0.00)</strong> <br>';
+							}
+							else{
+								items +='Discount : <strong> '+ parseFloat(json.order.discount).toFixed(2) +'</strong> <br>';
+							}
+                            items +='Ship Cost : <strong> '+ parseFloat(json.order.shipcost).toFixed(2) +'</strong> <br>';
+							if(json.order.dropdiscountstatus==1){
+								var nettotal = parseFloat(json.order.total)+parseFloat(json.order.shipcost);
+								items +='Net Total : <strong> '+ parseFloat(nettotal).toFixed(2)  +'</strong> <br>';
+							}
+							else{
+								items +='Net Total : <strong> '+ parseFloat(json.order.nettotal).toFixed(2)  +'</strong> <br>';
+							}
                             '</div> ' +
                             '</div>'
 
@@ -722,6 +1662,18 @@ background-color: #dfdfdf75;
 					}
 				}
 			});
+
+			$('.clickacco').click(function(){
+				var lvlno=$(this).attr('id');
+				const lvlinfo = lvlno.split("heading");
+				
+				var levelno=lvlinfo[1];
+				var dataset='memlist'+levelno;
+				var countshow='memcount'+levelno;
+
+				getmemberlist(levelno, dataset, countshow);
+			});
+
 		// });
 
 		function copyfunction(element) {
@@ -858,25 +1810,23 @@ background-color: #dfdfdf75;
 				}
 			});
 		}
-
+		function getmemberlist(levelno, dataset, countshow){
+			$.ajax({
+				url: "<?php echo base_url('Loginregister/Getmemberlist');?>",
+				method: "POST",
+				data: {
+					levelno:levelno
+				},
+				success: function(data) { //alert(data);
+					var obj = JSON.parse(data);
+					$('#'+dataset).empty().html(obj.htmlview);
+					$('#'+countshow).empty().html(obj.htmlcount);
+				}
+			});
+		}
 
 	</script>
-<script>
-var coll = document.getElementsByClassName("collapsible");
-var i;
 
-for (i = 0; i < coll.length; i++) {
-  coll[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var content = this.nextElementSibling;
-    if (content.style.maxHeight){
-      content.style.maxHeight = null;
-    } else {
-      content.style.maxHeight = content.scrollHeight + "px";
-    } 
-  });
-}
-</script>
 
 </body>
 

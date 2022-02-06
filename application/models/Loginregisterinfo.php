@@ -255,7 +255,7 @@ class Loginregisterinfo extends CI_Model{
 
                         $this->email->initialize($config);
                         $this->email->set_mailtype("html"); 
-                        $this->email->from('info@herbline.lk', 'Herbline Administrator');
+                        $this->email->from('info@rumantra.lk', 'Rumantra Administrator');
                         $this->email->to($regemail);
 
                         $this->email->subject('Confermation Code');

@@ -89,13 +89,13 @@
                                                 <div class="col-xs-6">
                                                     <div class="form-group">
                                                         <label>City *</label>
-                                                        <select class="form-control text-dark" name="regcity" id="regcity" >
-                                                            <option value="">Select</option>
+                                                        <input type="text" class="form-control text-dark" list="citylist" name="regcity" id="regcity" required>
+                                                        <datalist id="citylist">
                                                             <?php foreach($citylist->result() as $rowcitylist){ ?>
-                                                            <option value="<?php echo $rowcitylist->city ?>"><?php echo $rowcitylist->city ?></option>
+                                                        <option value="<?php echo $rowcitylist->city; ?>">
                                                             <?php } ?>
-                                                        </select>                                                     
-                                                    </div>
+                                                        </datalist>
+                                                </div>
                                                 </div>
                                                 <div class="col-xs-6">
                                                     <div class="form-group">
@@ -171,7 +171,7 @@
     <script>
         $(document).ready(function(){
             $("#regcountry").select2();
-            $("#regcity").select2();
+            // $("#regcity").select2();
 
             $("#regrepassword").keyup(checkPasswordMatch);
 
@@ -214,8 +214,8 @@
                                 regnic:regnic
                             },
                             success: function(data) {
+                                console.log(data);
                                 var obj = JSON.parse(data);
-
                                 if(obj.status==0){
                                     $('#flashdata').html('<div class="alert alert-danger alert-dismissible" role="alert">'+obj.msgstatus+'</div>');
                                 }
@@ -224,6 +224,8 @@
                                     var number = obj.mobilenum;
                                     var code = obj.msg;
                                     var lastID = obj.lastID;
+
+                                    // console.log(obj.mobilenum);
 
                                     var url = '<?php echo base_url('Loginregister/Signupapprove/') ?>'+lastID;
                                     $.get('https://bulksms.hutch.lk/sendsmsmultimask.php?USER=Eravtechno&PWD=Ervtc@123&MASK=Rumantra&NUM=94'+number+'&MSG='+code);

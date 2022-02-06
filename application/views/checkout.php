@@ -161,34 +161,55 @@
                                     </div>
                                     <div class="row gutter-sm">
                                         <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Town / City *</label>
-                                            <input type="text" class="form-control form-control-md text-dark" list="citylist" name="citydrop" required>
-                                            <datalist id="citylist">
-                                                <?php foreach($citylist->result() as $rowcitylist){ ?>
-                                                <option value="<?php echo $rowcitylist->city; ?>">
-                                                <?php } ?>
-                                            </datalist>
+                                            <div class="form-group">
+                                                <label>Town / City *</label>
+                                                <input type="text" class="form-control form-control-md text-dark" list="citylistopt" name="citydrop">
+                                                <datalist id="citylistopt">
+                                                    <?php foreach($citylist->result() as $rowcitylist){ ?>
+                                                    <option value="<?php echo $rowcitylist->city; ?>">
+                                                    <?php } ?>
+                                                </datalist>
+                                            </div>
                                         </div>
-                                        </div>
-                                        </div>
-                                        
                                     </div>
+
+
                                     <div class="row gutter-sm">
                                         <div class="col-xs-6">
-                                        <div class="form-group">
+                                            <div class="form-group">
                                             <label>Phone *</label>
-                                            <input type="text" class="form-control form-control-md text-dark"  name="phone" required>
-                                        </div>
+                                            <input type="text" class="form-control form-control-md text-dark"  name="phone" id="phone">
+                                            </div>
                                         </div>
                                         <div class="col-xs-6">
-                                        <div class="form-group">
+                                            <div class="form-group">
                                             <label>Other Phone *</label>
-                                            <input type="text" class="form-control form-control-md text-dark"  name="phone2" required>
-                                        </div>
+                                            <input type="text" class="form-control form-control-md text-dark"  name="phone2" id="phone2">
+                                            </div>
                                         </div>
                                     </div>
+
+
+
+
                                 </div>
+
+
+                                <div class="col-md-6">
+                                            <label>Order discount for</label><br>
+                                            <div class="custom-control custom-radio custom-control-inline mt-2">
+                                                <input type="radio" id="deliverydiscount1"
+                                                    name="deliverydiscount" class="custom-control-input" value="1">
+                                                <label class="custom-control-label"
+                                                    for="deliverydiscount1">Add to your account</label>
+                                            </div>
+                                            <div class="custom-control custom-radio custom-control-inline">
+                                                <input type="radio" id="deliverydiscount2"
+                                                    name="deliverydiscount" class="custom-control-input" value="0">
+                                                <label class="custom-control-label"
+                                                    for="deliverydiscount2">Add to send customer</label>
+                                            </div>
+                                    </div>
 
                                 <div class="form-group mt-3">
                                     <label for="order-notes">Order notes (optional)</label>
@@ -212,27 +233,21 @@
                                             <tbody>
                                                 <?php foreach($this->cart->contents() as $rowshopcart){ ?>
                                                 <tr class="bb-no">
-                                                    <td class="product-name"><?php echo $rowshopcart['name'] ?> <i
-                                                            class="fas fa-times"></i> <span
-                                                            class="product-quantity"><?php echo $rowshopcart['qty'] ?></span></td>
+                                                    <td class="product-name"><?php echo $rowshopcart['name'] ?> <i class="fas fa-times"></i> <span class="product-quantity"><?php echo $rowshopcart['qty'] ?></span></td>
                                                     <td class="product-total">Rs <?php echo $rowshopcart['price'] ?></td>
                                                 </tr>
                                                 <?php } ?>
                                                 <tr class="cart-subtotal bb-no">
-                                                    <td>
-                                                        <b>Subtotal</b>
-                                                    </td>
-                                                    <td>
-                                                        <b>Rs <?php echo $this->cart->format_number($this->cart->total()) ?></b>
-                                                    </td>
+                                                    <td><b>Subtotal</b></td>
+                                                    <td><b>Rs <?php echo $this->cart->format_number($this->cart->total()) ?></b></td>
                                                 </tr>
                                                 <tr class="cart-subtotal bb-no">
-                                                    <td>
-                                                        <b>Shipping</b>
-                                                    </td>
-                                                    <td>
-                                                        <b>Rs 250.00</b>
-                                                    </td>
+                                                    <td><b>Discount</b></td>
+                                                    <td id="discounttd"><b>Rs (<?php echo $this->cart->format_number(($this->cart->total()*25)/100) ?>)</b></td>
+                                                </tr>
+                                                <tr class="cart-subtotal" id="shiptd">
+                                                    <td><b>Ship Cost</b></td>
+                                                    <td><b>Rs 250.00</b></td>
                                                 </tr>
                                             </tbody>
                                             <tfoot>
@@ -275,8 +290,8 @@
                                                     <th>
                                                         <b>Total</b>
                                                     </th>
-                                                    <td>
-                                                        <b>Rs <?php echo $this->cart->format_number($this->cart->total() + 250) ?></b>
+                                                    <td id="nettotaltd">
+                                                    <b>Rs <?php echo $this->cart->format_number($this->cart->total()-(($this->cart->total()*25)/100)+250) ?></b>
                                                     </td>
                                                 </tr>
                                             </tfoot>
@@ -335,6 +350,10 @@
 
     <?php include "include/footerscript.php"; ?>
     <script>
+
+        var carttotal=parseFloat(<?php echo $this->cart->total(); ?>);
+            var shipcost=parseFloat(250);
+
         $(document).ready(function(){
             $('a[href="#cashbank"]').click(function(){
                 $('#paymenttype').val('1');
@@ -343,21 +362,56 @@
                 $('#paymenttype').val('0');
             }); 
 
+
+
+
+
+
             $("#shipping-toggle").change(function() {alert('IN');
                 if(this.checked) {
                     $('#firstnamedrop').prop('required',true);
                     $('#lastnamedrop').prop('required',true);
                     $('#streetaddress1drop').prop('required',true);
-                    $('#citylistopt').prop('required',true);
+                    $('#citydrop').prop('required',true);
+                    $('#phone').prop('required',true);
+                    $('#phone2').prop('required',true);
                 }
                 else{
                     $('#firstnamedrop').prop('required',false);
                     $('#lastnamedrop').prop('required',false);
                     $('#streetaddress1drop').prop('required',false);
-                    $('#citylistopt').prop('required',false);
+                    $('#citydrop').prop('required',true);
+                    $('#phone').prop('required',true);
+                    $('#phone2').prop('required',true);
+                }
+            });
+
+            $('input[type=radio][name=deliverydiscount]').change(function() {
+                if (this.value == '1') {
+                    $('#discounttd').html('<b>Rs (0.00)</b>');
+                    var nettotal = addCommas(parseFloat(carttotal+shipcost).toFixed(2));
+                    $('#nettotaltd').html('<b>Rs '+nettotal+'</b>');                    
+                }
+                else{
+                    var discount=addCommas(parseFloat((carttotal*25)/100).toFixed(2));
+                    $('#discounttd').html('<b>Rs '+discount+'</b>');
+                    var nettotal = addCommas(parseFloat((carttotal+shipcost)-discount).toFixed(2));
+                    $('#nettotaltd').html('<b>Rs '+nettotal+'</b>');
                 }
             });
         });
+
+        function addCommas(nStr){
+            nStr += '';
+            x = nStr.split('.');
+            x1 = x[0];
+            x2 = x.length > 1 ? '.' + x[1] : '';
+            var rgx = /(\d+)(\d{3})/;
+            while (rgx.test(x1)) {
+                x1 = x1.replace(rgx, '$1' + ',' + '$2');
+            }
+            return x1 + x2;
+        }
     </script>
 </body>
 

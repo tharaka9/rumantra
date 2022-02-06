@@ -303,6 +303,10 @@
 <!-- End of Quick view -->
 
 <!-- Plugin JS File -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- jQuery UI -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    
 <script src="<?php echo base_url() ?>assets/vendor/jquery/jquery.min.js"></script>
 <script src="<?php echo base_url() ?>assets/vendor/jquery.plugin/jquery.plugin.min.js"></script>
 <script src="<?php echo base_url() ?>assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
@@ -313,6 +317,7 @@
 <script src="<?php echo base_url() ?>assets/vendor/skrollr/skrollr.js"></script>
 <script src="<?php echo base_url() ?>assets/vendor/photoswipe/photoswipe.js"></script>
 <script src="<?php echo base_url() ?>assets/vendor/photoswipe/photoswipe-ui-default.js"></script>
+ <!-- Script -->
 
 <!-- Select2 JS -->
 <script src="<?php echo base_url()?>assets/js/select2.full.js"></script>
@@ -379,10 +384,7 @@ function removecart(){
 }
 </script>
 
-    <!-- Script -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- jQuery UI -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+   
     
     <script type='text/javascript'>
     $(document).ready(function(){

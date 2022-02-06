@@ -15,7 +15,7 @@ class Cartinfo extends CI_Model{
             $loguser=$_SESSION['user_id'];
 
             $orderdate=date('Y-m-d');
-            $shipcost=250;
+            $shipcost=0;
             $discount=0;
             $updatedatetime=date('Y-m-d h:i:s');
             $productemaillist=array();
@@ -36,10 +36,16 @@ class Cartinfo extends CI_Model{
             $ordernotes=$this->input->post('ordernotes');
             $paymenttype=$this->input->post('paymenttype');
 
+            $deliverydiscount=$this->input->post('deliverydiscount');
+
             $sqlcustomer="SELECT * FROM `tbl_customer` WHERE `tbl_user_idtbl_user`=? AND `status`=?";
             $respondcustomer=$this->db->query($sqlcustomer, array($loguser, 1));
 
             $customerID=$respondcustomer->row(0)->idtbl_customer;
+
+            if(empty($deliverydiscount)){
+                $deliverydiscount=0;
+            }
 
             if($firstnamedrop=='' && $lastnamedrop=='' && $streetaddress1drop=='' && $citydrop==''){
                 $deliveryname=$firstname.' '.$lastname;
@@ -59,7 +65,9 @@ class Cartinfo extends CI_Model{
             }
 
             //Create Total Amount
+            $shipcost=250;
             $subtotal=$this->cart->total();
+            $discount=($subtotal*25)/100;
             $nettotal=($subtotal-$discount)+$shipcost;
             $oldnettotal=$nettotal;
 
@@ -77,7 +85,7 @@ class Cartinfo extends CI_Model{
                 'deliverystatus'=>'0', 
                 'trackingnum'=>'', 
                 'trackingwebsite'=>'', 
-                'dropdiscountstatus'=>'0', 
+                'dropdiscountstatus'=>$deliverydiscount, 
                 'callstatus'=>'0', 
                 'narration'=>$ordernotes, 
                 'cancelreason'=>'', 

@@ -1255,7 +1255,7 @@
 															<div class="col-lg-6 mb-20 pb-3">
 																<label class="text-dark font-weight-bold">Bank & Code</label>
 																<div class="row">
-																	<select name="regbank" id="regbank" class="col-9 form-control form-control-sm selectpicker" style="width:75%;" required>
+																	<select name="regbank" id="regbank" data-live-search="true" class="col-9 form-control form-control-sm selectpicker" style="width:75%;" required>
 																		<option value="">Select</option>
 																		<?php foreach($banklist->result() as $rowbanklist){ ?>
 																		<option value="<?php echo $rowbanklist->code ?>" <?php if($this->session->userdata('loggedin')==1 && $customerprofilebank->num_rows()>0){if($rowbanklist->code==$customerprofilebank->row(0)->bankcode){echo 'selected';}} ?>><?php echo $rowbanklist->bank ?></option>
@@ -1461,7 +1461,7 @@
 	<script src="/js/Bootstrap/Select/bootstrap-select.js"></script>
 
 <script type="text/javascript">
-    $('.selectpicker').selectpicker({});
+    $('.selectpicker').selectpicker();
 </script>
 	<script>
         $('#ordertable tbody').on('click', '.btncancel', function() {

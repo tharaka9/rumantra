@@ -66,6 +66,7 @@
                                             <div class="form-group mb-0">
                                                 <label>Password *</label>
                                                 <input type="password" class="form-control" name="logpassword" id="logpassword" required>
+                                                <span class="far fa-eye" id="togglePassword" style=" float: right;margin-right: 6px;margin-top: -29px;position: relative;z-index: 2;"></span>
                                             </div>
                                             <div class="form-checkbox d-flex align-items-center justify-content-between">
                                                 <a href="<?php echo base_url().'Loginregister/Register' ?>" class="text-primary">New member? Register here</a>
@@ -93,6 +94,22 @@
     <!-- End of Page Wrapper -->
 
     <?php include "include/footerscript.php"; ?>
+
+    <script type='text/javascript'>
+
+    const togglePassword = document.querySelector('#togglePassword');
+    const logpassword = document.querySelector('#logpassword');
+
+    togglePassword.addEventListener('click', function (e) {
+    // toggle the type attribute
+    const type = logpassword.getAttribute('type') === 'password' ? 'text' : 'password';
+    logpassword.setAttribute('type', type);
+    // toggle the eye slash icon
+    this.classList.toggle('fa-eye-slash');
+    });
+
+</script>
+
 </body>
 
 </html>

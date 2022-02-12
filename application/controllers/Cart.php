@@ -118,7 +118,7 @@ class Cart extends CI_Controller {
                  </div>
                  <div class="cart_total">
                 <span>Discount:</span>
-                <span class="price">Rs '.$this->cart->format_number(($this->cart->total()*20)/100).'</span>
+                <span class="price">Rs '.$this->cart->format_number(($this->cart->total()*25)/100).'</span>
                 </div>
                 <div class="cart_total">
                 <span>Shipping:</span>
@@ -126,7 +126,7 @@ class Cart extends CI_Controller {
                 </div>
                 <div class="cart_total mt-10">
                 <span>total:</span>
-                <span class="price">Rs '.$this->cart->format_number(($this->cart->total() * ((100-20) / 100))).'</span>
+                <span class="price">Rs '.$this->cart->format_number(($this->cart->total() * ((100-25) / 100))).'</span>
                 </div>
                 <div class="cart-action">
                     <a href="'.base_url().'Cart" class="btn btn-dark btn-outline btn-rounded">View Cart</a>

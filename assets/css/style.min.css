@@ -8783,9 +8783,9 @@ body .product-popup {
     flex-direction: column;
     align-items: flex-start;
     position: absolute;
-    left: 2rem;
-    top: 2rem;
-    max-width: 11rem;
+    right: 1rem;
+    top: 1rem;
+    max-width: 9rem;
     z-index: 1
 }
 
@@ -8804,7 +8804,8 @@ body .product-popup {
 
 .product-label.label-new {
     background: #9A2264;
-    padding: 0.6rem 1rem
+    padding: 0.2rem 0.5rem;
+    font-size: 10px;
 }
 
 .product-label.label-discount {

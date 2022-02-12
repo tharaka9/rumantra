@@ -7,10 +7,6 @@
 
     <title>Checkout - Rumantra - By ERav Technology</title>
 
-    <meta name="keywords" content="HTML5 Template" />
-    <meta name="description" content="Wolmart eCommmerce Marketplace HTML Template">
-    <meta name="author" content="D-THEMES">
-
     <?php include "include/headerscript1.php"; ?>
 </head>
 
@@ -247,7 +243,14 @@
                                                 </tr>
                                                 <tr class="cart-subtotal" id="shiptd">
                                                     <td><b>Ship Cost</b></td>
-                                                    <td><b>Rs 250.00</b></td>
+                                                 
+                                                    <?php if ($this->cart->total() < 4500){ ?>
+                                                    <td>Rs.250</td>  
+                                                    <?php }else{ ?>
+                                                    <td>Rs. 0</td>
+                                                    <?php } ?>
+                                                    <!-- <td><b>Rs 250.00</b></td> -->
+                                                   
                                                 </tr>
                                             </tbody>
                                             <tfoot>
@@ -291,7 +294,12 @@
                                                         <b>Total</b>
                                                     </th>
                                                     <td id="nettotaltd">
-                                                    <b>Rs <?php echo $this->cart->format_number($this->cart->total()-(($this->cart->total()*25)/100)+250) ?></b>
+                                                    <?php if ($this->cart->total() < 4500){ ?>
+                                                    <b>Rs <?php echo $this->cart->format_number($this->cart->total()-$this->cart->total()*25/100+250)?></b>
+                                                    <?php }else{ ?>
+                                                    <b>Rs <?php echo $this->cart->format_number($this->cart->total()-$this->cart->total()*25/100)?></b>
+                                                    <?php } ?>
+                                                    
                                                     </td>
                                                 </tr>
                                             </tfoot>
@@ -352,7 +360,13 @@
     <script>
 
         var carttotal=parseFloat(<?php echo $this->cart->total(); ?>);
+
+        <?php if ($this->cart->total() < 4500){ ?>
             var shipcost=parseFloat(250);
+        <?php }else{ ?>
+            var shipcost=parseFloat(0);
+        <?php } ?>
+           
 
         $(document).ready(function(){
             $('a[href="#cashbank"]').click(function(){
@@ -361,10 +375,6 @@
             $('a[href="#delivery"]').click(function(){
                 $('#paymenttype').val('0');
             }); 
-
-
-
-
 
 
             $("#shipping-toggle").change(function() {alert('IN');
@@ -393,9 +403,11 @@
                     $('#nettotaltd').html('<b>Rs '+nettotal+'</b>');                    
                 }
                 else{
-                    var discount=addCommas(parseFloat((carttotal*25)/100).toFixed(2));
+                    var discount=addCommas(parseFloat((carttotal)*25/100).toFixed(2));
                     $('#discounttd').html('<b>Rs '+discount+'</b>');
-                    var nettotal = addCommas(parseFloat((carttotal+shipcost)-discount).toFixed(2));
+                    var discount2 = carttotal*25/100;
+                    var nettotal = addCommas(parseFloat((carttotal+shipcost)-discount2).toFixed(2));
+                    console.log(nettotal);
                     $('#nettotaltd').html('<b>Rs '+nettotal+'</b>');
                 }
             });

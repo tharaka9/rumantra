@@ -118,12 +118,14 @@
                                                     <div class="form-group">
                                                         <label>Password *</label>
                                                         <input type="password" class="form-control text-dark" name="regpassword" id="regpassword" >
+                                                        <span class="far fa-eye" id="togglePassword" style=" float: right;margin-right: 6px;margin-top: -29px;position: relative;z-index: 2;"></span>
                                                     </div>
                                                 </div>
                                                 <div class="col-xs-6">
                                                     <div class="form-group">
                                                         <label>Enter Confirm Password *</label>
                                                         <input type="password" class="form-control text-dark" name="regrepassword" id="regrepassword" >
+                                                        <span class="far fa-eye" id="togglePasswordre" style=" float: right;margin-right: 6px;margin-top: -29px;position: relative;z-index: 2;"></span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -359,6 +361,28 @@
                 }
             }
         }
+
+    const togglePassword = document.querySelector('#togglePassword');
+    const togglePasswordre = document.querySelector('#togglePasswordre');
+    const password = document.querySelector('#regpassword');
+    const passwordre = document.querySelector('#regrepassword');
+
+    togglePassword.addEventListener('click', function (e) {
+    // toggle the type attribute
+    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+    password.setAttribute('type', type);
+    // toggle the eye slash icon
+    this.classList.toggle('fa-eye-slash');
+});
+
+togglePasswordre.addEventListener('click', function (e) {
+    // toggle the type attribute
+    const type = passwordre.getAttribute('type') === 'password' ? 'text' : 'password';
+    passwordre.setAttribute('type', type);
+    // toggle the eye slash icon
+    this.classList.toggle('fa-eye-slash');
+});
+
     </script>
 </body>
 

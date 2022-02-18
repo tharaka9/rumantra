@@ -7,889 +7,269 @@
 
 	<title>My Account - Rumantra - By ERav Technology</title>
 
-	<meta name="keywords" content="HTML5 Template" />
-	<meta name="description" content="Wolmart eCommmerce Marketplace HTML Template">
-	<meta name="author" content="D-THEMES">
-
 	<?php include "include/headerscript.php"; ?>
 
     <style>
 
 
-.card>.list-group:first-child .list-group-item:first-child {
-			border-top-left-radius: 0.35rem;
-			border-top-right-radius: 0.35rem;
-		}
-
-		.card>.list-group:last-child .list-group-item:last-child {
-			border-bottom-right-radius: 0.35rem;
-			border-bottom-left-radius: 0.35rem;
-		}
-
-		.card-header+.list-group .list-group-item:first-child {
-			border-top: 0;
-		}
-
-		.list-group {
-			display: -webkit-box;
-			display: flex;
-			-webkit-box-orient: vertical;
-			-webkit-box-direction: normal;
-			flex-direction: column;
-			padding-left: 0;
-			margin-bottom: 0;
-		}
-
-		.list-group-item-action {
-			width: 100%;
-			color: #485260;
-			text-align: inherit;
-		}
-
-		.list-group-item-action:hover,
-		.list-group-item-action:focus {
-			z-index: 1;
-			color: #485260;
-			text-decoration: none;
-			background-color: #eff3f9;
-		}
-
-		.list-group-item-action:active {
-			color: #687281;
-			background-color: #e3e6ec;
-		}
-
-		.list-group-item {
-			position: relative;
-			display: block;
-			padding: 0.75rem 1.25rem;
-			background-color: #fff;
-			border: 1px solid rgba(0, 0, 0, 0.125);
-		}
-
-		.list-group-item:first-child {
-			border-top-left-radius: 0.35rem;
-			border-top-right-radius: 0.35rem;
-		}
-
-		.list-group-item:last-child {
-			border-bottom-right-radius: 0.35rem;
-			border-bottom-left-radius: 0.35rem;
-		}
-
-		.list-group-item.disabled,
-		.list-group-item:disabled {
-			color: #687281;
-			pointer-events: none;
-			background-color: #fff;
-		}
-
-		.list-group-item.active {
-			z-index: 2;
-			color: #fff;
-			background-color: #0061f2;
-			border-color: #0061f2;
-		}
-
-		.list-group-item+.list-group-item {
-			border-top-width: 0;
-		}
-
-		.list-group-item+.list-group-item.active {
-			margin-top: -1px;
-			border-top-width: 1px;
-		}
-
-		.list-group-horizontal {
-			-webkit-box-orient: horizontal;
-			-webkit-box-direction: normal;
-			flex-direction: row;
-		}
-
-		.list-group-horizontal .list-group-item:first-child {
-			border-bottom-left-radius: 0.35rem;
-			border-top-right-radius: 0;
-		}
-
-		.list-group-horizontal .list-group-item:last-child {
-			border-top-right-radius: 0.35rem;
-			border-bottom-left-radius: 0;
-		}
-
-		.list-group-horizontal .list-group-item.active {
-			margin-top: 0;
-		}
-
-		.list-group-horizontal .list-group-item+.list-group-item {
-			border-top-width: 1px;
-			border-left-width: 0;
-		}
-
-		.list-group-horizontal .list-group-item+.list-group-item.active {
-			margin-left: -1px;
-			border-left-width: 1px;
-		}
-
-		@media (min-width: 576px) {
-			.list-group-horizontal-sm {
-				-webkit-box-orient: horizontal;
-				-webkit-box-direction: normal;
-				flex-direction: row;
-			}
-
-			.list-group-horizontal-sm .list-group-item:first-child {
-				border-bottom-left-radius: 0.35rem;
-				border-top-right-radius: 0;
-			}
-
-			.list-group-horizontal-sm .list-group-item:last-child {
-				border-top-right-radius: 0.35rem;
-				border-bottom-left-radius: 0;
-			}
-
-			.list-group-horizontal-sm .list-group-item.active {
-				margin-top: 0;
-			}
-
-			.list-group-horizontal-sm .list-group-item+.list-group-item {
-				border-top-width: 1px;
-				border-left-width: 0;
-			}
-
-			.list-group-horizontal-sm .list-group-item+.list-group-item.active {
-				margin-left: -1px;
-				border-left-width: 1px;
-			}
-		}
-
-		@media (min-width: 768px) {
-			.list-group-horizontal-md {
-				-webkit-box-orient: horizontal;
-				-webkit-box-direction: normal;
-				flex-direction: row;
-			}
-
-			.list-group-horizontal-md .list-group-item:first-child {
-				border-bottom-left-radius: 0.35rem;
-				border-top-right-radius: 0;
-			}
-
-			.list-group-horizontal-md .list-group-item:last-child {
-				border-top-right-radius: 0.35rem;
-				border-bottom-left-radius: 0;
-			}
-
-			.list-group-horizontal-md .list-group-item.active {
-				margin-top: 0;
-			}
-
-			.list-group-horizontal-md .list-group-item+.list-group-item {
-				border-top-width: 1px;
-				border-left-width: 0;
-			}
-
-			.list-group-horizontal-md .list-group-item+.list-group-item.active {
-				margin-left: -1px;
-				border-left-width: 1px;
-			}
-		}
-
-		@media (min-width: 992px) {
-			.list-group-horizontal-lg {
-				-webkit-box-orient: horizontal;
-				-webkit-box-direction: normal;
-				flex-direction: row;
-			}
-
-			.list-group-horizontal-lg .list-group-item:first-child {
-				border-bottom-left-radius: 0.35rem;
-				border-top-right-radius: 0;
-			}
-
-			.list-group-horizontal-lg .list-group-item:last-child {
-				border-top-right-radius: 0.35rem;
-				border-bottom-left-radius: 0;
-			}
-
-			.list-group-horizontal-lg .list-group-item.active {
-				margin-top: 0;
-			}
-
-			.list-group-horizontal-lg .list-group-item+.list-group-item {
-				border-top-width: 1px;
-				border-left-width: 0;
-			}
-
-			.list-group-horizontal-lg .list-group-item+.list-group-item.active {
-				margin-left: -1px;
-				border-left-width: 1px;
-			}
-		}
-
-		@media (min-width: 1200px) {
-			.list-group-horizontal-xl {
-				-webkit-box-orient: horizontal;
-				-webkit-box-direction: normal;
-				flex-direction: row;
-			}
-
-			.list-group-horizontal-xl .list-group-item:first-child {
-				border-bottom-left-radius: 0.35rem;
-				border-top-right-radius: 0;
-			}
-
-			.list-group-horizontal-xl .list-group-item:last-child {
-				border-top-right-radius: 0.35rem;
-				border-bottom-left-radius: 0;
-			}
-
-			.list-group-horizontal-xl .list-group-item.active {
-				margin-top: 0;
-			}
-
-			.list-group-horizontal-xl .list-group-item+.list-group-item {
-				border-top-width: 1px;
-				border-left-width: 0;
-			}
-
-			.list-group-horizontal-xl .list-group-item+.list-group-item.active {
-				margin-left: -1px;
-				border-left-width: 1px;
-			}
-		}
-
-		.list-group-flush .list-group-item {
-			border-right-width: 0;
-			border-left-width: 0;
-			border-radius: 0;
-		}
-
-		.list-group-flush .list-group-item:first-child {
-			border-top-width: 0;
-		}
-
-		.list-group-flush:last-child .list-group-item:last-child {
-			border-bottom-width: 0;
-		}
-
-		.list-group-item-primary {
-			color: #00327e;
-			background-color: #b8d3fb;
-		}
-
-		.list-group-item-primary.list-group-item-action:hover,
-		.list-group-item-primary.list-group-item-action:focus {
-			color: #00327e;
-			background-color: #a0c4fa;
-		}
-
-		.list-group-item-primary.list-group-item-action.active {
-			color: #fff;
-			background-color: #00327e;
-			border-color: #00327e;
-		}
-
-		.list-group-item-secondary {
-			color: #370067;
-			background-color: #d5b8ef;
-		}
-
-		.list-group-item-secondary.list-group-item-action:hover,
-		.list-group-item-secondary.list-group-item-action:focus {
-			color: #370067;
-			background-color: #c9a3ea;
-		}
-
-		.list-group-item-secondary.list-group-item-action.active {
-			color: #fff;
-			background-color: #370067;
-			border-color: #370067;
-		}
-
-		.list-group-item-success {
-			color: #005937;
-			background-color: #b8e8d5;
-		}
-
-		.list-group-item-success.list-group-item-action:hover,
-		.list-group-item-success.list-group-item-action:focus {
-			color: #005937;
-			background-color: #a5e2ca;
-		}
-
-		.list-group-item-success.list-group-item-action.active {
-			color: #fff;
-			background-color: #005937;
-			border-color: #005937;
-		}
-
-		.list-group-item-info {
-			color: #006c6f;
-			background-color: #b8f2f3;
-		}
-
-		.list-group-item-info.list-group-item-action:hover,
-		.list-group-item-info.list-group-item-action:focus {
-			color: #006c6f;
-			background-color: #a2eeef;
-		}
-
-		.list-group-item-info.list-group-item-action.active {
-			color: #fff;
-			background-color: #006c6f;
-			border-color: #006c6f;
-		}
-
-		.list-group-item-warning {
-			color: #7f5400;
-			background-color: #fce5b8;
-		}
-
-		.list-group-item-warning.list-group-item-action:hover,
-		.list-group-item-warning.list-group-item-action:focus {
-			color: #7f5400;
-			background-color: #fbdca0;
-		}
-
-		.list-group-item-warning.list-group-item-action.active {
-			color: #fff;
-			background-color: #7f5400;
-			border-color: #7f5400;
-		}
-
-		.list-group-item-danger {
-			color: #790b00;
-			background-color: #f9bdb8;
-		}
-
-		.list-group-item-danger.list-group-item-action:hover,
-		.list-group-item-danger.list-group-item-action:focus {
-			color: #790b00;
-			background-color: #f7a7a0;
-		}
-
-		.list-group-item-danger.list-group-item-action.active {
-			color: #fff;
-			background-color: #790b00;
-			border-color: #790b00;
-		}
-
-		.list-group-item-light {
-			color: #7c7e81;
-			background-color: #fbfcfd;
-		}
-
-		.list-group-item-light.list-group-item-action:hover,
-		.list-group-item-light.list-group-item-action:focus {
-			color: #7c7e81;
-			background-color: #eaeff5;
-		}
-
-		.list-group-item-light.list-group-item-action.active {
-			color: #fff;
-			background-color: #7c7e81;
-			border-color: #7c7e81;
-		}
-
-		.list-group-item-dark {
-			color: #101722;
-			background-color: #c0c4ca;
-		}
-
-		.list-group-item-dark.list-group-item-action:hover,
-		.list-group-item-dark.list-group-item-action:focus {
-			color: #101722;
-			background-color: #b2b7be;
-		}
-
-		.list-group-item-dark.list-group-item-action.active {
-			color: #fff;
-			background-color: #101722;
-			border-color: #101722;
-		}
-
-		.list-group-item-black {
-			color: black;
-			background-color: #b8b8b8;
-		}
-
-		.list-group-item-black.list-group-item-action:hover,
-		.list-group-item-black.list-group-item-action:focus {
-			color: black;
-			background-color: #ababab;
-		}
-
-		.list-group-item-black.list-group-item-action.active {
-			color: #fff;
-			background-color: black;
-			border-color: black;
-		}
-
-		.list-group-item-white {
-			color: #858585;
-			background-color: white;
-		}
-
-		.list-group-item-white.list-group-item-action:hover,
-		.list-group-item-white.list-group-item-action:focus {
-			color: #858585;
-			background-color: #f2f2f2;
-		}
-
-		.list-group-item-white.list-group-item-action.active {
-			color: #fff;
-			background-color: #858585;
-			border-color: #858585;
-		}
-
-		.list-group-item-red {
-			color: #790b00;
-			background-color: #f9bdb8;
-		}
-
-		.list-group-item-red.list-group-item-action:hover,
-		.list-group-item-red.list-group-item-action:focus {
-			color: #790b00;
-			background-color: #f7a7a0;
-		}
-
-		.list-group-item-red.list-group-item-action.active {
-			color: #fff;
-			background-color: #790b00;
-			border-color: #790b00;
-		}
-
-		.list-group-item-orange {
-			color: #803400;
-			background-color: #fdd4b8;
-		}
-
-		.list-group-item-orange.list-group-item-action:hover,
-		.list-group-item-orange.list-group-item-action:focus {
-			color: #803400;
-			background-color: #fcc59f;
-		}
-
-		.list-group-item-orange.list-group-item-action.active {
-			color: #fff;
-			background-color: #803400;
-			border-color: #803400;
-		}
-
-		.list-group-item-yellow {
-			color: #7f5400;
-			background-color: #fce5b8;
-		}
-
-		.list-group-item-yellow.list-group-item-action:hover,
-		.list-group-item-yellow.list-group-item-action:focus {
-			color: #7f5400;
-			background-color: #fbdca0;
-		}
-
-		.list-group-item-yellow.list-group-item-action.active {
-			color: #fff;
-			background-color: #7f5400;
-			border-color: #7f5400;
-		}
-
-		.list-group-item-green {
-			color: #005937;
-			background-color: #b8e8d5;
-		}
-
-		.list-group-item-green.list-group-item-action:hover,
-		.list-group-item-green.list-group-item-action:focus {
-			color: #005937;
-			background-color: #a5e2ca;
-		}
-
-		.list-group-item-green.list-group-item-action.active {
-			color: #fff;
-			background-color: #005937;
-			border-color: #005937;
-		}
-
-		.list-group-item-teal {
-			color: #00614d;
-			background-color: #b8ece1;
-		}
-
-		.list-group-item-teal.list-group-item-action:hover,
-		.list-group-item-teal.list-group-item-action:focus {
-			color: #00614d;
-			background-color: #a4e7d9;
-		}
-
-		.list-group-item-teal.list-group-item-action.active {
-			color: #fff;
-			background-color: #00614d;
-			border-color: #00614d;
-		}
-
-		.list-group-item-cyan {
-			color: #006c6f;
-			background-color: #b8f2f3;
-		}
-
-		.list-group-item-cyan.list-group-item-action:hover,
-		.list-group-item-cyan.list-group-item-action:focus {
-			color: #006c6f;
-			background-color: #a2eeef;
-		}
-
-		.list-group-item-cyan.list-group-item-action.active {
-			color: #fff;
-			background-color: #006c6f;
-			border-color: #006c6f;
-		}
-
-		.list-group-item-blue {
-			color: #00327e;
-			background-color: #b8d3fb;
-		}
-
-		.list-group-item-blue.list-group-item-action:hover,
-		.list-group-item-blue.list-group-item-action:focus {
-			color: #00327e;
-			background-color: #a0c4fa;
-		}
-
-		.list-group-item-blue.list-group-item-action.active {
-			color: #fff;
-			background-color: #00327e;
-			border-color: #00327e;
-		}
-
-		.list-group-item-indigo {
-			color: #2e0079;
-			background-color: #d0b8f9;
-		}
-
-		.list-group-item-indigo.list-group-item-action:hover,
-		.list-group-item-indigo.list-group-item-action:focus {
-			color: #2e0079;
-			background-color: #c0a0f7;
-		}
-
-		.list-group-item-indigo.list-group-item-action.active {
-			color: #fff;
-			background-color: #2e0079;
-			border-color: #2e0079;
-		}
-
-		.list-group-item-purple {
-			color: #370067;
-			background-color: #d5b8ef;
-		}
-
-		.list-group-item-purple.list-group-item-action:hover,
-		.list-group-item-purple.list-group-item-action:focus {
-			color: #370067;
-			background-color: #c9a3ea;
-		}
-
-		.list-group-item-purple.list-group-item-action.active {
-			color: #fff;
-			background-color: #370067;
-			border-color: #370067;
-		}
-
-		.list-group-item-pink {
-			color: #76002e;
-			background-color: #f7b8d1;
-		}
-
-		.list-group-item-pink.list-group-item-action:hover,
-		.list-group-item-pink.list-group-item-action:focus {
-			color: #76002e;
-			background-color: #f4a1c2;
-		}
-
-		.list-group-item-pink.list-group-item-action.active {
-			color: #fff;
-			background-color: #76002e;
-			border-color: #76002e;
-		}
-
-		.list-group-item-red-soft {
-			color: #7c6767;
-			background-color: #faefef;
-		}
-
-		.list-group-item-red-soft.list-group-item-action:hover,
-		.list-group-item-red-soft.list-group-item-action:focus {
-			color: #7c6767;
-			background-color: #f4dcdc;
-		}
-
-		.list-group-item-red-soft.list-group-item-action.active {
-			color: #fff;
-			background-color: #7c6767;
-			border-color: #7c6767;
-		}
-
-		.list-group-item-orange-soft {
-			color: #7d6f67;
-			background-color: #fbf4ef;
-		}
-
-		.list-group-item-orange-soft.list-group-item-action:hover,
-		.list-group-item-orange-soft.list-group-item-action:focus {
-			color: #7d6f67;
-			background-color: #f6e6db;
-		}
-
-		.list-group-item-orange-soft.list-group-item-action.active {
-			color: #fff;
-			background-color: #7d6f67;
-			border-color: #7d6f67;
-		}
-
-		.list-group-item-yellow-soft {
-			color: #7d7667;
-			background-color: #fbf7ef;
-		}
-
-		.list-group-item-yellow-soft.list-group-item-action:hover,
-		.list-group-item-yellow-soft.list-group-item-action:focus {
-			color: #7d7667;
-			background-color: #f6eddb;
-		}
-
-		.list-group-item-yellow-soft.list-group-item-action.active {
-			color: #fff;
-			background-color: #7d7667;
-			border-color: #7d7667;
-		}
-
-		.list-group-item-green-soft {
-			color: #637772;
-			background-color: #edf8f5;
-		}
-
-		.list-group-item-green-soft.list-group-item-action:hover,
-		.list-group-item-green-soft.list-group-item-action:focus {
-			color: #637772;
-			background-color: #dbf1eb;
-		}
-
-		.list-group-item-green-soft.list-group-item-action.active {
-			color: #fff;
-			background-color: #637772;
-			border-color: #637772;
-		}
-
-		.list-group-item-teal-soft {
-			color: #637977;
-			background-color: #edf9f8;
-		}
-
-		.list-group-item-teal-soft.list-group-item-action:hover,
-		.list-group-item-teal-soft.list-group-item-action:focus {
-			color: #637977;
-			background-color: #daf3f1;
-		}
-
-		.list-group-item-teal-soft.list-group-item-action.active {
-			color: #fff;
-			background-color: #637977;
-			border-color: #637977;
-		}
-
-		.list-group-item-cyan-soft {
-			color: #637b7e;
-			background-color: #edfafb;
-		}
-
-		.list-group-item-cyan-soft.list-group-item-action:hover,
-		.list-group-item-cyan-soft.list-group-item-action:focus {
-			color: #637b7e;
-			background-color: #d8f4f6;
-		}
-
-		.list-group-item-cyan-soft.list-group-item-action.active {
-			color: #fff;
-			background-color: #637b7e;
-			border-color: #637b7e;
-		}
-
-		.list-group-item-blue-soft {
-			color: #636f81;
-			background-color: #edf4fd;
-		}
-
-		.list-group-item-blue-soft.list-group-item-action:hover,
-		.list-group-item-blue-soft.list-group-item-action:focus {
-			color: #636f81;
-			background-color: #d6e6fa;
-		}
-
-		.list-group-item-blue-soft.list-group-item-action.active {
-			color: #fff;
-			background-color: #636f81;
-			border-color: #636f81;
-		}
-
-		.list-group-item-indigo-soft {
-			color: #6d6580;
-			background-color: #f2eefc;
-		}
-
-		.list-group-item-indigo-soft.list-group-item-action:hover,
-		.list-group-item-indigo-soft.list-group-item-action:focus {
-			color: #6d6580;
-			background-color: #e1d8f8;
-		}
-
-		.list-group-item-indigo-soft.list-group-item-action.active {
-			color: #fff;
-			background-color: #6d6580;
-			border-color: #6d6580;
-		}
-
-		.list-group-item-purple-soft {
-			color: #6e657c;
-			background-color: #f3eefb;
-		}
-
-		.list-group-item-purple-soft.list-group-item-action:hover,
-		.list-group-item-purple-soft.list-group-item-action:focus {
-			color: #6e657c;
-			background-color: #e4d9f6;
-		}
-
-		.list-group-item-purple-soft.list-group-item-action.active {
-			color: #fff;
-			background-color: #6e657c;
-			border-color: #6e657c;
-		}
-
-		.list-group-item-pink-soft {
-			color: #7b6571;
-			background-color: #faeef4;
-		}
-
-		.list-group-item-pink-soft.list-group-item-action:hover,
-		.list-group-item-pink-soft.list-group-item-action:focus {
-			color: #7b6571;
-			background-color: #f4dae7;
-		}
-
-		.list-group-item-pink-soft.list-group-item-action.active {
-			color: #fff;
-			background-color: #7b6571;
-			border-color: #7b6571;
-		}
-
-		.list-group-item-primary-soft {
-			color: #636f81;
-			background-color: #edf4fd;
-		}
-
-		.list-group-item-primary-soft.list-group-item-action:hover,
-		.list-group-item-primary-soft.list-group-item-action:focus {
-			color: #636f81;
-			background-color: #d6e6fa;
-		}
-
-		.list-group-item-primary-soft.list-group-item-action.active {
-			color: #fff;
-			background-color: #636f81;
-			border-color: #636f81;
-		}
-
-		.list-group-item-secondary-soft {
-			color: #6e657c;
-			background-color: #f3eefb;
-		}
-
-		.list-group-item-secondary-soft.list-group-item-action:hover,
-		.list-group-item-secondary-soft.list-group-item-action:focus {
-			color: #6e657c;
-			background-color: #e4d9f6;
-		}
-
-		.list-group-item-secondary-soft.list-group-item-action.active {
-			color: #fff;
-			background-color: #6e657c;
-			border-color: #6e657c;
-		}
-
-		.list-group-item-success-soft {
-			color: #637772;
-			background-color: #edf8f5;
-		}
-
-		.list-group-item-success-soft.list-group-item-action:hover,
-		.list-group-item-success-soft.list-group-item-action:focus {
-			color: #637772;
-			background-color: #dbf1eb;
-		}
-
-		.list-group-item-success-soft.list-group-item-action.active {
-			color: #fff;
-			background-color: #637772;
-			border-color: #637772;
-		}
-
-		.list-group-item-info-soft {
-			color: #637b7e;
-			background-color: #edfafb;
-		}
-
-		.list-group-item-info-soft.list-group-item-action:hover,
-		.list-group-item-info-soft.list-group-item-action:focus {
-			color: #637b7e;
-			background-color: #d8f4f6;
-		}
-
-		.list-group-item-info-soft.list-group-item-action.active {
-			color: #fff;
-			background-color: #637b7e;
-			border-color: #637b7e;
-		}
-
-		.list-group-item-warning-soft {
-			color: #7d7667;
-			background-color: #fbf7ef;
-		}
-
-		.list-group-item-warning-soft.list-group-item-action:hover,
-		.list-group-item-warning-soft.list-group-item-action:focus {
-			color: #7d7667;
-			background-color: #f6eddb;
-		}
-
-		.list-group-item-warning-soft.list-group-item-action.active {
-			color: #fff;
-			background-color: #7d7667;
-			border-color: #7d7667;
-		}
-
-		.list-group-item-danger-soft {
-			color: #7c6767;
-			background-color: #faefef;
-		}
-
-		.list-group-item-danger-soft.list-group-item-action:hover,
-		.list-group-item-danger-soft.list-group-item-action:focus {
-			color: #7c6767;
-			background-color: #f4dcdc;
-		}
-
-		.list-group-item-danger-soft.list-group-item-action.active {
-			color: #fff;
-			background-color: #7c6767;
-			border-color: #7c6767;
-		}
-
-		.p-0 {
-			padding: 0 !important;
-		}
-		.m-0 {
-			margin: 0 !important;
-		}
+ :root {
+            --color1: #FD8F33;
+            --color2: #0DC8AB;
+            --color3: #05B0DE;
+            --color4: #8E7CCC;
+        }
+
+        .main-timeline {
+            font-family: 'Source Sans Pro', sans-serif;
+            position: relative;
+        }
+
+        .main-timeline:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        .main-timeline .timeline {
+            width: 50.1%;
+            padding: 20px 0 20px 100px;
+            float: right;
+            position: relative;
+            z-index: 1;
+        }
+
+        .main-timeline .timeline:before,
+        .main-timeline .timeline:after {
+            content: '';
+            background: var(--color1);
+            height: 100%;
+            width: 28px;
+            position: absolute;
+            left: -11px;
+            top: 0;
+        }
+
+        .main-timeline .timeline:after {
+            background: var(--color1);
+            height: 18px;
+            width: 200px;
+            box-shadow: 0 0 10px -5px #000;
+            transform: translateY(-50%);
+            top: 50%;
+            left: -90px;
+        }
+
+        .main-timeline .timeline-content {
+            color: #517d82;
+            background-color: var(--color1);
+            padding: 0 0 0 80px;
+            box-shadow: 0 0 20px -10px #000;
+            border-radius: 10px;
+            display: block;
+        }
+
+        .main-timeline .timeline-content:hover {
+            color: #517d82;
+            text-decoration: none;
+        }
+
+        .main-timeline .timeline-icon {
+            color: #fff;
+            background-color: var(--color1);
+            font-size: 35px;
+            text-align: center;
+            line-height: 62px;
+            height: 60px;
+            width: 60px;
+            border-radius: 50%;
+            transform: translateY(-50%);
+            position: absolute;
+            left: -100px;
+            top: 50%;
+            z-index: 1;
+        }
+
+        .main-timeline .timeline-year {
+            color: #517d82;
+            background-color: #fff;
+            font-size: 20px;
+            font-weight: 600;
+            text-align: center;
+            line-height: 93px;
+            height: 113px;
+            width: 113px;
+            border: 6px solid var(--color1);
+            box-shadow: 0 0 10px -5px #000;
+            border-radius: 50%;
+            transform: translateY(-50%);
+            position: absolute;
+            left: 50px;
+            top: 50%;
+            z-index: 1;
+        }
+
+        .main-timeline .inner-content {
+            background-color: #fff;
+            padding: 10px;
+        }
+
+        .main-timeline .title {
+            color: var(--color1);
+            font-size: 22px;
+            font-weight: 600;
+            margin: 0 0 5px 0;
+        }
+
+        .main-timeline .description {
+            font-size: 14px;
+            letter-spacing: 1px;
+            margin: 0;
+        }
+
+        .main-timeline .timeline:nth-child(even) {
+            padding: 20px 100px 20px 0;
+            float: left;
+        }
+
+        .main-timeline .timeline:nth-child(even):before {
+            left: auto;
+            right: -14.5px;
+        }
+
+        .main-timeline .timeline:nth-child(even):after {
+            left: auto;
+            right: -90px;
+        }
+
+        .main-timeline .timeline:nth-child(even) .timeline-content {
+            padding: 0 80px 0 0;
+        }
+
+        .main-timeline .timeline:nth-child(even) .timeline-icon {
+            left: auto;
+            right: -100px;
+        }
+
+        .main-timeline .timeline:nth-child(even) .timeline-year {
+            left: auto;
+            right: 50px;
+        }
+
+        .main-timeline .timeline:nth-child(4n+2):before,
+        .main-timeline .timeline:nth-child(4n+2):after {
+            background: var(--color2);
+        }
+
+        .main-timeline .timeline:nth-child(4n+2) .timeline-content,
+        .main-timeline .timeline:nth-child(4n+2) .timeline-icon {
+            background-color: var(--color2);
+        }
+
+        .main-timeline .timeline:nth-child(4n+2) .timeline-year {
+            border-color: var(--color2);
+        }
+
+        .main-timeline .timeline:nth-child(4n+2) .title {
+            color: var(--color2);
+        }
+
+        .main-timeline .timeline:nth-child(4n+3):before,
+        .main-timeline .timeline:nth-child(4n+3):after {
+            background: var(--color3);
+        }
+
+        .main-timeline .timeline:nth-child(4n+3) .timeline-content,
+        .main-timeline .timeline:nth-child(4n+3) .timeline-icon {
+            background-color: var(--color3);
+        }
+
+        .main-timeline .timeline:nth-child(4n+3) .timeline-year {
+            border-color: var(--color3);
+        }
+
+        .main-timeline .timeline:nth-child(4n+3) .title {
+            color: var(--color3);
+        }
+
+        .main-timeline .timeline:nth-child(4n+4):before,
+        .main-timeline .timeline:nth-child(4n+4):after {
+            background: var(--color4);
+        }
+
+        .main-timeline .timeline:nth-child(4n+4) .timeline-content,
+        .main-timeline .timeline:nth-child(4n+4) .timeline-icon {
+            background-color: var(--color4);
+        }
+
+        .main-timeline .timeline:nth-child(4n+4) .timeline-year {
+            border-color: var(--color4);
+        }
+
+        .main-timeline .timeline:nth-child(4n+4) .title {
+            color: var(--color4);
+        }
+
+        @media only screen and (max-width:1200px) {
+            .main-timeline .timeline:before {
+                left: -12.5px;
+            }
+
+            .main-timeline .timeline:nth-child(even):before {
+                right: -14px;
+            }
+        }
+
+        @media only screen and (max-width:990px) {
+            .main-timeline .timeline:before {
+                left: -12.5px;
+            }
+        }
+
+        @media only screen and (max-width:767px) {
+
+            .main-timeline .timeline,
+            .main-timeline .timeline:nth-child(even) {
+                width: 100%;
+                padding: 20px 0 20px 37px;
+            }
+
+            .main-timeline .timeline:before {
+                left: 0;
+            }
+
+            .main-timeline .timeline:nth-child(even):before {
+                right: auto;
+                left: 0;
+            }
+
+            .main-timeline .timeline:after,
+            .main-timeline .timeline:nth-child(even) .timeline:after {
+                display: none;
+            }
+
+            .main-timeline .timeline-icon,
+            .main-timeline .timeline:nth-child(even) .timeline-icon {
+                left: 0;
+                display: none;
+            }
+
+            .main-timeline .timeline-year,
+            .main-timeline .timeline:nth-child(even) .timeline-year {
+                height: 75px;
+                width: 75px;
+                line-height: 30px;
+                font-size: 15px;
+                left: 1px;
+            }
+
+            .main-timeline .timeline-content,
+            .main-timeline .timeline:nth-child(even) .timeline-content {
+                padding: 0 0 0 40px;
+            }
+        }
+        .pointer{
+            cursor: pointer;
+        }
     </style>
 
 </head>
@@ -1228,7 +608,7 @@
 															</div>
 															<div class="col-lg-6 mb-20 pb-3">
 																<label class="text-dark font-weight-bold">City <span>*</span></label>
-																<select class="form-control form-control-sm text-dark selectpicker" style="width:100%;" name="regcity" id="regcity" required>
+																<select class="form-control form-control-sm  selectpicker" style="width:100%; display:none"  id="regcity" required>
 																	<option value="">Select</option>
 																	<?php foreach($citylist->result() as $rowcitylist){ ?>
 																	<option value="<?php echo $rowcitylist->city ?>" <?php if($this->session->userdata('loggedin')==1){if($rowcitylist->city==$customerprofile->row(0)->city){echo 'selected';}} ?>><?php echo $rowcitylist->city ?></option>
@@ -1255,10 +635,15 @@
 															<div class="col-lg-6 mb-20 pb-3">
 																<label class="text-dark font-weight-bold">Bank & Code</label>
 																<div class="row">
-																	<select name="regbank" id="regbank" data-live-search="true" class="col-9 form-control form-control-sm selectpicker" style="width:75%;" required>
+																	<select name="regbank" id="regbank" class="col-9 form-control selectpicker" style="width:75%;display:none" required>
 																		<option value="">Select</option>
 																		<?php foreach($banklist->result() as $rowbanklist){ ?>
-																		<option value="<?php echo $rowbanklist->code ?>" <?php if($this->session->userdata('loggedin')==1 && $customerprofilebank->num_rows()>0){if($rowbanklist->code==$customerprofilebank->row(0)->bankcode){echo 'selected';}} ?>><?php echo $rowbanklist->bank ?></option>
+																		<option value="<?php echo $rowbanklist->code ?>" 
+																		<?php if($this->session->userdata('loggedin')
+																		==1 && $customerprofilebank->num_rows()>0)
+																		{if($rowbanklist->code==$customerprofilebank->row(0)->bankcode)
+																		{echo 'selected';}} ?>>
+																		<?php echo $rowbanklist->bank ?></option>
 																		<?php } ?>
 																	</select>
 																	<input type="text" minlength="4" maxlength="4" name="regbankcode" id="regbankcode" class="col-3 bg-grey form-control form-control-sm" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" value="<?php if($customerprofilebank->num_rows()>0){echo $customerprofilebank->row(0)->bankcode;} ?>" placeholder="Code" required readonly>
@@ -1267,7 +652,7 @@
 															<div class="col-lg-6 mb-20 pb-3">
 																<label class="text-dark font-weight-bold">Branch & Code</label>
 																<div class="row">
-																	<select name="regbranch" id="regbranch" class="col-9 form-control form-control-sm selectpicker" style="width:75%;" required>
+																	<select name="regbranch" id="regbranch" class="col-9 form-control form-control-sm selectpicker" style="width:75%;display:none" required>
 																		<option value="">Select</option>
 																	</select>
 																	<input type="text" minlength="3" maxlength="3" name="regbranchcode" id="regbranchcode" class="col-3 bg-grey form-control form-control-sm" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" value="<?php if($customerprofilebank->num_rows()>0){echo $customerprofilebank->row(0)->branchcode;} ?>" placeholder="Code" required readonly>
@@ -1458,10 +843,12 @@
     </div>
 
 	<?php include "include/footerscript.php"; ?>
-	<script src="/js/Bootstrap/Select/bootstrap-select.js"></script>
+	<script src="/js/Bootstrap/Select/bootstrap-select.js"></script> 
 
-<script type="text/javascript">
+<script>
+	        $(document).ready(function(){
     $('.selectpicker').selectpicker();
+			});
 </script>
 	<script>
         $('#ordertable tbody').on('click', '.btncancel', function() {
@@ -1483,6 +870,43 @@
                 });
             }
         });
+		$('#formSearchBtn').click(function(){
+            if (!$("#searchFrom")[0].checkValidity()) {
+                // If the form is invalid, submit it. The form won't actually submit;
+                // this will just cause the browser to display the native HTML5 error messages.
+                $("#hidesubmitbtn").click();
+            } else {
+                var fromdate = $('#fromdate').val();
+                var todate = $('#todate').val();
+
+                $('#viewresult').html('<div class="card border-0 shadow-none"><div class="card-body text-center"><img src="<?php echo base_url() ?>images/spinner.gif" alt=""></div></div>');
+
+                $.ajax({
+                    type: "POST",
+                    data: {
+                        fromdate: fromdate,
+                        todate: todate
+                    },
+                    url: '<?php echo base_url('Loginregister/Commissionview');?>',
+                    success: function(result) { //alert(result);
+                        // var obj = JSON.parse(result);
+                        // $('#viewresult').html(obj.htmlview);
+                        // $('#showcommisson').html(obj.totalcom)
+                        $('#viewresult').html(result);
+                        // $('#htmtotal').html(obj.comtothtml);
+                        totaloption();
+                    }
+                });  
+            }
+        });
+
+		function copyfunction(element) {
+        var $temp = $("<input>");
+        $("body").append($temp);
+        $temp.val($(element).text()).select();
+        document.execCommand("copy");
+        $temp.remove();
+    }
 
 			$('.btnpopupview').click(function (e){
 			   let id = $(this).data('id');
@@ -1628,6 +1052,10 @@
                 });
             });
 
+			$("#regcity").select2();
+        	$("#regbank").select2();
+        	$("#regbranch").select2();
+			
 			var branchcode = '<?php if($customerprofilebank->num_rows()>0){echo $customerprofilebank->row(0)->branchcode;} ?>';
 			if(branchcode!=''){
 				var bankcode = $('#regbank').val();
@@ -1787,29 +1215,29 @@
 			}
 		}
 		function branchlist(bankcode, branchcode){
-			$.ajax({
-				url: "<?php echo base_url('Loginregister/Branchlist');?>",
-				method: "POST",
-				data: {bankcode:bankcode},
-				success: function(data) { //alert(data);
-					var objfirst = JSON.parse(data);
-					var html = '';
-					html += '<option value="">Select</option>';
-					$.each(objfirst, function(i, item) {
-						//alert(objfirst[i].id);
-						html += '<option value="' + objfirst[i].code + '">';
-						html += objfirst[i].branch;
-						html += '</option>';
-					});
+        $.ajax({
+            url: "<?php echo base_url('Loginregister/Branchlist');?>",
+            method: "POST",
+            data: {bankcode:bankcode},
+            success: function(data) { //alert(data);
+                var objfirst = JSON.parse(data);
+                var html = '';
+                html += '<option value="">Select</option>';
+                $.each(objfirst, function(i, item) {
+                    //alert(objfirst[i].id);
+                    html += '<option value="' + objfirst[i].code + '">';
+                    html += objfirst[i].branch;
+                    html += '</option>';
+                });
 
-					$('#regbranch').empty().append(html);
+                $('#regbranch').empty().append(html);
 
-					if (branchcode != '') {
-						$('#regbranch').val(branchcode);
-					}
-				}
-			});
-		}
+                if (branchcode != '') {
+                    $('#regbranch').val(branchcode);
+                }
+            }
+        });
+    }
 		function getmemberlist(levelno, dataset, countshow){
 			$.ajax({
 				url: "<?php echo base_url('Loginregister/Getmemberlist');?>",

@@ -27,6 +27,7 @@ class Cartinfo extends CI_Model{
             $email=$this->input->post('email');
             $phone=$this->input->post('phone');
             $phone2=$this->input->post('phone2');
+            $phoneother=$this->input->post('phoneother');
             
             $firstnamedrop=$this->input->post('firstnamedrop');
             $lastnamedrop=$this->input->post('lastnamedrop');
@@ -57,7 +58,7 @@ class Cartinfo extends CI_Model{
             }
             else{
                 $deliveryname=$firstnamedrop.' '.$lastnamedrop;
-                $deliverymobile=$phone;
+                $deliverymobile=$phoneother;
                 $deliverymobile2=$phone2;
                 $deliveryaddressone=$streetaddress1drop.' '.$citydrop;
                 $deliverycity=$citydrop;

@@ -76,7 +76,7 @@
                             <button type="submit" class="btn button btn-rounded btn-coupon mb-2" name="apply_coupon" value="Apply coupon">Apply Coupon</button>
                         </div>
                     </div> -->
-
+<?php  print_r($profileinfo->profileinfo[0]->phone); ?>
                     <form class="form checkout-form" action="<?php echo base_url() ?>Cart/Checkpayment" method="post">
                         <div class="row mb-9">
                             <div class="col-lg-7 pr-lg-4 mb-4">
@@ -126,7 +126,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Phone *</label>
-                                            <input type="text" class="form-control form-control-md text-dark bg-grey" value="<?php if(!empty($profileinfo->profileinfo[0]->phone)){echo $profileinfo->profileinfo[0]->phone;} ?>" name="phone" readonly required>
+                                            <input type="text" class="form-control form-control-md text-dark bg-grey" name="phone" value="<?php if(!empty($profileinfo->profileinfo[0]->phone)){echo $profileinfo->profileinfo[0]->phone;} ?>" readonly required>
                                         </div>
                                     </div>
                                 </div>
@@ -174,7 +174,7 @@
                                         <div class="col-xs-6">
                                             <div class="form-group">
                                             <label>Phone *</label>
-                                            <input type="text" class="form-control form-control-md text-dark"  name="phone" id="phone">
+                                            <input type="text" class="form-control form-control-md text-dark"  name="phoneother" id="phone">
                                             </div>
                                         </div>
                                         <div class="col-xs-6">

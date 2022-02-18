@@ -608,7 +608,7 @@
 															</div>
 															<div class="col-lg-6 mb-20 pb-3">
 																<label class="text-dark font-weight-bold">City <span>*</span></label>
-																<select class="form-control form-control-sm  selectpicker" style="width:100%; display:none"  id="regcity" required>
+																<select class="form-control form-control-sm  selectpicker" style="width:100%; display:none" name="regcity"  id="regcity" required>
 																	<option value="">Select</option>
 																	<?php foreach($citylist->result() as $rowcitylist){ ?>
 																	<option value="<?php echo $rowcitylist->city ?>" <?php if($this->session->userdata('loggedin')==1){if($rowcitylist->city==$customerprofile->row(0)->city){echo 'selected';}} ?>><?php echo $rowcitylist->city ?></option>
@@ -919,7 +919,7 @@
                     success: function(res) {
 
                         let json = $.parseJSON(res);
-                        //console.log(json.order)
+                        console.log(json.customer_details)
 
                         let order = ''+
                             '<h3> Order #'+json.order.idtbl_order+' </h3>'+
@@ -1035,6 +1035,25 @@
 							}
                             '</div> ' +
                             '</div>'
+
+
+
+							items += '' +
+                            '<div class="row">' +
+                            '<div class="col-md-12 text-left modal-body">' +
+							'Customer Name : <strong> '+ json.customer_details.name +'</strong> <br>';
+							items +='Customer Address : <strong> '+ json.customer_details.addressone +'</strong> <br>';
+							if(json.customer_details.mobiletwo == ''){
+								items +='Customer Phone : <strong> '+ json.customer_details.mobile +'</strong> <br>';
+                        	}else{
+								items +='Customer Phone : <strong> '+ json.customer_details.mobile +'</strong> <br>';
+								items +='Customer Other Phone  : <strong> '+ json.customer_details.mobiletwo +'</strong> <br>';
+                        	}
+                            '</div> ' +
+                            '</div>'
+
+
+
 
                         $('#order_response').html(order + items);
 

@@ -175,6 +175,12 @@ class Loginregister extends CI_Controller {
         $order_row = $order_query->row();
 
         $this->db->select('*');
+        $this->db->from('tbl_order_delivery');
+        $this->db->where('tbl_order_idtbl_order', $id);
+        $details_query = $this->db->get();
+        $details_row = $details_query->row();
+
+        $this->db->select('*');
         $this->db->from('tbl_order_detail');
         $this->db->where('tbl_order_idtbl_order', $id);
         $items_query = $this->db->get();
@@ -193,7 +199,8 @@ class Loginregister extends CI_Controller {
 
         $data = array(
             'order' => $order_row,
-            'order_details' => $item_data
+            'order_details' => $item_data,
+            'customer_details' => $details_row
         );
 
         echo json_encode($data);

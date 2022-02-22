@@ -34,9 +34,6 @@ $functionmenu=$this->router->fetch_method();
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/vendor/animate/animate.min.css');?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/vendor/magnific-popup/magnific-popup.min.css');?>">
 
-<!--Select2 css-->
-<link rel="stylesheet" href="<?php echo base_url()?>assets/css/select2.css">
-
 <!-- Default CSS -->
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/demo7.min.css');?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.min.css');?>"> 

@@ -1,13 +1,23 @@
 <?php
+
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+
+
 class Product extends CI_Controller {
+
     public function Productlist($x, $y){
+
         $this->load->model('Productinfo');
+
         $this->load->model('Home');
+
         $result['productcategory']=$this->Home->ProductCategory();
+
         $sql="SELECT `idtbl_product` FROM `tbl_product` WHERE `status`=? AND `tbl_product_category_idtbl_product_category`=?";
+
         $respond=$this->db->query($sql, array(1, $x));
+
 
         $config['base_url'] = base_url().'Product/Productlist/'.$x.'/'.$y.'/Page/';
         $config['use_page_numbers'] = TRUE;
@@ -60,20 +70,37 @@ class Product extends CI_Controller {
 
        
         $this->load->view('shop', $result);
+
      
+
     }
 
+
+
    
+
     public function Productview($x, $y){
+
         $this->load->model('Home');
+
         $result['productcategory']=$this->Home->ProductCategory();
+
         $this->load->model('Productinfo');
+
         $result['productdetail']=$this->Productinfo->Productdetail($x);
+
         $result['productimages']=$this->Productinfo->Productimages($x);
+
         $result['productcatogory']=$this->Productinfo->Productcategory($x);
+
         $result['relatedproduct']=$this->Productinfo->Productrelated($x);
+
         $result['upsellproduct']=$this->Productinfo->Productupsell($x);
+
         $result['productinfo']=$this->Productinfo->Productin($x);
+
         $this->load->view('productview', $result);
+
     }
+
 }

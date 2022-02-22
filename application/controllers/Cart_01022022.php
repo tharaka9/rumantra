@@ -13,11 +13,12 @@ class Cart extends CI_Controller {
     public function Checkout(){
         $this->load->model('Home');
         $this->load->model('Cartinfo');
-        
-        $result['productcategory']=$this->Home->ProductCategory();
+        $this->load->model('Loginregisterinfo');
 
+        $result['productcategory']=$this->Home->ProductCategory();
+		$result['profileinfo']=$this->Loginregisterinfo->Profileinfo();
 		$result['citylist']=$this->Cartinfo->Citylist();
-	
+
 		$this->load->view('checkout', $result);
     }
   
@@ -41,21 +42,25 @@ class Cart extends CI_Controller {
 		$this->db->from('tbl_stock');
 		$this->db->where('tbl_product_idtbl_product', $productID);
 		$stockcheck = $this->db->get();
-
+ 
+    
         $this->db->select('*');
 		$this->db->from('tbl_product');
 		$this->db->where('idtbl_product', $productID);
 		$query = $this->db->get();
 		$row=$query->row_array();
         
+        
         if($stockcheck->row(0)->qty>0){
             $data = array(           
                 'id'      => $row['idtbl_product'],
                 'qty'     => $qty,
                 'price'   => $row['price'],
-                'name'    => $row['productname'],
+                'name'    => preg_replace('/[^a-zA-Z0-9-_\.]/','', $row['productname']),
                 'options' => array('shortdesc' => $row['shortdesc'], 'listimagepath' => $row['listimagepath'])
             );
+
+
 
             $this->cart->insert($data);
         }
@@ -263,5 +268,15 @@ class Cart extends CI_Controller {
     public function Checkcityship(){
         $this->load->model('Cartinfo');
         $result['fetch_data']=$this->Cartinfo->Checkcityship();
+    }
+    public function Checkpayment(){
+        $this->load->model('Cartinfo');
+        $result['fetch_data']=$this->Cartinfo->Orderproceed();
+    }
+
+    public function Requestcomplete(){
+        $this->load->model('Cartinfo');
+		$result['topmenucategory']=$this->Cartinfo->Topmenucategory();
+		$this->load->view('requestcomplete', $result);
     }
 }

@@ -7,10 +7,6 @@
 
     <title>Cart - Rumantra - By ERav Technology</title>
 
-    <meta name="keywords" content="HTML5 Template" />
-    <meta name="description" content="Wolmart eCommmerce Marketplace HTML Template">
-    <meta name="author" content="D-THEMES">
-
     <?php include "include/headerscript1.php"; ?>
 </head>
 

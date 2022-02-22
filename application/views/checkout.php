@@ -76,7 +76,7 @@
                             <button type="submit" class="btn button btn-rounded btn-coupon mb-2" name="apply_coupon" value="Apply coupon">Apply Coupon</button>
                         </div>
                     </div> -->
-<?php  print_r($profileinfo->profileinfo[0]->phone); ?>
+
                     <form class="form checkout-form" action="<?php echo base_url() ?>Cart/Checkpayment" method="post">
                         <div class="row mb-9">
                             <div class="col-lg-7 pr-lg-4 mb-4">
@@ -172,7 +172,7 @@
 
                                     <div class="row gutter-sm">
                                         <div class="col-xs-6">
-                                            <div class="form-group">
+                                        <div class="form-group">
                                             <label>Phone *</label>
                                             <input type="text" class="form-control form-control-md text-dark"  name="phoneother" id="phone">
                                             </div>
@@ -377,7 +377,11 @@
             }); 
 
 
-            $("#shipping-toggle").change(function() {alert('IN');
+
+
+
+
+            $("#shipping-toggle").change(function() {//alert('IN');
                 if(this.checked) {
                     $('#firstnamedrop').prop('required',true);
                     $('#lastnamedrop').prop('required',true);

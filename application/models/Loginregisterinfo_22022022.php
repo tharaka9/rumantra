@@ -1879,21 +1879,12 @@ class Loginregisterinfo extends CI_Model{
         $lvlfoursum=array();
         $lvlfivesum=array();
         $lvlsixsum=array();
-        $lvlsevensum=array();
-        $lvleightsum=array();
         $dropsum=array();
-
-        $previuscomtotal=0;
-        $cutoffdate='';
         
         $userID=$_SESSION['user_id'];
 
         $fromdate=date("Y-m-d", strtotime($this->input->post('fromdate')));
         $todate=date("Y-m-d", strtotime($this->input->post('todate')));
-
-        $previousmonth=date("Y-m", strtotime ( '-1 month' , strtotime ( $fromdate ) )) ;
-        $previousmonthfirst=date("Y-m-01", strtotime ( '-1 month' , strtotime ( $fromdate ) )) ;
-        $nextmonth=date("Y-m-05", strtotime ( '+1 month' , strtotime ( $fromdate ) )) ;
 
         $sqlusercode="SELECT `refcode`, `idtbl_customer` FROM `tbl_customer` WHERE `tbl_user_idtbl_user`=? AND `status`=?";
         $respondusercode=$this->db->query($sqlusercode, array($userID, 1));
@@ -1901,21 +1892,10 @@ class Loginregisterinfo extends CI_Model{
         $userrefcode=$respondusercode->row(0)->refcode;
         $customerID=$respondusercode->row(0)->idtbl_customer;
 
-        $sqlcutoff="SELECT `cutdate` FROM `tbl_cutoff_info` WHERE `status`=? AND `month`=?";
-        $respondcutoff=$this->db->query($sqlcutoff, array(1, $previousmonth)); 
-
-        if($respondcutoff->num_rows()>0){
-            $cutoffdate=$respondcutoff->row(0)->cutdate;
-
-            $sqlcutoffcomm="SELECT SUM((`lvl1totcom`+`lvl2totcom`+`lvl3totcom`+`lvl4totcom`+`lvl5totcom`+`lvl6totcom`+`lvl7totcom`+`lvl8totcom`)-`returnprice`) AS `totalcom` FROM `tbl_customer_monthly_commission_cutoff` WHERE `month`=? AND `customerid`=? AND `status`=?";
-            $respondcutoffcomm=$this->db->query($sqlcutoffcomm, array($previousmonthfirst, $customerID, 1));
-
-            if($respondcutoffcomm->row(0)->totalcom>0){
-                $previuscomtotal=$respondcutoffcomm->row(0)->totalcom-15;
-            }
-        }
-
         if($userrefcode!=''){
+            $sqllvlone="SELECT `tbl_customer`.`firstname`, `tbl_customer`.`lastname`, SUM(`tbl_order`.`total`) AS `total` FROM `tbl_order` LEFT JOIN `tbl_customer` ON `tbl_customer`.`idtbl_customer`=`tbl_order`.`tbl_customer_idtbl_customer` WHERE `tbl_order`.`tbl_customer_idtbl_customer` IN (SELECT `tbl_customer_idtbl_customer` FROM `tbl_cutomer_level` WHERE `level1`=? AND `status`=?) AND `tbl_order`.`status`=? AND `tbl_order`.`acceptstatus`=? AND `tbl_order`.`orderdate` BETWEEN ? AND ? GROUP BY `tbl_customer_idtbl_customer`";
+            $respondlvlone=$this->db->query($sqllvlone, array($userrefcode, 1, 1, 1, $fromdate, $todate));
+
             $sqllvltwo="SELECT `tbl_customer`.`idtbl_customer`, `tbl_customer`.`firstname`, `tbl_customer`.`lastname`, `tbl_cutomer_commission`.`commission` FROM `tbl_cutomer_commission` LEFT JOIN `tbl_order` ON `tbl_order`.`idtbl_order`=`tbl_cutomer_commission`.`orderid` LEFT JOIN `tbl_customer` ON `tbl_customer`.`idtbl_customer`=`tbl_order`.`tbl_customer_idtbl_customer` WHERE `tbl_cutomer_commission`.`orderdate` BETWEEN ? AND ? AND `tbl_cutomer_commission`.`status`=1 AND `tbl_cutomer_commission`.`level`=? AND `tbl_cutomer_commission`.`customerid`=?";
             $respondlvltwo=$this->db->query($sqllvltwo, array($fromdate, $todate, 2, $customerID));
 
@@ -2001,40 +1981,6 @@ class Loginregisterinfo extends CI_Model{
                 } 
             }
 
-            $sqllvlseven="SELECT `tbl_customer`.`idtbl_customer`, `tbl_customer`.`firstname`, `tbl_customer`.`lastname`, `tbl_cutomer_commission`.`commission` FROM `tbl_cutomer_commission` LEFT JOIN `tbl_order` ON `tbl_order`.`idtbl_order`=`tbl_cutomer_commission`.`orderid` LEFT JOIN `tbl_customer` ON `tbl_customer`.`idtbl_customer`=`tbl_order`.`tbl_customer_idtbl_customer` WHERE `tbl_cutomer_commission`.`orderdate` BETWEEN ? AND ? AND `tbl_cutomer_commission`.`status`=1 AND `tbl_cutomer_commission`.`level`=? AND `tbl_cutomer_commission`.`customerid`=?";
-            $respondlvlseven=$this->db->query($sqllvlseven, array($fromdate, $todate, 7, $customerID));
-
-            // print_r($respondlvlseven->result());
-
-            foreach ($respondlvlseven->result() as $rowlvlseven){ 
-                // CHECK IF ITEM IS SET TO PREVENT "Undefined offset" ERRORS... 
-                if (!isset($lvlsevensum[$rowlvlseven->idtbl_customer])) { 
-                    // INITIATE ARRAYS.. THE CUSTOMER ID IS USED AS ARRAY KEY 
-                    $lvlsevensum[$rowlvlseven->idtbl_customer]['firstname'] = $rowlvlseven->firstname;
-                    $lvlsevensum[$rowlvlseven->idtbl_customer]['lastname'] = $rowlvlseven->lastname;
-                    $lvlsevensum[$rowlvlseven->idtbl_customer]['commission'] = $rowlvlseven->commission;       
-                } else { // ARRAYS ALREADY SET.. USE ASSIGNMENT OPERATORS TO SUM UP THE VALUES
-                    $lvlsevensum[$rowlvlseven->idtbl_customer]['commission'] += $rowlvlseven->commission;
-                } 
-            }
-
-            $sqllvleight="SELECT `tbl_customer`.`idtbl_customer`, `tbl_customer`.`firstname`, `tbl_customer`.`lastname`, `tbl_cutomer_commission`.`commission` FROM `tbl_cutomer_commission` LEFT JOIN `tbl_order` ON `tbl_order`.`idtbl_order`=`tbl_cutomer_commission`.`orderid` LEFT JOIN `tbl_customer` ON `tbl_customer`.`idtbl_customer`=`tbl_order`.`tbl_customer_idtbl_customer` WHERE `tbl_cutomer_commission`.`orderdate` BETWEEN ? AND ? AND `tbl_cutomer_commission`.`status`=1 AND `tbl_cutomer_commission`.`level`=? AND `tbl_cutomer_commission`.`customerid`=?";
-            $respondlvleight=$this->db->query($sqllvleight, array($fromdate, $todate, 8, $customerID));
-
-            // print_r($respondlvleight->result());
-
-            foreach ($respondlvleight->result() as $rowlvleight){ 
-                // CHECK IF ITEM IS SET TO PREVENT "Undefined offset" ERRORS... 
-                if (!isset($lvleightsum[$rowlvleight->idtbl_customer])) { 
-                    // INITIATE ARRAYS.. THE CUSTOMER ID IS USED AS ARRAY KEY 
-                    $lvleightsum[$rowlvleight->idtbl_customer]['firstname'] = $rowlvleight->firstname;
-                    $lvleightsum[$rowlvleight->idtbl_customer]['lastname'] = $rowlvleight->lastname;
-                    $lvleightsum[$rowlvleight->idtbl_customer]['commission'] = $rowlvleight->commission;       
-                } else { // ARRAYS ALREADY SET.. USE ASSIGNMENT OPERATORS TO SUM UP THE VALUES
-                    $lvleightsum[$rowlvleight->idtbl_customer]['commission'] += $rowlvleight->commission;
-                } 
-            }
-
             $sqldrop="SELECT `tbl_customer`.`idtbl_customer`, `tbl_customer`.`firstname`, `tbl_customer`.`lastname`, `tbl_cutomer_commission`.`commission` FROM `tbl_cutomer_commission` LEFT JOIN `tbl_order` ON `tbl_order`.`idtbl_order`=`tbl_cutomer_commission`.`orderid` LEFT JOIN `tbl_customer` ON `tbl_customer`.`idtbl_customer`=`tbl_order`.`tbl_customer_idtbl_customer` WHERE `tbl_cutomer_commission`.`orderdate` BETWEEN ? AND ? AND `tbl_cutomer_commission`.`status`=1 AND `tbl_cutomer_commission`.`level`=? AND `tbl_cutomer_commission`.`customerid`=?";
             $responddrop=$this->db->query($sqldrop, array($fromdate, $todate, 0, $customerID));
 
@@ -2056,31 +2002,16 @@ class Loginregisterinfo extends CI_Model{
         $sqlreturn="SELECT `orderdate`, `comment`, `returnprice`, `tbl_order_idtbl_order` FROM `tbl_order_return` WHERE `status`=? AND `tbl_customer_idtbl_customer`=? AND `orderdate` BETWEEN ? AND ?";
         $respondreturn=$this->db->query($sqlreturn, array(1, $customerID, $fromdate, $todate));
 
-        $checksale="SELECT SUM(`nettotal`-`shipcost`) AS `totalsale` FROM `tbl_order` WHERE `orderdate` BETWEEN ? AND ? AND `status`=? AND `acceptstatus`=? AND `paystatus`=? AND `tbl_customer_idtbl_customer`=?";
-        $respondchecksale=$this->db->query($checksale, array($fromdate, $todate, 1, 1, 1, $customerID));
-
         $netcomlvlone=0;
         $netcomlvltwo=0;
         $netcomlvlthree=0;
         $netcomlvlfour=0;
         $netcomlvlfive=0;
         $netcomlvlsix=0;
-        $netcomlvlseven=0;
-        $netcomlvleight=0;
         $netcomdrop=0;
         $netcomreturn=0;
 
         $html='';
-        if($respondchecksale->row(0)->totalsale<1000){
-        $html.='
-        <div class="row mb-2">
-            <div class="col-12">
-                <div class="alert alert-icon alert-error alert-bg alert-inline" role="alert">
-                    ඔබගේ මාසික ඉලක්කය  රු.1250, එනම් ඔබගේ 20%  discount අඩු වූ පසු රු.1000 හෝ ඊට  වැඩි අවම මාසික ඇණවුම් ඉලක්කය සපුරා නැති වීම හේතුවෙන් ඔබගේ කොමිස් මුදල් ලබා දීම තාවකාලිකව අත් හිටුවා ඇත.
-                </div>
-            </div>
-        </div>';
-        }
         $html.='
         <div class="card-deck">
             <div class="card">
@@ -2231,66 +2162,6 @@ class Loginregisterinfo extends CI_Model{
             </div>
             <div class="card">
                 <div class="card-body p-2">
-                    <h6 class="small font-weight-bold title-style"><span>Level 07 Commission</span></h6>
-                    <table class="table table-bordered table-striped table-sm nowrap">
-                        <thead>
-                            <tr>
-                                <th>Customer</th>
-                                <th class="text-right">Total</th>
-                            </tr>
-                        </thead>
-                        <tbody>';
-                            foreach($lvlsevensum as $rowlvlseven){
-                                $fullname=$rowlvlseven['firstname'].' '.$rowlvlseven['lastname'];
-                                
-                            $html.='<tr>
-                                <td nowrap>'.substr($fullname, 0, 20).'...</td>
-                                <td class="text-right">';$html.=number_format($rowlvlseven['commission'],2); $netcomlvlseven=$netcomlvlseven+$rowlvlseven['commission'];$html.='</td>
-                            </tr>';
-                            }
-                        $html.='</tbody>
-                        <tfoot>
-                            <tr>
-                                <th>&nbsp;</th>
-                                <th class="text-right"><input type="hidden" id="lvlsevennettotal" value="'.$netcomlvlseven.'">'.number_format($netcomlvlseven, 2).'</th>
-                            </tr>
-                        </tfoot>
-                    </table>
-                </div>
-            </div>
-        </div>
-        <div class="card-deck mt-3">
-            <div class="card">
-                <div class="card-body p-2">
-                    <h6 class="small font-weight-bold title-style"><span>Level 08 Commission</span></h6>
-                    <table class="table table-bordered table-striped table-sm nowrap">
-                        <thead>
-                            <tr>
-                                <th>Customer</th>
-                                <th class="text-right">Total</th>
-                            </tr>
-                        </thead>
-                        <tbody>';
-                            foreach($lvleightsum as $rowlvleight){
-                                $fullname=$rowlvleight['firstname'].' '.$rowlvleight['lastname'];
-                                
-                            $html.='<tr>
-                                <td nowrap>'.substr($fullname, 0, 20).'...</td>
-                                <td class="text-right">';$html.=number_format($rowlvleight['commission'],2); $netcomlvleight=$netcomlvleight+$rowlvleight['commission'];$html.='</td>
-                            </tr>';
-                            }
-                        $html.='</tbody>
-                        <tfoot>
-                            <tr>
-                                <th>&nbsp;</th>
-                                <th class="text-right"><input type="hidden" id="lvleightnettotal" value="'.$netcomlvleight.'">'.number_format($netcomlvleight, 2).'</th>
-                            </tr>
-                        </tfoot>
-                    </table>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-body p-2">
                     <h6 class="small font-weight-bold title-style text-danger"><span>Drop Ship Commission</span></h6>
                     <table class="table table-bordered table-striped table-sm nowrap">
                         <thead>
@@ -2318,7 +2189,6 @@ class Loginregisterinfo extends CI_Model{
                     </table>
                 </div>
             </div>
-            <div class="card border-0">&nbsp;</div>
         </div>
         <div class="card-deck mt-3">
             <div class="card">
@@ -2355,7 +2225,6 @@ class Loginregisterinfo extends CI_Model{
                 </div>
             </div>
         </div>
-        <input type="hidden" name="previoustotal" id="previoustotal" value="'.$previuscomtotal.'">
         ';
         
         echo $html;
@@ -3080,8 +2949,6 @@ class Loginregisterinfo extends CI_Model{
         $lvlfoursum=array();
         $lvlfivesum=array();
         $lvlsixsum=array();
-        $lvlsevensum=array();
-        $lvleightsum=array();
         $dropsum=array();
         
         $userID=$_SESSION['user_id'];
@@ -3096,7 +2963,10 @@ class Loginregisterinfo extends CI_Model{
         $customerID=$respondusercode->row(0)->idtbl_customer;
 
         if($userrefcode!=''){
-            $sqllvltwo="SELECT `tbl_order`.`idtbl_order`, `tbl_order`.`orderdate`, (`tbl_order`.`total`*10/100) AS `lvlcom`, `tbl_customer`.`firstname`, `tbl_customer`.`lastname`, `tbl_customer`.`idtbl_customer` FROM `tbl_order` LEFT JOIN `tbl_customer` ON `tbl_customer`.`idtbl_customer`=`tbl_order`.`tbl_customer_idtbl_customer` WHERE `tbl_order`.`acceptstatus`=? AND `tbl_order`.`status`=? AND `tbl_order`.`tbl_customer_idtbl_customer` IN (SELECT `tbl_customer_idtbl_customer` FROM `tbl_cutomer_level` WHERE `level2`=? AND `status`=?) AND `tbl_order`.`orderdate` BETWEEN ? AND ?";
+            $sqllvlone="SELECT `tbl_order`.`idtbl_order`, `tbl_order`.`orderdate`, (`tbl_order`.`total`*20/100) AS `lvlcom`, `tbl_customer`.`firstname`, `tbl_customer`.`lastname`, `tbl_customer`.`idtbl_customer` FROM `tbl_order` LEFT JOIN `tbl_customer` ON `tbl_customer`.`idtbl_customer`=`tbl_order`.`tbl_customer_idtbl_customer` WHERE `tbl_order`.`acceptstatus`=? AND `tbl_order`.`status`=? AND `tbl_order`.`tbl_customer_idtbl_customer` IN (SELECT `tbl_customer_idtbl_customer` FROM `tbl_cutomer_level` WHERE `level1`=? AND `status`=?) AND `tbl_order`.`orderdate` BETWEEN ? AND ?";
+            $respondlvlone=$this->db->query($sqllvlone, array(1, 1, $userrefcode, 1, $fromdate, $todate));
+
+            $sqllvltwo="SELECT `tbl_order`.`idtbl_order`, `tbl_order`.`orderdate`, (`tbl_order`.`total`*15/100) AS `lvlcom`, `tbl_customer`.`firstname`, `tbl_customer`.`lastname`, `tbl_customer`.`idtbl_customer` FROM `tbl_order` LEFT JOIN `tbl_customer` ON `tbl_customer`.`idtbl_customer`=`tbl_order`.`tbl_customer_idtbl_customer` WHERE `tbl_order`.`acceptstatus`=? AND `tbl_order`.`status`=? AND `tbl_order`.`tbl_customer_idtbl_customer` IN (SELECT `tbl_customer_idtbl_customer` FROM `tbl_cutomer_level` WHERE `level2`=? AND `status`=?) AND `tbl_order`.`orderdate` BETWEEN ? AND ?";
             $respondlvltwo=$this->db->query($sqllvltwo, array(1, 1, $userrefcode, 1, $fromdate, $todate));
 
             // print_r($respondlvlthree->result())
@@ -3130,7 +3000,7 @@ class Loginregisterinfo extends CI_Model{
                 } 
             }
 
-            $sqllvlfour="SELECT `tbl_order`.`idtbl_order`, `tbl_order`.`orderdate`, (`tbl_order`.`total`*2.5/100) AS `lvlcom`, `tbl_customer`.`firstname`, `tbl_customer`.`lastname`, `tbl_customer`.`idtbl_customer` FROM `tbl_order` LEFT JOIN `tbl_customer` ON `tbl_customer`.`idtbl_customer`=`tbl_order`.`tbl_customer_idtbl_customer` WHERE `tbl_order`.`acceptstatus`=? AND `tbl_order`.`status`=? AND `tbl_order`.`tbl_customer_idtbl_customer` IN (SELECT `tbl_customer_idtbl_customer` FROM `tbl_cutomer_level` WHERE `level4`=? AND `status`=?) AND `tbl_order`.`orderdate` BETWEEN ? AND ?";
+            $sqllvlfour="SELECT `tbl_order`.`idtbl_order`, `tbl_order`.`orderdate`, (`tbl_order`.`total`*5/100) AS `lvlcom`, `tbl_customer`.`firstname`, `tbl_customer`.`lastname`, `tbl_customer`.`idtbl_customer` FROM `tbl_order` LEFT JOIN `tbl_customer` ON `tbl_customer`.`idtbl_customer`=`tbl_order`.`tbl_customer_idtbl_customer` WHERE `tbl_order`.`acceptstatus`=? AND `tbl_order`.`status`=? AND `tbl_order`.`tbl_customer_idtbl_customer` IN (SELECT `tbl_customer_idtbl_customer` FROM `tbl_cutomer_level` WHERE `level4`=? AND `status`=?) AND `tbl_order`.`orderdate` BETWEEN ? AND ?";
             $respondlvlfour=$this->db->query($sqllvlfour, array(1, 1, $userrefcode, 1, $fromdate, $todate));
 
             // print_r($respondlvlthree->result())
@@ -3164,7 +3034,7 @@ class Loginregisterinfo extends CI_Model{
                 } 
             }
 
-            $sqllvlsix="SELECT `tbl_order`.`idtbl_order`, `tbl_order`.`orderdate`, (`tbl_order`.`total`*2/100) AS `lvlcom`, `tbl_customer`.`firstname`, `tbl_customer`.`lastname`, `tbl_customer`.`idtbl_customer` FROM `tbl_order` LEFT JOIN `tbl_customer` ON `tbl_customer`.`idtbl_customer`=`tbl_order`.`tbl_customer_idtbl_customer` WHERE `tbl_order`.`acceptstatus`=? AND `tbl_order`.`status`=? AND `tbl_order`.`tbl_customer_idtbl_customer` IN (SELECT `tbl_customer_idtbl_customer` FROM `tbl_cutomer_level` WHERE `level6`=? AND `status`=?) AND `tbl_order`.`orderdate` BETWEEN ? AND ?";
+            $sqllvlsix="SELECT `tbl_order`.`idtbl_order`, `tbl_order`.`orderdate`, (`tbl_order`.`total`*2.5/100) AS `lvlcom`, `tbl_customer`.`firstname`, `tbl_customer`.`lastname`, `tbl_customer`.`idtbl_customer` FROM `tbl_order` LEFT JOIN `tbl_customer` ON `tbl_customer`.`idtbl_customer`=`tbl_order`.`tbl_customer_idtbl_customer` WHERE `tbl_order`.`acceptstatus`=? AND `tbl_order`.`status`=? AND `tbl_order`.`tbl_customer_idtbl_customer` IN (SELECT `tbl_customer_idtbl_customer` FROM `tbl_cutomer_level` WHERE `level6`=? AND `status`=?) AND `tbl_order`.`orderdate` BETWEEN ? AND ?";
             $respondlvlsix=$this->db->query($sqllvlsix, array(1, 1, $userrefcode, 1, $fromdate, $todate));
 
             // print_r($respondlvlsix->result());
@@ -3178,40 +3048,6 @@ class Loginregisterinfo extends CI_Model{
                     $lvlsixsum[$rowlvlsix->idtbl_customer]['commission'] = $rowlvlsix->lvlcom;       
                 } else { // ARRAYS ALREADY SET.. USE ASSIGNMENT OPERATORS TO SUM UP THE VALUES
                     $lvlsixsum[$rowlvlsix->idtbl_customer]['commission'] += $rowlvlsix->lvlcom;
-                } 
-            }
-
-            $sqllvlseven="SELECT `tbl_order`.`idtbl_order`, `tbl_order`.`orderdate`, (`tbl_order`.`total`*1.5/100) AS `lvlcom`, `tbl_customer`.`firstname`, `tbl_customer`.`lastname`, `tbl_customer`.`idtbl_customer` FROM `tbl_order` LEFT JOIN `tbl_customer` ON `tbl_customer`.`idtbl_customer`=`tbl_order`.`tbl_customer_idtbl_customer` WHERE `tbl_order`.`acceptstatus`=? AND `tbl_order`.`status`=? AND `tbl_order`.`tbl_customer_idtbl_customer` IN (SELECT `tbl_customer_idtbl_customer` FROM `tbl_cutomer_level` WHERE `level7`=? AND `status`=?) AND `tbl_order`.`orderdate` BETWEEN ? AND ?";
-            $respondlvlseven=$this->db->query($sqllvlseven, array(1, 1, $userrefcode, 1, $fromdate, $todate));
-
-            // print_r($respondlvlseven->result());
-
-            foreach ($respondlvlseven->result() as $rowlvlseven){ 
-                // CHECK IF ITEM IS SET TO PREVENT "Undefined offset" ERRORS... 
-                if (!isset($lvlsevensum[$rowlvlseven->idtbl_customer])) { 
-                    // INITIATE ARRAYS.. THE CUSTOMER ID IS USED AS ARRAY KEY 
-                    $lvlsevensum[$rowlvlseven->idtbl_customer]['firstname'] = $rowlvlseven->firstname;
-                    $lvlsevensum[$rowlvlseven->idtbl_customer]['lastname'] = $rowlvlseven->lastname;
-                    $lvlsevensum[$rowlvlseven->idtbl_customer]['commission'] = $rowlvlseven->lvlcom;       
-                } else { // ARRAYS ALREADY SET.. USE ASSIGNMENT OPERATORS TO SUM UP THE VALUES
-                    $lvlsevensum[$rowlvlseven->idtbl_customer]['commission'] += $rowlvlseven->lvlcom;
-                } 
-            }
-
-            $sqllvleight="SELECT `tbl_order`.`idtbl_order`, `tbl_order`.`orderdate`, (`tbl_order`.`total`*1.5/100) AS `lvlcom`, `tbl_customer`.`firstname`, `tbl_customer`.`lastname`, `tbl_customer`.`idtbl_customer` FROM `tbl_order` LEFT JOIN `tbl_customer` ON `tbl_customer`.`idtbl_customer`=`tbl_order`.`tbl_customer_idtbl_customer` WHERE `tbl_order`.`acceptstatus`=? AND `tbl_order`.`status`=? AND `tbl_order`.`tbl_customer_idtbl_customer` IN (SELECT `tbl_customer_idtbl_customer` FROM `tbl_cutomer_level` WHERE `level8`=? AND `status`=?) AND `tbl_order`.`orderdate` BETWEEN ? AND ?";
-            $respondlvleight=$this->db->query($sqllvleight, array(1, 1, $userrefcode, 1, $fromdate, $todate));
-
-            // print_r($respondlvleight->result());
-
-            foreach ($respondlvleight->result() as $rowlvleight){ 
-                // CHECK IF ITEM IS SET TO PREVENT "Undefined offset" ERRORS... 
-                if (!isset($lvleightsum[$rowlvleight->idtbl_customer])) { 
-                    // INITIATE ARRAYS.. THE CUSTOMER ID IS USED AS ARRAY KEY 
-                    $lvleightsum[$rowlvleight->idtbl_customer]['firstname'] = $rowlvleight->firstname;
-                    $lvleightsum[$rowlvleight->idtbl_customer]['lastname'] = $rowlvleight->lastname;
-                    $lvleightsum[$rowlvleight->idtbl_customer]['commission'] = $rowlvleight->lvlcom;       
-                } else { // ARRAYS ALREADY SET.. USE ASSIGNMENT OPERATORS TO SUM UP THE VALUES
-                    $lvleightsum[$rowlvleight->idtbl_customer]['commission'] += $rowlvleight->lvlcom;
                 } 
             }
 
@@ -3242,8 +3078,6 @@ class Loginregisterinfo extends CI_Model{
         $netcomlvlfour=0;
         $netcomlvlfive=0;
         $netcomlvlsix=0;
-        $netcomlvlseven=0;
-        $netcomlvleight=0;
         $netcomdrop=0;
         $netcomreturn=0;
 
@@ -3398,66 +3232,6 @@ class Loginregisterinfo extends CI_Model{
             </div>
             <div class="card">
                 <div class="card-body p-2">
-                    <h6 class="small font-weight-bold title-style"><span>Level 076 Commission</span></h6>
-                    <table class="table table-bordered table-striped table-sm nowrap">
-                        <thead>
-                            <tr>
-                                <th>Customer</th>
-                                <th class="text-right">Total</th>
-                            </tr>
-                        </thead>
-                        <tbody>';
-                            foreach($lvlsevensum as $rowlvlseven){
-                                $fullname=$rowlvlseven['firstname'].' '.$rowlvlseven['lastname'];
-                                
-                            $html.='<tr>
-                                <td nowrap>'.substr($fullname, 0, 20).'...</td>
-                                <td class="text-right">';$html.=number_format($rowlvlseven['commission'],2); $netcomlvlseven=$netcomlvlseven+$rowlvlseven['commission'];$html.='</td>
-                            </tr>';
-                            }
-                        $html.='</tbody>
-                        <tfoot>
-                            <tr>
-                                <th>&nbsp;</th>
-                                <th class="text-right"><input type="hidden" id="roughlylvlsevennettotal" value="'.$netcomlvlseven.'">'.number_format($netcomlvlseven, 2).'</th>
-                            </tr>
-                        </tfoot>
-                    </table>
-                </div>
-            </div>
-        </div>
-        <div class="card-deck mt-3">
-            <div class="card">
-                <div class="card-body p-2">
-                    <h6 class="small font-weight-bold title-style"><span>Level 08 Commission</span></h6>
-                    <table class="table table-bordered table-striped table-sm nowrap">
-                        <thead>
-                            <tr>
-                                <th>Customer</th>
-                                <th class="text-right">Total</th>
-                            </tr>
-                        </thead>
-                        <tbody>';
-                            foreach($lvleightsum as $rowlvleight){
-                                $fullname=$rowlvleight['firstname'].' '.$rowlvleight['lastname'];
-                                
-                            $html.='<tr>
-                                <td nowrap>'.substr($fullname, 0, 20).'...</td>
-                                <td class="text-right">';$html.=number_format($rowlvleight['commission'],2); $netcomlvleight=$netcomlvleight+$rowlvleight['commission'];$html.='</td>
-                            </tr>';
-                            }
-                        $html.='</tbody>
-                        <tfoot>
-                            <tr>
-                                <th>&nbsp;</th>
-                                <th class="text-right"><input type="hidden" id="roughlylvleightnettotal" value="'.$netcomlvleight.'">'.number_format($netcomlvleight, 2).'</th>
-                            </tr>
-                        </tfoot>
-                    </table>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-body p-2">
                     <h6 class="small font-weight-bold title-style text-danger"><span>Drop Ship Commission</span></h6>
                     <table class="table table-bordered table-striped table-sm nowrap">
                         <thead>
@@ -3485,7 +3259,6 @@ class Loginregisterinfo extends CI_Model{
                     </table>
                 </div>
             </div>
-            <div class="card border-0">&nbsp;</div>
         </div>
         <div class="card-deck mt-3">
             <div class="card">
@@ -3526,6 +3299,7 @@ class Loginregisterinfo extends CI_Model{
         
         echo $html;
     }
+
     public function Getmemberlist(){
         $userID=$_SESSION['user_id'];
         $levelno=$this->input->post('levelno');
@@ -3578,6 +3352,7 @@ class Loginregisterinfo extends CI_Model{
 
         echo json_encode($obj);
     }
+
     public function Profileinfo(){
         $profilearray=array();
         if(!empty($_SESSION['user_id'])){

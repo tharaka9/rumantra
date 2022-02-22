@@ -10,882 +10,9 @@
 	<?php include "include/headerscript.php"; ?>
 
     <style>
-		.card>.list-group:first-child .list-group-item:first-child {
-			border-top-left-radius: 0.35rem;
-			border-top-right-radius: 0.35rem;
-		}
 
-		.card>.list-group:last-child .list-group-item:last-child {
-			border-bottom-right-radius: 0.35rem;
-			border-bottom-left-radius: 0.35rem;
-		}
 
-		.card-header+.list-group .list-group-item:first-child {
-			border-top: 0;
-		}
-
-		.list-group {
-			display: -webkit-box;
-			display: flex;
-			-webkit-box-orient: vertical;
-			-webkit-box-direction: normal;
-			flex-direction: column;
-			padding-left: 0;
-			margin-bottom: 0;
-		}
-
-		.list-group-item-action {
-			width: 100%;
-			color: #485260;
-			text-align: inherit;
-		}
-
-		.list-group-item-action:hover,
-		.list-group-item-action:focus {
-			z-index: 1;
-			color: #485260;
-			text-decoration: none;
-			background-color: #eff3f9;
-		}
-
-		.list-group-item-action:active {
-			color: #687281;
-			background-color: #e3e6ec;
-		}
-
-		.list-group-item {
-			position: relative;
-			display: block;
-			padding: 0.75rem 1.25rem;
-			background-color: #fff;
-			border: 1px solid rgba(0, 0, 0, 0.125);
-		}
-
-		.list-group-item:first-child {
-			border-top-left-radius: 0.35rem;
-			border-top-right-radius: 0.35rem;
-		}
-
-		.list-group-item:last-child {
-			border-bottom-right-radius: 0.35rem;
-			border-bottom-left-radius: 0.35rem;
-		}
-
-		.list-group-item.disabled,
-		.list-group-item:disabled {
-			color: #687281;
-			pointer-events: none;
-			background-color: #fff;
-		}
-
-		.list-group-item.active {
-			z-index: 2;
-			color: #fff;
-			background-color: #0061f2;
-			border-color: #0061f2;
-		}
-
-		.list-group-item+.list-group-item {
-			border-top-width: 0;
-		}
-
-		.list-group-item+.list-group-item.active {
-			margin-top: -1px;
-			border-top-width: 1px;
-		}
-
-		.list-group-horizontal {
-			-webkit-box-orient: horizontal;
-			-webkit-box-direction: normal;
-			flex-direction: row;
-		}
-
-		.list-group-horizontal .list-group-item:first-child {
-			border-bottom-left-radius: 0.35rem;
-			border-top-right-radius: 0;
-		}
-
-		.list-group-horizontal .list-group-item:last-child {
-			border-top-right-radius: 0.35rem;
-			border-bottom-left-radius: 0;
-		}
-
-		.list-group-horizontal .list-group-item.active {
-			margin-top: 0;
-		}
-
-		.list-group-horizontal .list-group-item+.list-group-item {
-			border-top-width: 1px;
-			border-left-width: 0;
-		}
-
-		.list-group-horizontal .list-group-item+.list-group-item.active {
-			margin-left: -1px;
-			border-left-width: 1px;
-		}
-
-		@media (min-width: 576px) {
-			.list-group-horizontal-sm {
-				-webkit-box-orient: horizontal;
-				-webkit-box-direction: normal;
-				flex-direction: row;
-			}
-
-			.list-group-horizontal-sm .list-group-item:first-child {
-				border-bottom-left-radius: 0.35rem;
-				border-top-right-radius: 0;
-			}
-
-			.list-group-horizontal-sm .list-group-item:last-child {
-				border-top-right-radius: 0.35rem;
-				border-bottom-left-radius: 0;
-			}
-
-			.list-group-horizontal-sm .list-group-item.active {
-				margin-top: 0;
-			}
-
-			.list-group-horizontal-sm .list-group-item+.list-group-item {
-				border-top-width: 1px;
-				border-left-width: 0;
-			}
-
-			.list-group-horizontal-sm .list-group-item+.list-group-item.active {
-				margin-left: -1px;
-				border-left-width: 1px;
-			}
-		}
-
-		@media (min-width: 768px) {
-			.list-group-horizontal-md {
-				-webkit-box-orient: horizontal;
-				-webkit-box-direction: normal;
-				flex-direction: row;
-			}
-
-			.list-group-horizontal-md .list-group-item:first-child {
-				border-bottom-left-radius: 0.35rem;
-				border-top-right-radius: 0;
-			}
-
-			.list-group-horizontal-md .list-group-item:last-child {
-				border-top-right-radius: 0.35rem;
-				border-bottom-left-radius: 0;
-			}
-
-			.list-group-horizontal-md .list-group-item.active {
-				margin-top: 0;
-			}
-
-			.list-group-horizontal-md .list-group-item+.list-group-item {
-				border-top-width: 1px;
-				border-left-width: 0;
-			}
-
-			.list-group-horizontal-md .list-group-item+.list-group-item.active {
-				margin-left: -1px;
-				border-left-width: 1px;
-			}
-		}
-
-		@media (min-width: 992px) {
-			.list-group-horizontal-lg {
-				-webkit-box-orient: horizontal;
-				-webkit-box-direction: normal;
-				flex-direction: row;
-			}
-
-			.list-group-horizontal-lg .list-group-item:first-child {
-				border-bottom-left-radius: 0.35rem;
-				border-top-right-radius: 0;
-			}
-
-			.list-group-horizontal-lg .list-group-item:last-child {
-				border-top-right-radius: 0.35rem;
-				border-bottom-left-radius: 0;
-			}
-
-			.list-group-horizontal-lg .list-group-item.active {
-				margin-top: 0;
-			}
-
-			.list-group-horizontal-lg .list-group-item+.list-group-item {
-				border-top-width: 1px;
-				border-left-width: 0;
-			}
-
-			.list-group-horizontal-lg .list-group-item+.list-group-item.active {
-				margin-left: -1px;
-				border-left-width: 1px;
-			}
-		}
-
-		@media (min-width: 1200px) {
-			.list-group-horizontal-xl {
-				-webkit-box-orient: horizontal;
-				-webkit-box-direction: normal;
-				flex-direction: row;
-			}
-
-			.list-group-horizontal-xl .list-group-item:first-child {
-				border-bottom-left-radius: 0.35rem;
-				border-top-right-radius: 0;
-			}
-
-			.list-group-horizontal-xl .list-group-item:last-child {
-				border-top-right-radius: 0.35rem;
-				border-bottom-left-radius: 0;
-			}
-
-			.list-group-horizontal-xl .list-group-item.active {
-				margin-top: 0;
-			}
-
-			.list-group-horizontal-xl .list-group-item+.list-group-item {
-				border-top-width: 1px;
-				border-left-width: 0;
-			}
-
-			.list-group-horizontal-xl .list-group-item+.list-group-item.active {
-				margin-left: -1px;
-				border-left-width: 1px;
-			}
-		}
-
-		.list-group-flush .list-group-item {
-			border-right-width: 0;
-			border-left-width: 0;
-			border-radius: 0;
-		}
-
-		.list-group-flush .list-group-item:first-child {
-			border-top-width: 0;
-		}
-
-		.list-group-flush:last-child .list-group-item:last-child {
-			border-bottom-width: 0;
-		}
-
-		.list-group-item-primary {
-			color: #00327e;
-			background-color: #b8d3fb;
-		}
-
-		.list-group-item-primary.list-group-item-action:hover,
-		.list-group-item-primary.list-group-item-action:focus {
-			color: #00327e;
-			background-color: #a0c4fa;
-		}
-
-		.list-group-item-primary.list-group-item-action.active {
-			color: #fff;
-			background-color: #00327e;
-			border-color: #00327e;
-		}
-
-		.list-group-item-secondary {
-			color: #370067;
-			background-color: #d5b8ef;
-		}
-
-		.list-group-item-secondary.list-group-item-action:hover,
-		.list-group-item-secondary.list-group-item-action:focus {
-			color: #370067;
-			background-color: #c9a3ea;
-		}
-
-		.list-group-item-secondary.list-group-item-action.active {
-			color: #fff;
-			background-color: #370067;
-			border-color: #370067;
-		}
-
-		.list-group-item-success {
-			color: #005937;
-			background-color: #b8e8d5;
-		}
-
-		.list-group-item-success.list-group-item-action:hover,
-		.list-group-item-success.list-group-item-action:focus {
-			color: #005937;
-			background-color: #a5e2ca;
-		}
-
-		.list-group-item-success.list-group-item-action.active {
-			color: #fff;
-			background-color: #005937;
-			border-color: #005937;
-		}
-
-		.list-group-item-info {
-			color: #006c6f;
-			background-color: #b8f2f3;
-		}
-
-		.list-group-item-info.list-group-item-action:hover,
-		.list-group-item-info.list-group-item-action:focus {
-			color: #006c6f;
-			background-color: #a2eeef;
-		}
-
-		.list-group-item-info.list-group-item-action.active {
-			color: #fff;
-			background-color: #006c6f;
-			border-color: #006c6f;
-		}
-
-		.list-group-item-warning {
-			color: #7f5400;
-			background-color: #fce5b8;
-		}
-
-		.list-group-item-warning.list-group-item-action:hover,
-		.list-group-item-warning.list-group-item-action:focus {
-			color: #7f5400;
-			background-color: #fbdca0;
-		}
-
-		.list-group-item-warning.list-group-item-action.active {
-			color: #fff;
-			background-color: #7f5400;
-			border-color: #7f5400;
-		}
-
-		.list-group-item-danger {
-			color: #790b00;
-			background-color: #f9bdb8;
-		}
-
-		.list-group-item-danger.list-group-item-action:hover,
-		.list-group-item-danger.list-group-item-action:focus {
-			color: #790b00;
-			background-color: #f7a7a0;
-		}
-
-		.list-group-item-danger.list-group-item-action.active {
-			color: #fff;
-			background-color: #790b00;
-			border-color: #790b00;
-		}
-
-		.list-group-item-light {
-			color: #7c7e81;
-			background-color: #fbfcfd;
-		}
-
-		.list-group-item-light.list-group-item-action:hover,
-		.list-group-item-light.list-group-item-action:focus {
-			color: #7c7e81;
-			background-color: #eaeff5;
-		}
-
-		.list-group-item-light.list-group-item-action.active {
-			color: #fff;
-			background-color: #7c7e81;
-			border-color: #7c7e81;
-		}
-
-		.list-group-item-dark {
-			color: #101722;
-			background-color: #c0c4ca;
-		}
-
-		.list-group-item-dark.list-group-item-action:hover,
-		.list-group-item-dark.list-group-item-action:focus {
-			color: #101722;
-			background-color: #b2b7be;
-		}
-
-		.list-group-item-dark.list-group-item-action.active {
-			color: #fff;
-			background-color: #101722;
-			border-color: #101722;
-		}
-
-		.list-group-item-black {
-			color: black;
-			background-color: #b8b8b8;
-		}
-
-		.list-group-item-black.list-group-item-action:hover,
-		.list-group-item-black.list-group-item-action:focus {
-			color: black;
-			background-color: #ababab;
-		}
-
-		.list-group-item-black.list-group-item-action.active {
-			color: #fff;
-			background-color: black;
-			border-color: black;
-		}
-
-		.list-group-item-white {
-			color: #858585;
-			background-color: white;
-		}
-
-		.list-group-item-white.list-group-item-action:hover,
-		.list-group-item-white.list-group-item-action:focus {
-			color: #858585;
-			background-color: #f2f2f2;
-		}
-
-		.list-group-item-white.list-group-item-action.active {
-			color: #fff;
-			background-color: #858585;
-			border-color: #858585;
-		}
-
-		.list-group-item-red {
-			color: #790b00;
-			background-color: #f9bdb8;
-		}
-
-		.list-group-item-red.list-group-item-action:hover,
-		.list-group-item-red.list-group-item-action:focus {
-			color: #790b00;
-			background-color: #f7a7a0;
-		}
-
-		.list-group-item-red.list-group-item-action.active {
-			color: #fff;
-			background-color: #790b00;
-			border-color: #790b00;
-		}
-
-		.list-group-item-orange {
-			color: #803400;
-			background-color: #fdd4b8;
-		}
-
-		.list-group-item-orange.list-group-item-action:hover,
-		.list-group-item-orange.list-group-item-action:focus {
-			color: #803400;
-			background-color: #fcc59f;
-		}
-
-		.list-group-item-orange.list-group-item-action.active {
-			color: #fff;
-			background-color: #803400;
-			border-color: #803400;
-		}
-
-		.list-group-item-yellow {
-			color: #7f5400;
-			background-color: #fce5b8;
-		}
-
-		.list-group-item-yellow.list-group-item-action:hover,
-		.list-group-item-yellow.list-group-item-action:focus {
-			color: #7f5400;
-			background-color: #fbdca0;
-		}
-
-		.list-group-item-yellow.list-group-item-action.active {
-			color: #fff;
-			background-color: #7f5400;
-			border-color: #7f5400;
-		}
-
-		.list-group-item-green {
-			color: #005937;
-			background-color: #b8e8d5;
-		}
-
-		.list-group-item-green.list-group-item-action:hover,
-		.list-group-item-green.list-group-item-action:focus {
-			color: #005937;
-			background-color: #a5e2ca;
-		}
-
-		.list-group-item-green.list-group-item-action.active {
-			color: #fff;
-			background-color: #005937;
-			border-color: #005937;
-		}
-
-		.list-group-item-teal {
-			color: #00614d;
-			background-color: #b8ece1;
-		}
-
-		.list-group-item-teal.list-group-item-action:hover,
-		.list-group-item-teal.list-group-item-action:focus {
-			color: #00614d;
-			background-color: #a4e7d9;
-		}
-
-		.list-group-item-teal.list-group-item-action.active {
-			color: #fff;
-			background-color: #00614d;
-			border-color: #00614d;
-		}
-
-		.list-group-item-cyan {
-			color: #006c6f;
-			background-color: #b8f2f3;
-		}
-
-		.list-group-item-cyan.list-group-item-action:hover,
-		.list-group-item-cyan.list-group-item-action:focus {
-			color: #006c6f;
-			background-color: #a2eeef;
-		}
-
-		.list-group-item-cyan.list-group-item-action.active {
-			color: #fff;
-			background-color: #006c6f;
-			border-color: #006c6f;
-		}
-
-		.list-group-item-blue {
-			color: #00327e;
-			background-color: #b8d3fb;
-		}
-
-		.list-group-item-blue.list-group-item-action:hover,
-		.list-group-item-blue.list-group-item-action:focus {
-			color: #00327e;
-			background-color: #a0c4fa;
-		}
-
-		.list-group-item-blue.list-group-item-action.active {
-			color: #fff;
-			background-color: #00327e;
-			border-color: #00327e;
-		}
-
-		.list-group-item-indigo {
-			color: #2e0079;
-			background-color: #d0b8f9;
-		}
-
-		.list-group-item-indigo.list-group-item-action:hover,
-		.list-group-item-indigo.list-group-item-action:focus {
-			color: #2e0079;
-			background-color: #c0a0f7;
-		}
-
-		.list-group-item-indigo.list-group-item-action.active {
-			color: #fff;
-			background-color: #2e0079;
-			border-color: #2e0079;
-		}
-
-		.list-group-item-purple {
-			color: #370067;
-			background-color: #d5b8ef;
-		}
-
-		.list-group-item-purple.list-group-item-action:hover,
-		.list-group-item-purple.list-group-item-action:focus {
-			color: #370067;
-			background-color: #c9a3ea;
-		}
-
-		.list-group-item-purple.list-group-item-action.active {
-			color: #fff;
-			background-color: #370067;
-			border-color: #370067;
-		}
-
-		.list-group-item-pink {
-			color: #76002e;
-			background-color: #f7b8d1;
-		}
-
-		.list-group-item-pink.list-group-item-action:hover,
-		.list-group-item-pink.list-group-item-action:focus {
-			color: #76002e;
-			background-color: #f4a1c2;
-		}
-
-		.list-group-item-pink.list-group-item-action.active {
-			color: #fff;
-			background-color: #76002e;
-			border-color: #76002e;
-		}
-
-		.list-group-item-red-soft {
-			color: #7c6767;
-			background-color: #faefef;
-		}
-
-		.list-group-item-red-soft.list-group-item-action:hover,
-		.list-group-item-red-soft.list-group-item-action:focus {
-			color: #7c6767;
-			background-color: #f4dcdc;
-		}
-
-		.list-group-item-red-soft.list-group-item-action.active {
-			color: #fff;
-			background-color: #7c6767;
-			border-color: #7c6767;
-		}
-
-		.list-group-item-orange-soft {
-			color: #7d6f67;
-			background-color: #fbf4ef;
-		}
-
-		.list-group-item-orange-soft.list-group-item-action:hover,
-		.list-group-item-orange-soft.list-group-item-action:focus {
-			color: #7d6f67;
-			background-color: #f6e6db;
-		}
-
-		.list-group-item-orange-soft.list-group-item-action.active {
-			color: #fff;
-			background-color: #7d6f67;
-			border-color: #7d6f67;
-		}
-
-		.list-group-item-yellow-soft {
-			color: #7d7667;
-			background-color: #fbf7ef;
-		}
-
-		.list-group-item-yellow-soft.list-group-item-action:hover,
-		.list-group-item-yellow-soft.list-group-item-action:focus {
-			color: #7d7667;
-			background-color: #f6eddb;
-		}
-
-		.list-group-item-yellow-soft.list-group-item-action.active {
-			color: #fff;
-			background-color: #7d7667;
-			border-color: #7d7667;
-		}
-
-		.list-group-item-green-soft {
-			color: #637772;
-			background-color: #edf8f5;
-		}
-
-		.list-group-item-green-soft.list-group-item-action:hover,
-		.list-group-item-green-soft.list-group-item-action:focus {
-			color: #637772;
-			background-color: #dbf1eb;
-		}
-
-		.list-group-item-green-soft.list-group-item-action.active {
-			color: #fff;
-			background-color: #637772;
-			border-color: #637772;
-		}
-
-		.list-group-item-teal-soft {
-			color: #637977;
-			background-color: #edf9f8;
-		}
-
-		.list-group-item-teal-soft.list-group-item-action:hover,
-		.list-group-item-teal-soft.list-group-item-action:focus {
-			color: #637977;
-			background-color: #daf3f1;
-		}
-
-		.list-group-item-teal-soft.list-group-item-action.active {
-			color: #fff;
-			background-color: #637977;
-			border-color: #637977;
-		}
-
-		.list-group-item-cyan-soft {
-			color: #637b7e;
-			background-color: #edfafb;
-		}
-
-		.list-group-item-cyan-soft.list-group-item-action:hover,
-		.list-group-item-cyan-soft.list-group-item-action:focus {
-			color: #637b7e;
-			background-color: #d8f4f6;
-		}
-
-		.list-group-item-cyan-soft.list-group-item-action.active {
-			color: #fff;
-			background-color: #637b7e;
-			border-color: #637b7e;
-		}
-
-		.list-group-item-blue-soft {
-			color: #636f81;
-			background-color: #edf4fd;
-		}
-
-		.list-group-item-blue-soft.list-group-item-action:hover,
-		.list-group-item-blue-soft.list-group-item-action:focus {
-			color: #636f81;
-			background-color: #d6e6fa;
-		}
-
-		.list-group-item-blue-soft.list-group-item-action.active {
-			color: #fff;
-			background-color: #636f81;
-			border-color: #636f81;
-		}
-
-		.list-group-item-indigo-soft {
-			color: #6d6580;
-			background-color: #f2eefc;
-		}
-
-		.list-group-item-indigo-soft.list-group-item-action:hover,
-		.list-group-item-indigo-soft.list-group-item-action:focus {
-			color: #6d6580;
-			background-color: #e1d8f8;
-		}
-
-		.list-group-item-indigo-soft.list-group-item-action.active {
-			color: #fff;
-			background-color: #6d6580;
-			border-color: #6d6580;
-		}
-
-		.list-group-item-purple-soft {
-			color: #6e657c;
-			background-color: #f3eefb;
-		}
-
-		.list-group-item-purple-soft.list-group-item-action:hover,
-		.list-group-item-purple-soft.list-group-item-action:focus {
-			color: #6e657c;
-			background-color: #e4d9f6;
-		}
-
-		.list-group-item-purple-soft.list-group-item-action.active {
-			color: #fff;
-			background-color: #6e657c;
-			border-color: #6e657c;
-		}
-
-		.list-group-item-pink-soft {
-			color: #7b6571;
-			background-color: #faeef4;
-		}
-
-		.list-group-item-pink-soft.list-group-item-action:hover,
-		.list-group-item-pink-soft.list-group-item-action:focus {
-			color: #7b6571;
-			background-color: #f4dae7;
-		}
-
-		.list-group-item-pink-soft.list-group-item-action.active {
-			color: #fff;
-			background-color: #7b6571;
-			border-color: #7b6571;
-		}
-
-		.list-group-item-primary-soft {
-			color: #636f81;
-			background-color: #edf4fd;
-		}
-
-		.list-group-item-primary-soft.list-group-item-action:hover,
-		.list-group-item-primary-soft.list-group-item-action:focus {
-			color: #636f81;
-			background-color: #d6e6fa;
-		}
-
-		.list-group-item-primary-soft.list-group-item-action.active {
-			color: #fff;
-			background-color: #636f81;
-			border-color: #636f81;
-		}
-
-		.list-group-item-secondary-soft {
-			color: #6e657c;
-			background-color: #f3eefb;
-		}
-
-		.list-group-item-secondary-soft.list-group-item-action:hover,
-		.list-group-item-secondary-soft.list-group-item-action:focus {
-			color: #6e657c;
-			background-color: #e4d9f6;
-		}
-
-		.list-group-item-secondary-soft.list-group-item-action.active {
-			color: #fff;
-			background-color: #6e657c;
-			border-color: #6e657c;
-		}
-
-		.list-group-item-success-soft {
-			color: #637772;
-			background-color: #edf8f5;
-		}
-
-		.list-group-item-success-soft.list-group-item-action:hover,
-		.list-group-item-success-soft.list-group-item-action:focus {
-			color: #637772;
-			background-color: #dbf1eb;
-		}
-
-		.list-group-item-success-soft.list-group-item-action.active {
-			color: #fff;
-			background-color: #637772;
-			border-color: #637772;
-		}
-
-		.list-group-item-info-soft {
-			color: #637b7e;
-			background-color: #edfafb;
-		}
-
-		.list-group-item-info-soft.list-group-item-action:hover,
-		.list-group-item-info-soft.list-group-item-action:focus {
-			color: #637b7e;
-			background-color: #d8f4f6;
-		}
-
-		.list-group-item-info-soft.list-group-item-action.active {
-			color: #fff;
-			background-color: #637b7e;
-			border-color: #637b7e;
-		}
-
-		.list-group-item-warning-soft {
-			color: #7d7667;
-			background-color: #fbf7ef;
-		}
-
-		.list-group-item-warning-soft.list-group-item-action:hover,
-		.list-group-item-warning-soft.list-group-item-action:focus {
-			color: #7d7667;
-			background-color: #f6eddb;
-		}
-
-		.list-group-item-warning-soft.list-group-item-action.active {
-			color: #fff;
-			background-color: #7d7667;
-			border-color: #7d7667;
-		}
-
-		.list-group-item-danger-soft {
-			color: #7c6767;
-			background-color: #faefef;
-		}
-
-		.list-group-item-danger-soft.list-group-item-action:hover,
-		.list-group-item-danger-soft.list-group-item-action:focus {
-			color: #7c6767;
-			background-color: #f4dcdc;
-		}
-
-		.list-group-item-danger-soft.list-group-item-action.active {
-			color: #fff;
-			background-color: #7c6767;
-			border-color: #7c6767;
-		}
-
-		.p-0 {
-			padding: 0 !important;
-		}
-		.m-0 {
-			margin: 0 !important;
-		}
-
- 		:root {
+ :root {
             --color1: #FD8F33;
             --color2: #0DC8AB;
             --color3: #05B0DE;
@@ -1143,106 +270,6 @@
         .pointer{
             cursor: pointer;
         }
-		.card-deck .card {
-			margin-bottom: 0.75rem;
-		}
-
-		@media (min-width: 576px) {
-			.card-deck {
-				display: -webkit-box;
-				display: flex;
-				-webkit-box-orient: horizontal;
-				-webkit-box-direction: normal;
-				flex-flow: row wrap;
-				margin-right: -0.75rem;
-				margin-left: -0.75rem;
-			}
-
-			.card-deck .card {
-				-webkit-box-flex: 1;
-				flex: 1 0 0%;
-				margin-right: 0.75rem;
-				margin-bottom: 0;
-				margin-left: 0.75rem;
-			}
-		}
-		.card {
-			position: relative;
-			display: -webkit-box;
-			display: flex;
-			-webkit-box-orient: vertical;
-			-webkit-box-direction: normal;
-					flex-direction: column;
-			min-width: 0;
-			word-wrap: break-word;
-			background-color: #fff;
-			background-clip: border-box;
-			border: 1px solid rgba(31, 45, 65, 0.125);
-			border-radius: 0.35rem;
-		}
-
-		.table {
-			width: 100%;
-			margin-bottom: 1rem;
-			color: #687281;
-		}
-
-		.table th,
-		.table td {
-			padding: 0.75rem;
-			vertical-align: top;
-			border-top: 1px solid #e3e6ec;
-		}
-
-		.table thead th {
-			vertical-align: bottom;
-			border-bottom: 2px solid #e3e6ec;
-		}
-
-		.table tbody+tbody {
-			border-top: 2px solid #e3e6ec;
-		}
-
-		.table-sm th,
-		.table-sm td {
-			padding: 0.3rem;
-		}
-
-		.table-bordered {
-			border: 1px solid #e3e6ec;
-		}
-
-		.table-bordered th,
-		.table-bordered td {
-			border: 1px solid #e3e6ec;
-		}
-
-		.table-bordered thead th,
-		.table-bordered thead td {
-			border-bottom-width: 2px;
-		}
-
-		.table-borderless th,
-		.table-borderless td,
-		.table-borderless thead th,
-		.table-borderless tbody+tbody {
-			border: 0;
-		}
-
-		.table-striped tbody tr:nth-of-type(odd) {
-			background-color: rgba(0, 0, 0, 0.05);
-		}
-
-		.table-hover tbody tr:hover {
-			color: #687281;
-			background-color: rgba(227, 230, 236, 0.25);
-		}
-		.border-0 {
-			border: 0 !important;
-		}
-		.p-2 {
-  			padding: 0.5rem !important;
-		}
     </style>
 
 </head>
@@ -1291,9 +318,6 @@
 							</li>
                             <li class="nav-item">
                                 <a href="#view-commission" class="nav-link">View Commission</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#posible-commission" class="nav-link">Posible Commission</a>
                             </li>
 							<li class="nav-item">
 								<a href="#member" class="nav-link">Your Members</a>
@@ -1372,18 +396,6 @@
 												</span>
                                                 <div class="icon-box-content">
                                                     <p class="text-uppercase mb-0">View Commission</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-									<div class="col-lg-4 col-md-6 col-sm-4 col-xs-6 mb-4">
-                                        <a href="#posible-commission" class="link-to-tab">
-                                            <div class="icon-box text-center">
-												<span class="icon-box-icon icon-account">
-													<i class="w-icon-wallet"></i>
-												</span>
-                                                <div class="icon-box-content">
-                                                    <p class="text-uppercase mb-0">Posible Commission</p>
                                                 </div>
                                             </div>
                                         </a>
@@ -1596,7 +608,7 @@
 															</div>
 															<div class="col-lg-6 mb-20 pb-3">
 																<label class="text-dark font-weight-bold">City <span>*</span></label>
-																<select class="form-control form-control-sm" style="width:100%;" name="regcity" id="regcity" required>
+																<select class="form-control form-control-sm  selectpicker" style="width:100%; display:none;" name="regcity" id="regcity" required>
 																	<option value="">Select</option>
 																	<?php foreach($citylist->result() as $rowcitylist){ ?>
 																	<option value="<?php echo $rowcitylist->city ?>" <?php if($this->session->userdata('loggedin')==1){if($rowcitylist->city==$customerprofile->row(0)->city){echo 'selected';}} ?>><?php echo $rowcitylist->city ?></option>
@@ -1669,7 +681,7 @@
 							</div>
 
                             <div class="tab-pane" id="view-commission">
-                                <div class="icon-box icon-box-side icon-box-light mb-3">
+                                <div class="icon-box icon-box-side icon-box-light">
 									<span class="icon-box-icon icon-money">
 										<i class="w-icon-money"></i>
 									</span>
@@ -1677,76 +689,20 @@
                                         <h4 class="icon-box-title mb-0 ls-normal">Commission</h4>
                                     </div>
                                 </div>
-								<form id="searchFrom">
-									<div class="row">
-										<div class="col-md-3">
-											<strong> From </strong>
-											<input type="date" id="fromdate" class="form-control" required />
-										</div>
-										<div class="col-md-3">
-											<strong> To </strong>
-											<input type="date" id="todate" class="form-control" required />
-										</div>
-										<div class="col-md-3">
-											<br>
-											<button type="button" id="formSearchBtn" class="btn btn-primary">View Commission</button>
-											<input type="submit" value="" class="d-none" id="hidesubmitbtn">
-										</div>
-									</div>
-								</form>
-								<hr>
-								<div class="row">
-									<div class="col-md-4 text-right">
-										<label class="small font-weight-bold text-dark">Previous month commission</label>
-										<h4 id="showprecommisson">Rs 0.00</h4>
-									</div>
-									<div class="col-md-4 text-right">
-										<label class="small font-weight-bold text-dark">Your commission</label>
-										<h4 id="showyoucommisson">Rs 0.00</h4>
-									</div>
-									<div class="col-md-4 text-right">
-										<label class="small font-weight-bold text-dark">Total commission</label>
-                                        <h2 id="showcommisson" class="text-primary">Rs 0.00</h2>
-									</div>
-								</div>
-								<hr>
-								<div id="viewresult"></div>
-                            </div>
-							<div class="tab-pane" id="posible-commission">
-                                <div class="icon-box icon-box-side icon-box-light mb-3">
-									<span class="icon-box-icon icon-money">
-										<i class="w-icon-wallet"></i>
-									</span>
-                                    <div class="icon-box-content">
-                                        <h4 class="icon-box-title mb-0 ls-normal">Posible Commission</h4>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <strong> From </strong>
+                                        <input type="date" class="form-control"/>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <strong> To </strong>
+                                        <input type="date" class="form-control"/>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <br>
+                                         <button type="button" class="btn btn-primary mt-1">View</button>
                                     </div>
                                 </div>
-								<form id="searchroughlyFrom">
-									<div class="row">
-										<div class="col-md-3">
-											<strong> From </strong>
-											<input type="date" id="fromroughlydate" class="form-control" required />
-										</div>
-										<div class="col-md-3">
-											<strong> To </strong>
-											<input type="date" id="toroughlydate" class="form-control" required />
-										</div>
-										<div class="col-md-3">
-											<br>
-											<button type="button" id="formroughlySearchBtn" class="btn btn-primary">View Commission</button>
-											<input type="submit" value="" class="d-none" id="hideroughlysubmitbtn">
-										</div>
-									</div>
-								</form>
-								<hr>
-								<div class="row">
-									<div class="col-md-12 text-right">
-										<label class="small font-weight-bold text-dark">Total commission</label>
-                                        <h2 id="showroughlycommisson" class="text-primary">Rs 0.00</h2>
-									</div>
-								</div>
-								<hr>
-								<div id="viewroughlyresult"></div>
                             </div>
 							<div class="tab-pane" id="member">
 								<div class="icon-box icon-box-side icon-box-light">
@@ -1887,62 +843,68 @@
     </div>
 
 	<?php include "include/footerscript.php"; ?>
+	<script src="/js/Bootstrap/Select/bootstrap-select.js"></script> 
 
-	<script type="text/javascript">
-		$(document).ready(function(){
-			// $('.selectpicker').selectpicker({});
-			$("#regcity").select2();
-			$("#regbank").select2();
-			$("#regbranch").select2();
+<script type="text/javascript">
+    $('.selectpicker').selectpicker({});
+</script>
+	<script>
+        $('#ordertable tbody').on('click', '.btncancel', function() {
+            var r = confirm("Are you sure, You want to cancel this order ? ");
+            if (r == true) {
+                var orderID = $(this).attr('id');
+                var email = '<?php echo $customerprofile->row(0)->email; ?>';
 
-			$('#ordertable tbody').on('click', '.btncancel', function() {
-				var r = confirm("Are you sure, You want to cancel this order ? ");
-				if (r == true) {
-					var orderID = $(this).attr('id');
-					var email = '<?php echo $customerprofile->row(0)->email; ?>';
+                $.ajax({
+                    url: "<?php echo base_url('Loginregister/Ordercancel');?>",
+                    method: "POST",
+                    data: {
+                        orderID:orderID,
+                        email:email
+                    },
+                    success: function(data) { 
+                        location.reload();
+                    }
+                });
+            }
+        });
+		$('#formSearchBtn').click(function(){
+            if (!$("#searchFrom")[0].checkValidity()) {
+                // If the form is invalid, submit it. The form won't actually submit;
+                // this will just cause the browser to display the native HTML5 error messages.
+                $("#hidesubmitbtn").click();
+            } else {
+                var fromdate = $('#fromdate').val();
+                var todate = $('#todate').val();
 
-					$.ajax({
-						url: "<?php echo base_url('Loginregister/Ordercancel');?>",
-						method: "POST",
-						data: {
-							orderID:orderID,
-							email:email
-						},
-						success: function(data) { 
-							location.reload();
-						}
-					});
-				}
-			});
-			$('#formSearchBtn').click(function(){
-				if (!$("#searchFrom")[0].checkValidity()) {
-					// If the form is invalid, submit it. The form won't actually submit;
-					// this will just cause the browser to display the native HTML5 error messages.
-					$("#hidesubmitbtn").click();
-				} else {
-					var fromdate = $('#fromdate').val();
-					var todate = $('#todate').val();
+                $('#viewresult').html('<div class="card border-0 shadow-none"><div class="card-body text-center"><img src="<?php echo base_url() ?>images/spinner.gif" alt=""></div></div>');
 
-					$('#viewresult').html('<div class="card border-0 shadow-none"><div class="card-body text-center"><img src="<?php echo base_url() ?>images/spinner.gif" alt=""></div></div>');
+                $.ajax({
+                    type: "POST",
+                    data: {
+                        fromdate: fromdate,
+                        todate: todate
+                    },
+                    url: '<?php echo base_url('Loginregister/Commissionview');?>',
+                    success: function(result) { //alert(result);
+                        // var obj = JSON.parse(result);
+                        // $('#viewresult').html(obj.htmlview);
+                        // $('#showcommisson').html(obj.totalcom)
+                        $('#viewresult').html(result);
+                        // $('#htmtotal').html(obj.comtothtml);
+                        totaloption();
+                    }
+                });  
+            }
+        });
 
-					$.ajax({
-						type: "POST",
-						data: {
-							fromdate: fromdate,
-							todate: todate
-						},
-						url: '<?php echo base_url('Loginregister/Commissionview');?>',
-						success: function(result) { //alert(result);
-							// var obj = JSON.parse(result);
-							// $('#viewresult').html(obj.htmlview);
-							// $('#showcommisson').html(obj.totalcom)
-							$('#viewresult').html(result);
-							// $('#htmtotal').html(obj.comtothtml);
-							totaloption();
-						}
-					});  
-				}
-			});		
+		function copyfunction(element) {
+        var $temp = $("<input>");
+        $("body").append($temp);
+        $temp.val($(element).text()).select();
+        document.execCommand("copy");
+        $temp.remove();
+    }
 
 			$('.btnpopupview').click(function (e){
 			   let id = $(this).data('id');
@@ -2155,37 +1117,7 @@
 				getmemberlist(levelno, dataset, countshow);
 			});
 
-			//Roughly Commission Part Start 15-10-2021
-			$('#formroughlySearchBtn').click(function(){
-				if (!$("#searchroughlyFrom")[0].checkValidity()) {
-					// If the form is invalid, submit it. The form won't actually submit;
-					// this will just cause the browser to display the native HTML5 error messages.
-					$("#hideroughlysubmitbtn").click();
-				} else {
-					var fromdate = $('#fromroughlydate').val();
-					var todate = $('#toroughlydate').val();
-
-					$('#viewroughlyresult').html('<div class="card border-0 shadow-none"><div class="card-body text-center"><img src="<?php echo base_url() ?>images/spinner.gif" alt=""></div></div>');
-
-					$.ajax({
-						type: "POST",
-						data: {
-							fromdate: fromdate,
-							todate: todate
-						},
-						url: '<?php echo base_url('Loginregister/Commissionroughlyview');?>',
-						success: function(result) { //alert(result);
-							// var obj = JSON.parse(result);
-							// $('#viewresult').html(obj.htmlview);
-							// $('#showcommisson').html(obj.totalcom)
-							$('#viewroughlyresult').html(result);
-							totalroughlyoption();
-						}
-					});  
-				}
-			});
-			//Roughly Commission Part End 15-10-2021
-		});
+		// });
 
 		function copyfunction(element) {
 			var $temp = $("<input>");
@@ -2298,29 +1230,29 @@
 			}
 		}
 		function branchlist(bankcode, branchcode){
-			$.ajax({
-				url: "<?php echo base_url('Loginregister/Branchlist');?>",
-				method: "POST",
-				data: {bankcode:bankcode},
-				success: function(data) { //alert(data);
-					var objfirst = JSON.parse(data);
-					var html = '';
-					html += '<option value="">Select</option>';
-					$.each(objfirst, function(i, item) {
-						//alert(objfirst[i].id);
-						html += '<option value="' + objfirst[i].code + '">';
-						html += objfirst[i].branch;
-						html += '</option>';
-					});
+        $.ajax({
+            url: "<?php echo base_url('Loginregister/Branchlist');?>",
+            method: "POST",
+            data: {bankcode:bankcode},
+            success: function(data) { //alert(data);
+                var objfirst = JSON.parse(data);
+                var html = '';
+                html += '<option value="">Select</option>';
+                $.each(objfirst, function(i, item) {
+                    //alert(objfirst[i].id);
+                    html += '<option value="' + objfirst[i].code + '">';
+                    html += objfirst[i].branch;
+                    html += '</option>';
+                });
 
-					$('#regbranch').empty().append(html);
+                $('#regbranch').empty().append(html);
 
-					if (branchcode != '') {
-						$('#regbranch').val(branchcode);
-					}
-				}
-			});
-		}
+                if (branchcode != '') {
+                    $('#regbranch').val(branchcode);
+                }
+            }
+        });
+    }
 		function getmemberlist(levelno, dataset, countshow){
 			$.ajax({
 				url: "<?php echo base_url('Loginregister/Getmemberlist');?>",
@@ -2335,88 +1267,7 @@
 				}
 			});
 		}
-		function totaloption(){
-			var lvltwo = parseFloat($('#lvltwonettotal').val());
-			var lvlthree = parseFloat($('#lvlthreenettotal').val());
-			var lvlfour = parseFloat($('#lvlfournettotal').val());
-			var lvlfive = parseFloat($('#lvlfivenettotal').val());
-			var lvlsix = parseFloat($('#lvlsixnettotal').val());
-			var lvlseven = parseFloat($('#lvlsevennettotal').val());
-			var lvleight = parseFloat($('#lvleightnettotal').val());
-			var lvlreturn = parseFloat($('#lvlreturntotal').val());
-			var lvldrop = parseFloat($('#lvldropnettotal').val());
-        	var previoustotal = parseFloat($('#previoustotal').val());
-			// alert(lvltwo+','+lvlthree+','+lvlfour+','+lvlfive+','+lvlsix+','+lvlseven+','+lvleight+','+lvlreturn+','+lvldrop+','+previoustotal);
-			//Rs 50.00 deduct for donation
-			var totalnet=parseFloat(((lvltwo+lvlthree+lvlfour+lvlfive+lvlsix+lvlseven+lvleight+lvldrop+previoustotal)-(50+15+lvlreturn))).toFixed(2);
-			var totalnetyou=parseFloat(((lvltwo+lvlthree+lvlfour+lvlfive+lvlsix+lvlseven+lvleight+lvldrop)-(50+15+lvlreturn))).toFixed(2);
-			if(totalnet>0){
-				$('#showcommisson').html(addCommas(totalnet));
-				$('#showprecommisson').html(addCommas(previoustotal));
-				$('#showyoucommisson').html(addCommas(totalnetyou));
-			}
-			else{
-				$('#showcommisson').html('0.00');
-				$('#showprecommisson').html('0.00');
-				$('#showyoucommisson').html('0.00');
-			}
 
-			// $('.pointer').click(function(){
-			// 	var customerID = $(this).attr('id');
-			// 	var fromdate = $('#fromdate').val();
-			// 	var todate = $('#todate').val();
-			// 	$('.btnpopupview').click();
-				
-			// 	$('#order_response').html('<div class="card border-0 shadow-none"><div class="card-body text-center"><img src="<?php echo base_url() ?>images/spinner.gif" alt=""></div></div>');
-
-			// 	$.ajax({
-			// 		type: "POST",
-			// 		data: {
-			// 			customerID: customerID,
-			// 			fromdate: fromdate,
-			// 			todate: todate
-			// 		},
-			// 		url: '<?php echo base_url('Account/Memberorderlist');?>',
-			// 		success: function(result) { //alert(result);
-			// 			// console.log(result);
-			// 			$('#order_response').html(result);
-			// 		}
-			// 	});  
-			// });
-		}
-		function addCommas(nStr){
-			nStr += '';
-			x = nStr.split('.');
-			x1 = x[0];
-			x2 = x.length > 1 ? '.' + x[1] : '';
-			var rgx = /(\d+)(\d{3})/;
-			while (rgx.test(x1)) {
-				x1 = x1.replace(rgx, '$1' + ',' + '$2');
-			}
-			return x1 + x2;
-		}
-		function totalroughlyoption(){
-			var lvltwo = parseFloat($('#roughlylvltwonettotal').val());
-			var lvlthree = parseFloat($('#roughlylvlthreenettotal').val());
-			var lvlfour = parseFloat($('#roughlylvlfournettotal').val());
-			var lvlfive = parseFloat($('#roughlylvlfivenettotal').val());
-			var lvlsix = parseFloat($('#roughlylvlsixnettotal').val());
-			var lvlseven = parseFloat($('#roughlylvlsevennettotal').val());
-			var lvleight = parseFloat($('#roughlylvleightnettotal').val());
-			var lvldrop = parseFloat($('#roughlylvldropnettotal').val());
-			var lvlreturn = parseFloat($('#roughlylvlreturntotal').val());
-
-			//alert(lvltwo+' '+lvlthree+' '+lvlfour+' '+lvlfive+' '+lvlsix+' '+lvldrop+' '+lvlreturn);
-
-			//Rs 50.00 deduct for donation
-			var totalnet=parseFloat(((lvltwo+lvlthree+lvlfour+lvlfive+lvlsix+lvlseven+lvleight+lvldrop)-(50+15+lvlreturn))).toFixed(2);
-			if(totalnet>0){
-				$('#showroughlycommisson').html(addCommas(totalnet));
-			}
-			else{
-				$('#showroughlycommisson').html('0.00');
-			}
-		}
 	</script>
 
 

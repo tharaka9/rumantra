@@ -1434,7 +1434,8 @@
 											<th class="order-status">Status</th>
 											<th class="order-total">Total</th>
 											<th class="order-actions">Actions</th>
-                                                <th>Cancel</th>
+                                            <th>Cancel</th>
+											<th>Payment</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -1450,6 +1451,9 @@
                                                 <button type="button" class="btn btn-outline btn-default btn-block btn-sm btn-rounded btn-quickview btnpopupview" data-id="<?php echo $rowcustomerorder->idtbl_order; ?>">View</button>
 											</td>
 											<td class="order-action"><?php if($rowcustomerorder->status==1){if($rowcustomerorder->acceptstatus==0){ ?><button class="btn btn-outline btn-default btn-block btn-sm btn-rounded btncancel" id="<?php echo $rowcustomerorder->idtbl_order ?>"><i class="icon-close"></i> Cancel</button><?php }else{echo '<span class="text-success"><i class="icon-check"></i> Accepted</span>';}} ?></td>
+																					<td class="order-action">
+                                                <button type="button" class="btn btn-outline btn-default btn-block btn-sm btn-rounded btn-quickview btnpopupviewimage" data-id="<?php echo $rowcustomerorder->idtbl_order; ?>">Payment</button>
+											</td>
 										</tr>
 										<?php } ?>
 									</tbody>
@@ -1711,6 +1715,13 @@
 								</div>
 								<hr>
 								<div id="viewresult"></div>
+
+								<div class="row">
+									<div class="col">
+										<label class="small font-weight-bold" style="color: red;">(Rs. 15.00 will be deducte has been bank charges. Rs. 50.00 will be deducte has been donation.)</label>
+									</div>
+								</div>
+
                             </div>
 							<div class="tab-pane" id="posible-commission">
                                 <div class="icon-box icon-box-side icon-box-light mb-3">
@@ -1747,6 +1758,14 @@
 								</div>
 								<hr>
 								<div id="viewroughlyresult"></div>
+
+								<div class="row">
+									<div class="col">
+										<label class="small font-weight-bold" style="color: red;">(Rs. 15.00 will be deducte has been bank charges. Rs. 50.00 will be deducte has been donation.)</label>
+									</div>
+								</div>
+
+
                             </div>
 							<div class="tab-pane" id="member">
 								<div class="icon-box icon-box-side icon-box-light">
@@ -2104,6 +2123,54 @@
                     }
                 });
             });
+
+
+			$('.btnpopupviewimage').click(function (e){
+			   let id = $(this).data('id');
+			   let url_text = '<?= site_url() ?>/'+'Loginregister/get_single_order_ajax';
+
+                $.ajax({
+                    url: url_text,
+                    type: 'POST',
+                    data: {id: id},
+                    success: function(res) {
+
+                        let json = $.parseJSON(res);
+                        //console.log(json.order)
+
+                        let order = ''+
+							'<div class="row">'+
+							'<div class="col-6">'+
+							'<div class="form-group">'+
+							'<label for="exampleFormControlInput1">Order No</label>'+
+    						'<input type="text" class="form-control" id="exampleFormControlInput1" value='+json.order.idtbl_order+'>'+
+							'</div>'+
+							'</div>'+
+							'<div class="col-6">'+
+							'<label class="form-label" for="customFile">Default file input example</label>'+
+							'<input type="file" class="form-control" id="customFile" />'+
+							'</div>'+
+
+                            '</div>';
+
+
+                        $('#order_response').html(order);
+
+                    },
+                    error: function(xhr, status, data){
+                        alert(data)
+                        // let errors = xhr.responseJSON.errors
+                        // let error_text = ''
+                        // $.each(errors, function(key,value) {
+                        //     error_text += value + '<br>';
+                        // });
+                        //show_error_alert("#response", error_text);
+
+                    }
+                });
+            });
+
+
 
 			$("#regcity").select2();
         	$("#regbank").select2();

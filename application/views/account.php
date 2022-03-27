@@ -1450,9 +1450,16 @@
 											<td class="order-action">
                                                 <button type="button" class="btn btn-outline btn-default btn-block btn-sm btn-rounded btn-quickview btnpopupview" data-id="<?php echo $rowcustomerorder->idtbl_order; ?>">View</button>
 											</td>
-											<td class="order-action"><?php if($rowcustomerorder->status==1){if($rowcustomerorder->acceptstatus==0){ ?><button class="btn btn-outline btn-default btn-block btn-sm btn-rounded btncancel" id="<?php echo $rowcustomerorder->idtbl_order ?>"><i class="icon-close"></i> Cancel</button><?php }else{echo '<span class="text-success"><i class="icon-check"></i> Accepted</span>';}} ?></td>
-																					<td class="order-action">
+											<td class="order-action">
+												<?php if($rowcustomerorder->status==1){if($rowcustomerorder->acceptstatus==0){ ?>
+												<button class="btn btn-outline btn-default btn-block btn-sm btn-rounded btncancel" id="<?php echo $rowcustomerorder->idtbl_order ?>"><i class="icon-close"></i> Cancel</button><?php }else{echo '<span class="text-success"><i class="icon-check"></i> Accepted</span>';}} ?>
+											</td>
+												<td class="order-action">
+												<?php if($rowcustomerorder->paystatus==0 && $rowcustomerorder->status==1){ ?>
                                                 <button type="button" class="btn btn-outline btn-default btn-block btn-sm btn-rounded btn-quickview btnpopupviewimage" data-id="<?php echo $rowcustomerorder->idtbl_order; ?>">Payment</button>
+												<?php }else if($rowcustomerorder->status==1){ ?>
+                                                <span class="text-success"><i class="icon-check"></i> Payment done</span>
+                                                <?php } ?>
 											</td>
 										</tr>
 										<?php } ?>
@@ -2139,18 +2146,23 @@
                         //console.log(json.order)
 
                         let order = ''+
+						'<form action="<?php echo base_url().'Loginregister/Uploadbankreceipt' ?>" method="post" autocomplete="off" enctype="multipart/form-data">'+
 							'<div class="row">'+
 							'<div class="col-6">'+
 							'<div class="form-group">'+
 							'<label for="exampleFormControlInput1">Order No</label>'+
-    						'<input type="text" class="form-control" id="exampleFormControlInput1" value='+json.order.idtbl_order+'>'+
+    						'<input type="text" class="form-control" id="exampleFormControlInput1" name="orderno" value='+json.order.idtbl_order+'>'+
 							'</div>'+
 							'</div>'+
 							'<div class="col-6">'+
 							'<label class="form-label" for="customFile">Default file input example</label>'+
-							'<input type="file" class="form-control" id="customFile" />'+
+							'<input type="file" class="form-control" name="fileupload" id="fileupload" />'+
 							'</div>'+
-
+							'<div class="login_submit mt-5">'+
+                            '<button type="submit" id="profilesubmitbtn" class="btn btn-danger">Upload Bank Receipt</button>'+
+                            
+                        	'</div>'+
+							'</form>'+
                             '</div>';
 
 

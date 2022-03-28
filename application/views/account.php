@@ -1434,8 +1434,8 @@
 											<th class="order-status">Status</th>
 											<th class="order-total">Total</th>
 											<th class="order-actions">Actions</th>
-                                            <th>Cancel</th>
-											<th>Payment</th>
+                                            <th class="order-actions">Cancel</th>
+											<th class="order-actions">Payment</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -1450,17 +1450,16 @@
 											<td class="order-action">
                                                 <button type="button" class="btn btn-outline btn-default btn-block btn-sm btn-rounded btn-quickview btnpopupview" data-id="<?php echo $rowcustomerorder->idtbl_order; ?>">View</button>
 											</td>
+											<td class="order-action"><?php if($rowcustomerorder->status==1){if($rowcustomerorder->acceptstatus==0){ ?><button class="btn btn-outline btn-default btn-block btn-sm btn-rounded btncancel" id="<?php echo $rowcustomerorder->idtbl_order ?>"><i class="icon-close"></i> Cancel</button><?php }else{echo '<span class="text-success"><i class="icon-check"></i> Accepted</span>';}} ?></td>
+											
 											<td class="order-action">
-												<?php if($rowcustomerorder->status==1){if($rowcustomerorder->acceptstatus==0){ ?>
-												<button class="btn btn-outline btn-default btn-block btn-sm btn-rounded btncancel" id="<?php echo $rowcustomerorder->idtbl_order ?>"><i class="icon-close"></i> Cancel</button><?php }else{echo '<span class="text-success"><i class="icon-check"></i> Accepted</span>';}} ?>
-											</td>
-												<td class="order-action">
 												<?php if($rowcustomerorder->paystatus==0 && $rowcustomerorder->status==1){ ?>
                                                 <button type="button" class="btn btn-outline btn-default btn-block btn-sm btn-rounded btn-quickview btnpopupviewimage" data-id="<?php echo $rowcustomerorder->idtbl_order; ?>">Payment</button>
 												<?php }else if($rowcustomerorder->status==1){ ?>
                                                 <span class="text-success"><i class="icon-check"></i> Payment done</span>
                                                 <?php } ?>
 											</td>
+
 										</tr>
 										<?php } ?>
 									</tbody>
@@ -1728,7 +1727,6 @@
 										<label class="small font-weight-bold" style="color: red;">(Rs. 15.00 will be deducte has been bank charges. Rs. 50.00 will be deducte has been donation.)</label>
 									</div>
 								</div>
-
                             </div>
 							<div class="tab-pane" id="posible-commission">
                                 <div class="icon-box icon-box-side icon-box-light mb-3">
@@ -2132,6 +2130,7 @@
             });
 
 
+
 			$('.btnpopupviewimage').click(function (e){
 			   let id = $(this).data('id');
 			   let url_text = '<?= site_url() ?>/'+'Loginregister/get_single_order_ajax';
@@ -2181,6 +2180,7 @@
                     }
                 });
             });
+
 
 
 
